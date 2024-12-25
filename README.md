@@ -21,19 +21,15 @@
     <a href="https://github.com/eli64s/splitme-ai/actions">
       <img src="https://img.shields.io/github/actions/workflow/status/eli64s/splitme-ai/ci.yml?style=flat&logo=githubactions&logoColor=white&color=FFD700&labelColor=2A2A2A" alt="GitHub Actions" />
     </a>
-    &nbsp;
     <a href="https://app.codecov.io/gh/eli64s/splitme-ai">
       <img src="https://img.shields.io/badge/Coverage-80%25?style=flat&labelColor=2A2A2A&logo=codecov&logoColor=white&color=00E5FF" alt="Coverage" />
     </a>
-    &nbsp;
     <a href="https://pypi.org/project/splitme-ai/">
       <img src="https://img.shields.io/pypi/v/splitme-ai?logo=Python&&labelColor=2A2A2A&style=flat&logoColor=white&color=20B2AA" alt="PyPI Version" />
     </a>
-    &nbsp;
     <a href="https://github.com/eli64s/splitme-ai">
       <img src="https://img.shields.io/pypi/pyversions/splitme-ai?label=Python&labelColor=2A2A2A&style=flat&logo=python&logoColor=white&color=7934C5" alt="Python Version" />
     </a>
-    &nbsp;
     <a href="https://opensource.org/license/mit/">
       <img src="https://img.shields.io/badge/License-MIT?style=flat&labelColor=2A2A2A&logo=opensourceinitiative&logoColor=white&color=FF00FF" alt="MIT License" />
     </a>
@@ -106,7 +102,7 @@ splitme-ai \
     --split.settings.o examples/output-h2
 ```
 
-__Example 2:__ Split on heading level 2 and generate an [mkdocs.yml][mkdocs] configuration file:
+__Example 2:__ Split on heading level 2 and generate an [mkdocs-yml] configuration file:
 
 ```sh
 splitme-ai \
@@ -198,3 +194,4 @@ Released under the [MIT][mit-license] license.
 [pipx]: https://pipx.pypa.io/stable/
 [uv]: https://docs.astral.sh/uv/
 [mkdocs]: https://www.mkdocs.org/
+[mkdocs-yml]: https://www.mkdocs.org/user-guide/configuration/
