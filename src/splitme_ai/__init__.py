@@ -5,7 +5,9 @@ from splitme_ai.errors import ParseError as ParseError
 from splitme_ai.errors import SplitmeAIBaseError
 from splitme_ai.utils.file_handler import FileHandler
 
-__version__ = "0.1.6"
+# from splitme_ai.utils.version import get_version
+
+__version__ = "0.1.8"  # get_version()
 
 __all__: list[str] = [
     "Config",
@@ -14,4 +16,5 @@ __all__: list[str] = [
     "MarkdownSplitter",
     "ParseError",
     "SplitmeAIBaseError",
+    # "get_version",
 ]

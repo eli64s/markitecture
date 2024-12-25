@@ -4,7 +4,7 @@ requires = [ "hatch-fancy-pypi-readme>=22.5", "hatchling" ]
 
 [project]
 name = "splitme-ai"
-version = "0.1.7"
+version = "0.1.8"
 description = "Break down docs, build up knowledge."
 readme = "README.md"
 keywords = [
