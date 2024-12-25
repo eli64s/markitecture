@@ -1,16 +1,56 @@
-<div id="top">
+<div id="top" align="center">
+
+<!-- HEADER -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/logo.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/logo.svg" />
+  <img alt="splitme-ai logo" src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/logo.svg" width="800px" style="max-width: 100%;" />
+</picture>
+
+<h3 align="center">
+  Break down your docs. Build up your knowledge.
+</h3>
+
+<p align="center">
+  <em>A Markdown text splitter for modular docs and maximum flexibility.</em>
+</p>
+
+<!-- BADGES -->
+<div align="center">
+  <p align="center" style="margin-bottom: 20px;">
+    <a href="https://github.com/eli64s/splitme-ai/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/eli64s/splitme-ai/ci.yml?style=flat&logo=githubactions&logoColor=white&color=FFD700&labelColor=2A2A2A" alt="GitHub Actions" />
+    </a>
+    &nbsp;
+    <a href="https://app.codecov.io/gh/eli64s/splitme-ai">
+      <img src="https://img.shields.io/badge/Coverage-80%25?style=flat&labelColor=2A2A2A&logo=codecov&logoColor=white&color=00E5FF" alt="Coverage" />
+    </a>
+    &nbsp;
+    <a href="https://pypi.org/project/splitme-ai/">
+      <img src="https://img.shields.io/pypi/v/splitme-ai?logo=Python&&labelColor=2A2A2A&style=flat&logoColor=white&color=20B2AA" alt="PyPI Version" />
+    </a>
+    &nbsp;
+    <a href="https://github.com/eli64s/splitme-ai">
+      <img src="https://img.shields.io/pypi/pyversions/splitme-ai?label=Python&labelColor=2A2A2A&style=flat&logo=python&logoColor=white&color=7934C5" alt="Python Version" />
+    </a>
+    &nbsp;
+    <a href="https://opensource.org/license/mit/">
+      <img src="https://img.shields.io/badge/License-MIT?style=flat&labelColor=2A2A2A&logo=opensourceinitiative&logoColor=white&color=FF00FF" alt="MIT License" />
+    </a>
+  </p>
+</div>
 
 <div align="center">
-  
-<img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/logo.svg" alt="splitme-ai" width="100%" height="100%" />
-
-__Markdown Splitter: Modular Docs, Maximum Flexibility__
+  <img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg" alt="separator" width="100%" height="2px" style="margin: 20px 0;">
+</div>
 
 </div>
 
+## What is SplitmeAI?
+
 `SplitmeAI` is a Python module that addresses challenges in managing large Markdown files, particularly when creating and maintaining structured static documentation websites such as [Mkdocs][mkdocs].
 
-__Why Use SplitmeAI?__
+__Key Features:__
 
 - **Section Splitting:** Breaks down large Markdown files into smaller, manageable sections based on specified heading levels.
 - **Filename Sanitization:** Generates clean, unique filenames for each section, ensuring compatibility and readability.
@@ -20,9 +60,7 @@ __Why Use SplitmeAI?__
 - **MkDocs Integration:** Automatically generates an `mkdocs.yml` configuration file based on the split sections.
 - **CLI Support:** Provides a user-friendly Command-Line Interface for seamless operation.
 
-</div>
-
-<img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg" alt="---" width="100%" height="3.5px">
+---
 
 ## Quick Start
 
@@ -58,7 +96,9 @@ For the fastest installation use [uv][uv]:
 
 #### Using the CLI
 
-__Example 1:__ Split a Markdown file into sections:
+Let's take a look at some examples of how to use the `splitme-ai` CLI.
+
+__Example 1:__ Split a Markdown file on heading level 2 (default setting):
 
 ```sh
 splitme-ai \
@@ -66,7 +106,7 @@ splitme-ai \
     --split.settings.o examples/output-h2
 ```
 
-__Example 2:__ Generate a mkdocs static documentation site config file:
+__Example 2:__ Split on heading level 2 and generate an [mkdocs.yml][mkdocs] configuration file:
 
 ```sh
 splitme-ai \
@@ -75,7 +115,7 @@ splitme-ai \
     --split.settings.mkdocs
 ```
 
-View the output for [heading level 2 example here](./examples/output-h2).
+View the output generated for [splitting on heading level 2 here](./examples/output-h2).
 
 __Example 3:__ Split on heading level 3:
 
@@ -86,7 +126,7 @@ splitme-ai \
     --split.settings.hl "###"
 ```
 
-View the output for [heading level 3 example here](./examples/output-h3).
+View the output generated for [splitting on heading level 3 here](./examples/output-h3).
 
 __Example 4:__ Split on heading level 4:
 
@@ -97,10 +137,12 @@ splitme-ai \
     --split.settings.hl "####"
 ```
 
-View the output for [heading level 4 example here](./examples/output-h4).
+View the output generated for [splitting on heading level 4 here](./examples/output-h4).
 
 >[!NOTE]
 > The Official Documentation site with extensive examples and usage instructions is under development Stay tuned for updates!
+
+---
 
 ## Roadmap
 
@@ -110,41 +152,49 @@ View the output for [heading level 4 example here](./examples/output-h4).
 - [ ] Add support for additional static site generators.
 - [ ] Add support for additional input and output formats.
 
+---
+
+## Contributing
+
+Contributions are welcome! For bug reports, feature requests, or questions, please [open an issue][github-issues] or submit a [pull request][github-pulls] on GitHub.
+
+---
+
 ## License
 
 Copyright © 2024 [splitme-ai][splitme-ai]. <br />
-Released under the [MIT][license] license.
+Released under the [MIT][mit-license] license.
+
+<!-- 
+<div align="left">
+  <a href="#top">
+    <img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/button-circles.svg" alt="Return to Top" width="100px" height="100px">
+  </a>
+</div>
+-->
 
 <div align="left">
   <a href="#top">
-    <img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/button-circles.svg" alt="Return" width="100px" height="100px">
+    <img src="https://img.shields.io/static/v1?label=△&message=Return&color=7934C5&style=flat-square&labelColor=1B1B1B" alt="Return to Top" width="100px">
   </a>
 </div>
 
-<img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg" alt="---" width="100%" height="3.5px">
+<div align="center">
+  <img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg" alt="separator" width="100%" height="2px" style="margin: 20px 0;">
+</div>
 
 <!-- REFERENCE LINKS -->
 
 <!-- PROJECT RESOURCES -->
-[splitme-ai]: https://github.com/eli64s/splitme-ai
-[license]: https://github.com/eli64s/splitme-ai/blob/main/LICENSE
-
-<!-- QUICK START -->
 [pypi]: https://pypi.org/project/splitme-ai/
-[docker]: https://hub.docker.com/r/zeroxeli/splitme-ai
+[splitme-ai]: https://github.com/eli64s/splitme-ai
+[github-issues]: https://github.com/eli64s/splitme-ai/issues
+[github-pulls]: https://github.com/eli64s/splitme-ai/pulls
+[mit-license]: https://github.com/eli64s/splitme-ai/blob/main/LICENSE
+
+<!-- DEV TOOLS -->
+[python]: https://www.python.org/
 [pip]: https://pip.pypa.io/en/stable/
 [pipx]: https://pipx.pypa.io/stable/
-[python]: https://www.python.org/
 [uv]: https://docs.astral.sh/uv/
 [mkdocs]: https://www.mkdocs.org/
-
-<!-- SHIELDS -->
-[docker-shield]: https://img.shields.io/badge/Docker-2496ED.svg?style=flat&logo=Docker&logoColor=white
-[pipx-shield]: https://img.shields.io/badge/pipx-2CFFAA.svg?style=flat&logo=pipx&logoColor=black
-[pypi-shield]: https://img.shields.io/badge/PyPI-3775A9.svg?style=flat&logo=PyPI&logoColor=white
-[pytest-shield]: https://img.shields.io/badge/Pytest-0A9EDC.svg?style=flat&logo=Pytest&logoColor=white
-
-<!-- SVG ICONS -->
-[pipx-svg]: https://raw.githubusercontent.com/eli64s/readme-ai/5ba3f704de2795e32f9fdb67e350caca87975a66/docs/docs/assets/svg/pipx.svg
-[python-svg]: https://raw.githubusercontent.com/eli64s/readme-ai/5ba3f704de2795e32f9fdb67e350caca87975a66/docs/docs/assets/svg/python.svg
-[uv-svg]: https://raw.githubusercontent.com/eli64s/readme-ai/5ba3f704de2795e32f9fdb67e350caca87975a66/docs/docs/assets/svg/astral.svg

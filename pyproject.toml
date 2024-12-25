@@ -4,7 +4,7 @@ requires = [ "hatch-fancy-pypi-readme>=22.5", "hatchling" ]
 
 [project]
 name = "splitme-ai"
-version = "0.1.4"
+version = "0.1.5"
 description = "Break down docs, build up knowledge."
 readme = "README.md"
 keywords = [
@@ -51,7 +51,7 @@ dev = [
     "hatch>=1.13",
 ]
 test = [
-    "coverage>=7.6.9",
+    "coverage[toml]>=7.6.9",
     "pytest>=8.3.4",
     "pytest-asyncio>=0.25",
     "pytest-cov>=6",
@@ -60,7 +60,6 @@ test = [
     "pytest-sugar>=1",
     "pytest-xdist>=3.6.1",
 ]
-
 docs = [
     "mkdocs>=1.6.1",
     "mkdocs-material>=9.5.47",
@@ -105,7 +104,7 @@ addopts = [
     "--durations=3",
     "--cov=src/splitme_ai",
     "--cov-branch",
-    # "--cov-fail-under=80",
+    "--cov-fail-under=0",
     "--cov-report=term-missing:skip-covered",
     "--cov-report=json:tests/.reports/coverage.json",
     "--asyncio-mode=auto",
@@ -113,27 +112,36 @@ addopts = [
 ]
 asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
-pythonpath = [ "src/splitme_ai" ]
-testpaths = [ "tests" ]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
 
 [tool.coverage.report]
-exclude_also = [
-    "if __name__ == '__main__':",
+exclude_lines = [
     "pragma: no cover",
+    "def repr",
     "raise NotImplementedError",
+    "if name == .__main__.:",
+    "if TYPE_CHECKING:",
+    "pass",
+    "\\.\\.\\.",
 ]
 precision = 2
 show_missing = true
 skip_empty = true
 sort = "cover"
+
+[tool.coverage.run]
+data_file = "tests/.reports/.coverage"
 omit = [
+    "docs/*",
+    "examples/*",
     "tests/*",
     "**/__init__.py",
     "noxfile.py",
 ]
-
-[tool.coverage.run]
-data_file = "tests/.reports/.coverage"
+source = ["splitme_ai"]
 
 [tool.pyright]
 typeCheckingMode = "strict"

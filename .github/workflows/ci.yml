@@ -13,45 +13,53 @@ env:
   UV_CACHE_DIR: ${{ github.workspace }}/.cache/uv
 
 jobs:
-  # test:
-  #   name: Test Python ${{ matrix.python-version }}
-  #   runs-on: ubuntu-latest
+  test:
+    name: Test Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       python-version: [ "3.9", "3.10", "3.11", "3.12" ]
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ "3.9", "3.10", "3.11", "3.12" ]
 
-  #   steps:
-  #   - name: Checkout repository
-  #     uses: actions/checkout@v4
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # Fetch all history for coverage tracking
 
-  #   - name: Install uv
-  #     uses: astral-sh/setup-uv@v4
-  #     with:
-  #       enable-cache: true
-  #       cache-dependency-glob: "pyproject.toml"
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        enable-cache: true
+        cache-dependency-glob: "pyproject.toml"
 
-  #   - name: Set up Python ${{ matrix.python-version }}
-  #     uses: actions/setup-python@v5
-  #     with:
-  #       python-version: ${{ matrix.python-version }}
-  #       python-version-file: pyproject.toml
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        python-version-file: pyproject.toml
 
-  #   - name: Install dependencies
-  #     run: |
-  #       uv sync --all-extras --dev
+    - name: Install dependencies
+      run: |
+        uv sync --all-extras --dev
 
-  # - name: Run tests
-  #   run: |
-  #     uv run pytest tests/
+    - name: Run tests with coverage
+      run: |
+        uv run pytest
 
-  # - name: Check code formatting
-  #   run: |
-  #     uv run ruff check .
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.xml
+        flags: unittests-${{ matrix.python-version }}
+        name: Python ${{ matrix.python-version }}
+        fail_ci_if_error: true
 
   build:
     name: Build Package
+    needs: test
     runs-on: ubuntu-latest
     if: success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
 
@@ -79,43 +87,44 @@ jobs:
       with:
         name: dist
         path: dist/
-    # docs:
-    #   name: Build Documentation
-    #   needs: test
-    #   runs-on: ubuntu-latest
-    #   if: success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
 
-    #   steps:
-    #   - name: Checkout repository
-    #     uses: actions/checkout@v4
+  docs:
+    name: Build Documentation
+    needs: test
+    runs-on: ubuntu-latest
+    if: success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
 
-    #   - name: Install uv
-    #     uses: astral-sh/setup-uv@v4
-    #     with:
-    #       enable-cache: true
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    #   - name: Set up Python
-    #     uses: actions/setup-python@v5
-    #     with:
-    #       python-version-file: pyproject.toml
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        enable-cache: true
 
-    #   - name: Install dependencies
-    #     run: |
-    #       uv sync --all-extras --group docs
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version-file: pyproject.toml
 
-    # - name: Build documentation
-    #   run: |
-    #     uv run mkdocs build
+    - name: Install dependencies
+      run: |
+        uv sync --all-extras --group docs
 
-    # - name: Store documentation
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: site
-    #     path: site/
+    - name: Build documentation
+      run: |
+        uv run mkdocs build
+
+    - name: Store documentation
+      uses: actions/upload-artifact@v4
+      with:
+        name: site
+        path: site/
 
   deploy:
     name: Deploy to PyPI
-    needs: [ build ]
+    needs: [ build, docs ]
     runs-on: ubuntu-latest
     if: success() && startsWith(github.ref, 'refs/tags/v')
     environment:

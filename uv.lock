@@ -1723,7 +1723,7 @@ wheels = [
 
 [[package]]
 name = "splitme-ai"
-version = "0.1.0"
+version = "0.1.4"
 source = { editable = "." }
 dependencies = [
     { name = "pydantic" },
@@ -1755,7 +1755,7 @@ lint = [
     { name = "types-pyyaml" },
 ]
 test = [
-    { name = "coverage" },
+    { name = "coverage", extra = ["toml"] },
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "pytest-cov" },
@@ -1782,19 +1782,19 @@ docs = [
     { name = "mkdocs-material", specifier = ">=9.5.47" },
 ]
 lint = [
-    { name = "mypy", specifier = ">=1.14.0" },
+    { name = "mypy", specifier = ">=1.14" },
     { name = "pyright", specifier = ">=1.1.391" },
     { name = "ruff", specifier = ">=0.8.4" },
     { name = "types-pyyaml", specifier = ">=6.0.12.20240917" },
 ]
 test = [
-    { name = "coverage", specifier = ">=7.6.9" },
+    { name = "coverage", extras = ["toml"], specifier = ">=7.6.9" },
     { name = "pytest", specifier = ">=8.3.4" },
-    { name = "pytest-asyncio", specifier = ">=0.25.0" },
-    { name = "pytest-cov", specifier = ">=6.0.0" },
-    { name = "pytest-pretty", specifier = ">=1.2.0" },
-    { name = "pytest-randomly", specifier = ">=3.16.0" },
-    { name = "pytest-sugar", specifier = ">=1.0.0" },
+    { name = "pytest-asyncio", specifier = ">=0.25" },
+    { name = "pytest-cov", specifier = ">=6" },
+    { name = "pytest-pretty", specifier = ">=1.2" },
+    { name = "pytest-randomly", specifier = ">=3.16" },
+    { name = "pytest-sugar", specifier = ">=1" },
     { name = "pytest-xdist", specifier = ">=3.6.1" },
 ]
 
