@@ -19,20 +19,20 @@
 <div align="center">
   <p align="center" style="margin-bottom: 20px;">
     <a href="https://github.com/eli64s/splitme-ai/actions">
-      <img src="https://img.shields.io/github/actions/workflow/status/eli64s/splitme-ai/ci.yml?style=flat&logo=githubactions&logoColor=white&color=FFD700&labelColor=2A2A2A" alt="GitHub Actions" />
+      <img src="https://img.shields.io/github/actions/workflow/status/eli64s/splitme-ai/ci.yml?label=CI&style=flat&logo=githubactions&logoColor=white&color=FFD700&labelColor=2A2A2A" alt="GitHub Actions" />
     </a>
     <a href="https://app.codecov.io/gh/eli64s/splitme-ai">
-      <img src="https://img.shields.io/badge/Coverage-80%25?style=flat&labelColor=2A2A2A&logo=codecov&logoColor=white&color=00E5FF" alt="Coverage" />
+      <img src="https://img.shields.io/codecov/c/github/eli64s/splitme-ai?label=Coverage&style=flat&labelColor=2A2A2A&logo=codecov&logoColor=white&color=20B2AA" alt="Coverage" />
     </a>
     <a href="https://pypi.org/project/splitme-ai/">
-      <img src="https://img.shields.io/pypi/v/splitme-ai?logo=Python&&labelColor=2A2A2A&style=flat&logoColor=white&color=20B2AA" alt="PyPI Version" />
+      <img src="https://img.shields.io/pypi/v/splitme-ai?label=PyPI&logo=pypi&labelColor=2A2A2A&style=flat&logoColor=white&color=00E5FF" alt="PyPI Version" />
     </a>
     <a href="https://github.com/eli64s/splitme-ai">
       <img src="https://img.shields.io/pypi/pyversions/splitme-ai?label=Python&labelColor=2A2A2A&style=flat&logo=python&logoColor=white&color=7934C5" alt="Python Version" />
     </a>
     <a href="https://opensource.org/license/mit/">
-      <img src="https://img.shields.io/badge/License-MIT?style=flat&labelColor=2A2A2A&logo=opensourceinitiative&logoColor=white&color=FF00FF" alt="MIT License" />
-    </a>
+      <img src="https://img.shields.io/github/license/eli64s/splitme-ai?label=License&style=flat&labelColor=2A2A2A&logo=opensourceinitiative&logoColor=white&color=FF00FF" alt="MIT License">
+  </a>
   </p>
 </div>
 
