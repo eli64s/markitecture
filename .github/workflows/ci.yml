@@ -26,7 +26,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0 # Fetch all history for coverage tracking
+        fetch-depth: 0
 
     - name: Install uv
       uses: astral-sh/setup-uv@v4
@@ -44,18 +44,42 @@ jobs:
       run: |
         uv sync --all-extras --group test
 
+    - name: Create report directories
+      run: |
+        mkdir -p tests/.reports
+
     - name: Run tests with coverage
       run: |
-        uv run pytest --config-file pyproject.toml
+        uv run pytest \
+          -vv \
+          --tb=short \
+          --durations=5 \
+          --cov=src/splitme_ai \
+          --cov-branch \
+          --cov-fail-under=0 \
+          --cov-report=term-missing:skip-covered \
+          --cov-report=json:tests/.reports/coverage.json \
+          --asyncio-mode=auto \
+          --numprocesses=auto
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+    - name: Verify coverage report
+      run: |
+        ls -la tests/.reports/coverage.json
+        echo "Coverage report size: $(stat -f%z tests/.reports/coverage.json)"
+        echo "Coverage report content preview:"
+        head -n 20 tests/.reports/coverage.json
+      continue-on-error: true
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./coverage.xml
+        files: tests/.reports/coverage.json
         flags: unittests-${{ matrix.python-version }}
         name: Python ${{ matrix.python-version }}
         fail_ci_if_error: true
+        directory: tests/.reports
+        verbose: true
 
   build:
     name: Build Package

@@ -102,7 +102,7 @@ splitme-ai \
     --split.settings.o examples/output-h2
 ```
 
-__Example 2:__ Split on heading level 2 and generate an [mkdocs-yml] configuration file:
+__Example 2:__ Split on heading level 2 and generate an [mkdocs.yml] configuration file:
 
 ```sh
 splitme-ai \
@@ -161,17 +161,9 @@ Contributions are welcome! For bug reports, feature requests, or questions, plea
 Copyright © 2024 [splitme-ai][splitme-ai]. <br />
 Released under the [MIT][mit-license] license.
 
-<!-- 
 <div align="left">
   <a href="#top">
-    <img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/button-circles.svg" alt="Return to Top" width="100px" height="100px">
-  </a>
-</div>
--->
-
-<div align="left">
-  <a href="#top">
-    <img src="https://img.shields.io/static/v1?label=△&message=Return&color=7934C5&style=flat-square&labelColor=1B1B1B" alt="Return to Top" width="100px">
+    <img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/button-circles.svg" alt="Return to Top" width="80px" height="80px">
   </a>
 </div>
 
@@ -194,4 +186,4 @@ Released under the [MIT][mit-license] license.
 [pipx]: https://pipx.pypa.io/stable/
 [uv]: https://docs.astral.sh/uv/
 [mkdocs]: https://www.mkdocs.org/
-[mkdocs-yml]: https://www.mkdocs.org/user-guide/configuration/
+[mkdocs.yml]: https://www.mkdocs.org/user-guide/configuration/

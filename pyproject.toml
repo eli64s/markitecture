@@ -143,6 +143,10 @@ omit = [
 ]
 source = ["splitme_ai"]
 
+[tool.coverage.json]
+output = "tests/.reports/coverage.json"
+pretty_print = true
+
 [tool.pyright]
 typeCheckingMode = "strict"
 reportMissingTypeStubs = false
