@@ -4,7 +4,7 @@ requires = [ "hatch-fancy-pypi-readme>=22.5", "hatchling" ]
 
 [project]
 name = "splitme-ai"
-version = "0.1.6"
+version = "0.1.7"
 description = "Break down docs, build up knowledge."
 readme = "README.md"
 keywords = [
@@ -21,7 +21,7 @@ keywords = [
 ]
 license = "MIT"
 authors = [ { name = "Eli Salamie", email = "egsalamie@gmail.com" } ]
-requires-python = ">=3.9"
+requires-python = ">=3.9, <=3.13"
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.9",
@@ -31,9 +31,11 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
+    "aiofiles>=24.1.0",
     "pydantic>=2.10.3",
     "pydantic-settings>=2.6.1",
     "pyyaml>=6.0.2",
+    "toml>=0.10.2 ; python_full_version < '3.11'",
 ]
 
 optional-dependencies.ai = [
@@ -68,6 +70,7 @@ lint = [
     "mypy>=1.14",
     "pyright>=1.1.391",
     "ruff>=0.8.4",
+    "types-aiofiles>=24.1.0.20241221",
     "types-pyyaml>=6.0.12.20240917",
 ]
 

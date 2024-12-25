@@ -10,7 +10,7 @@ UV := uv
 UVX := uvx --isolated
 UV_PIP := $(UV) pip
 UV_RUN := $(UV) run
-
+UV_SYNC := $(UV) sync
 
 # -- Clean Up ------------------------------------------------------------------
 
@@ -35,12 +35,8 @@ build: ## Build the distribution package using uv
 	$(UV_PIP) install dist/splitme_ai-0.1.0-py3-none-any.whl
 
 .PHONY: install
-install: ## Install all project dependencies
-	$(UV_PIP) install -r pyproject.toml --all-extras
-
-.PHONY: install-editable
-install-editable:: ## Install all project dependencies in editable mode
-	$(UV_PIP) install -e ".[dev,docs,lint,test]"
+install: ## Install all dependencies from pyproject.toml
+	$(UV_SYNC) --dev --group test --group docs --group lint --all-extras
 
 .PHONY: lock
 lock: ## Lock dependencies declared in pyproject.toml
@@ -53,7 +49,11 @@ requirements: ## Generate requirements files from pyproject.toml
 
 .PHONY: sync
 sync: ## Sync environment with pyproject.toml
-	uv sync --all-groups --dev
+	$(UV_SYNC) --all-groups --dev
+
+.PHONY: update
+update: ## Update all dependencies from pyproject.toml
+	uv lock --upgrade
 
 .PHONY: venv
 venv: ## Create a virtual environment
@@ -64,10 +64,8 @@ venv: ## Create a virtual environment
 
 .PHONY: docs
 docs: ## Build documentation site using mkdocs
-	# $(UV_RUN) mkdocs build 
-	# $(UV_RUN) mkdocs serve
-	uvx --with mkdocs-material mkdocs serve
-
+	$(UV_RUN) mkdocs serve
+	# uvx --with mkdocs-material mkdocs serve
 
 # -- Linting ---------------------------------------------------------------
 
@@ -85,8 +83,16 @@ lint: ## Lint Python files using Ruff
 	@echo -e "\n ►Running the Ruff linter..."
 	$(UVX) ruff check $(TARGET) --fix --config .ruff.toml
 
-.PHONY: format-lint
-format-lint: format lint ## Format and lint Python files
+.PHONY: format-and-lint
+format-and-lint: format lint ## Format and lint Python files
+
+.PHONY: mypy
+mypy: ## Type-check Python files using MyPy
+	$(UV_RUN) mypy $(TARGET)
+
+.PHONY: pyright
+pyright: ## Type-check Python files using Pyright
+	$(UV_RUN) pyright $(TARGET)
 
 
 # -- Utilities ------------------------------------------------------------------

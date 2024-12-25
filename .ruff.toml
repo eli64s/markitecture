@@ -19,7 +19,6 @@ target-version = "py311"
 preview = true
 extend-select = [
     "E305",     # 2 blank lines before class or function
-    "E501",
 ]
 select = [
     "ARG",      # unused arguments

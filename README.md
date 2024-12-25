@@ -2,10 +2,15 @@
 
 <!-- HEADER -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/logo.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/logo.svg" />
-  <img alt="splitme-ai logo" src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/logo.svg" width="800px" style="max-width: 100%;" />
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/logo-light.svg">
+  <img alt="SplitMe-AI Logo" src="docs/assets/logo-light.svg" width="800" style="max-width: 100%;">
 </picture>
+
+<!--
+<img src="docs/assets/logo-light.svg#gh-light-mode-only" alt="SplitMe-AI Logo Light" width="800" style="max-width: 100%;">
+<img src="docs/assets/logo-dark.svg#gh-dark-mode-only" alt="SplitMe-AI Logo Dark" width="800" style="max-width: 100%;"> 
+-->
 
 <h3 align="center">
   Break down your docs. Build up your knowledge.
@@ -77,7 +82,7 @@ pip install -U splitme-ai
 Install in an isolated environment with [pipx][pipx]:
 
 ```sh
-❯ pipx install readmeai
+❯ pipx install splitme-ai
 ```
 
 #### <img width="2%" src="https://simpleicons.org/icons/uv.svg">&emsp13;uv
@@ -85,7 +90,7 @@ Install in an isolated environment with [pipx][pipx]:
 For the fastest installation use [uv][uv]:
 
 ```sh
-❯ uv tool install splitme
+❯ uv tool install splitme-ai
 ```
 
 ### Usage
