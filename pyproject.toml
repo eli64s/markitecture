@@ -81,6 +81,10 @@ include = [
 
 [tool.hatch.metadata.hooks.fancy-pypi-readme]
 content-type = 'text/markdown'
+substitutions = [
+    {pattern = '(\s+)#(\d+)', replacement = '\1[#\2](https://github.com/eli64s/splitme-ai/issues/\2)'},
+    {pattern = '(\s+)@([\w\-]+)', replacement = '\1[@\2](https://github.com/\2)'},
+]
 
 [tool.pyright]
 typeCheckingMode = "strict"
