@@ -112,7 +112,8 @@ View the output for [heading level 4 example here](./examples/output-h4).
 
 ## License
 
-This project is licensed under the terms of the MIT License.
+Copyright © 2024 [splitme-ai][splitme-ai]. <br />
+Released under the [MIT][license] license.
 
 <div align="left">
   <a href="#top">
@@ -123,6 +124,10 @@ This project is licensed under the terms of the MIT License.
 <img src="docs/assets/line.svg" alt="---" width="100%" height="3.5px">
 
 <!-- REFERENCE LINKS -->
+
+<!-- PROJECT RESOURCES -->
+[splitme-ai]: https://github.com/eli64s/splitme-ai
+[license]: https://github.com/eli64s/splitme-ai/blob/main/LICENSE
 
 <!-- QUICK START -->
 [pypi]: https://pypi.org/project/splitme-ai/
