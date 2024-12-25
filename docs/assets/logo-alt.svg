@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
+    <defs>
+        <!-- Dynamic gradient -->
+        <linearGradient id="dynamicGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#00E5FF"/>
+            <stop offset="50%" style="stop-color:#7934C5"/>
+            <stop offset="100%" style="stop-color:#FFD700"/>
+        </linearGradient>
+        
+        <!-- Dynamic pattern -->
+        <pattern id="dynamicPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M0,20 L40,20 M20,0 L20,40" stroke="#7934C5" stroke-width="0.5" opacity="0.1"/>
+        </pattern>
+    </defs>
+    <g transform="translate(0, 300)">
+        <!-- Background -->
+        <rect width="1200" height="300" fill="#ffffff"/>
+        <rect width="1200" height="300" fill="url(#dynamicPattern)"/>
+        
+        <!-- Dynamic shapes -->
+        <g opacity="0.4">
+            <rect x="250" y="50" width="700" height="200" stroke="#7934C5" stroke-width="1" fill="none"/>
+            <path d="M250,50 L950,50 L950,250 L250,250 Z" stroke="#7934C5" stroke-width="2" fill="none"/>
+        </g>
+        
+        <!-- Main text -->
+        <g transform="translate(600, 150)">
+            <text font-family="'Chakra Petch', sans-serif" 
+                  font-size="110" 
+                  font-weight="700" 
+                  fill="url(#dynamicGradient)" 
+                  text-anchor="middle" 
+                  dominant-baseline="middle"
+                  letter-spacing="0.1em">
+                SPLITME-AI
+            </text>
+        </g>
+    </g>
+</svg>

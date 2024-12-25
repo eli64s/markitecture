@@ -1,0 +1,136 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+    tags: [ "v*" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+
+env:
+  UV_CACHE_DIR: ${{ github.workspace }}/.cache/uv
+
+jobs:
+  # test:
+  #   name: Test Python ${{ matrix.python-version }}
+  #   runs-on: ubuntu-latest
+
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       python-version: [ "3.9", "3.10", "3.11", "3.12" ]
+
+  #   steps:
+  #   - name: Checkout repository
+  #     uses: actions/checkout@v4
+
+  #   - name: Install uv
+  #     uses: astral-sh/setup-uv@v4
+  #     with:
+  #       enable-cache: true
+  #       cache-dependency-glob: "pyproject.toml"
+
+  #   - name: Set up Python ${{ matrix.python-version }}
+  #     uses: actions/setup-python@v5
+  #     with:
+  #       python-version: ${{ matrix.python-version }}
+  #       python-version-file: pyproject.toml
+
+  #   - name: Install dependencies
+  #     run: |
+  #       uv sync --all-extras --dev
+
+  # - name: Run tests
+  #   run: |
+  #     uv run pytest tests/
+
+  # - name: Check code formatting
+  #   run: |
+  #     uv run ruff check .
+
+  build:
+    name: Build Package
+    # needs: test
+    runs-on: ubuntu-latest
+    if: success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        enable-cache: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version-file: pyproject.toml
+
+    - name: Build package
+      run: |
+        uv pip install build hatch
+        hatch build
+
+    - name: Store build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: dist/
+    # docs:
+    #   name: Build Documentation
+    #   needs: test
+    #   runs-on: ubuntu-latest
+    #   if: success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+
+    #   steps:
+    #   - name: Checkout repository
+    #     uses: actions/checkout@v4
+
+    #   - name: Install uv
+    #     uses: astral-sh/setup-uv@v4
+    #     with:
+    #       enable-cache: true
+
+    #   - name: Set up Python
+    #     uses: actions/setup-python@v5
+    #     with:
+    #       python-version-file: pyproject.toml
+
+    #   - name: Install dependencies
+    #     run: |
+    #       uv sync --all-extras --group docs
+
+    # - name: Build documentation
+    #   run: |
+    #     uv run mkdocs build
+
+    # - name: Store documentation
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: site
+    #     path: site/
+
+  deploy:
+    name: Deploy to PyPI
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    if: success() && startsWith(github.ref, 'refs/tags/v')
+    environment:
+      name: pypi
+      url: https://pypi.org/p/splitme-ai
+    permissions:
+      id-token: write
+
+    steps:
+    - name: Download dist artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: dist
+        path: dist/
+
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1

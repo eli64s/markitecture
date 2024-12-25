@@ -1,71 +1,133 @@
-[tool.poetry]
-name = "kenshi"
+[build-system]
+build-backend = 'hatchling.build'
+requires = [ "hatch-fancy-pypi-readme>=22.5", "hatchling" ]
+
+[project]
+name = "splitme-ai"
 version = "0.1.0"
-description = ""
-authors = ["Eli <43382407+eli64s@users.noreply.github.com>"]
-readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.10"
-
-[tool.poetry.group.dev.dependencies]
-ruff = "*"
-
-[tool.poetry.group.test.dependencies]
-pytest = "=7.4.4"
-pytest-asyncio = "*"
-pytest-cov = "*"
-pytest-randomly = "*"
-pytest-sugar = "*"
-pytest-xdist = "*"
-
-[tool.ruff]
-exclude = [
-    ".ipynb_checkpoints",
-    ".mypy_cache",
-    ".nox",
-    ".pytest_cache",
-    ".ruff_cache",
-    ".vscode",
+description = "Break down docs, build up knowledge."
+keywords = [ "documentation", "markdown", "mkdocs", "static-site" ]
+license = "MIT"
+authors = [ { name = "Eli Salamie", email = "egsalamie@gmail.com" } ]
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
-line-length = 79
-
-[tool.ruff.format]
-quote-style = "double"
-docstring-code-format = true
-docstring-code-line-length = 20
-
-[tool.ruff.lint]
-extend-select = ["E501"]
-select = [
-    "E",    # pycodestyle
-    "F",    # pyflakes
-    "UP",   # pyupgrade
-    "B",    # flake8-bugbear
-    "SIM",  # flake8-simplify
-    "I",    # isort
-]
-ignore = [
-    # Line too long
-    "E501",
+dependencies = [
+    "pydantic>=2.10.3",
+    "pydantic-settings>=2.6.1",
+    "pyyaml>=6.0.2",
 ]
 
-[tool.coverage.run]
-source = ["readmeai", "tests"]
+urls.Homepage = 'https://github.com/eli64s/splitme-ai'
+scripts.splitme-ai = "splitme_ai.core:main"
+
+[project.optional-dependencies]
+ai = [
+    "pydantic-ai>=0.0.15",
+]
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.5.47",
+]
+
+[dependency-groups]
+dev = [
+    "hatch>=1.13",
+]
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.5.47",
+]
+lint = [
+    "mypy>=1.14.0",
+    "pyright>=1.1.391",
+    "ruff>=0.8.4",
+    "types-pyyaml>=6.0.12.20240917",
+]
+test = [
+    "coverage>=7.6.9",
+    "pytest>=8.3.4",
+    "pytest-asyncio>=0.25.0",
+    "pytest-cov>=6.0.0",
+    "pytest-pretty>=1.2.0",
+    "pytest-randomly>=3.16.0",
+    "pytest-sugar>=1.0.0",
+    "pytest-xdist>=3.6.1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = [ "src/splitme_ai" ]
+
+[tool.hatch.version]
+path = 'src/splitme_ai/__init__.py'
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.sdist]
+include = [
+    '/README.md',
+    '/Makefile',
+    '/splitme',
+    '.splitme-ai',
+    '/tests',
+]
+
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = 'text/markdown'
+
+[tool.pyright]
+typeCheckingMode = "strict"
+reportMissingTypeStubs = false
+reportUnnecessaryIsInstance = false
+reportUnnecessaryTypeIgnoreComment = true
+include = ["splitme_ai", "tests"]
+venvPath = ".venv"
+executionEnvironments = [
+  { root = "tests", reportUnusedFunction = false },
+]
+
+
+[tool.pytest.ini_options]
+addopts = [
+    "-vv",
+    "-rfEsxX",
+    "--tb=short",
+    "--durations=3",
+    "--cov=src/splitme_ai",
+    "--cov-branch",
+    # "--cov-fail-under=80",
+    "--cov-report=term-missing:skip-covered",
+    "--cov-report=json:tests/.reports/coverage.json",
+    "--asyncio-mode=auto",
+    "--numprocesses=auto",
+]
+asyncio_default_fixture_loop_scope = "function"
+asyncio_mode = "auto"
+pythonpath = ["src/splitme_ai"]
+testpaths = ["tests"]
+
+[tool.coverage.report]
+exclude_also = [
+    "if __name__ == '__main__':",
+    "pragma: no cover",
+    "raise NotImplementedError",
+]
+precision = 2
+show_missing = true
+skip_empty = true
+sort = "cover"
 omit = [
     "tests/*",
-    "*__init__.py",
-    "*/__init__.py",
+    "**/__init__.py",
     "noxfile.py",
 ]
 
-[tool.coverage.report]
-fail_under = 80
-show_missing = true
-
-[tool.coverage.xml]
-output = "coverage.xml"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.coverage.run]
+data_file = "tests/.reports/.coverage"

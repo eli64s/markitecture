@@ -1,0 +1,29 @@
+# -- SPLITME-AI Mkdocs Static Site Configuration ----------------------------
+
+site_name: splitme-ai
+site_description: "Markdown splitter for modular docs and flexible content."
+site_author: "splitme-ai"
+repo_name: eli64s/splitme-ai
+repo_url: https://github.com/eli64s/splitme-ai
+edit_uri: edit/main/docs/
+docs_dir: "docs/"
+copyright: "© 2024 splitme-ai"
+
+theme:
+  name: material
+  logo: assets/icon.svg
+  icon:
+    repo: fontawesome/brands/github-alt
+    edit: material/pencil
+    view: material/eye
+  palette:
+    primary: "deep-purple"
+    accent: "white"
+
+markdown_extensions:
+- admonition
+- pymdownx.details
+- pymdownx.superfences
+
+plugins:
+- search

@@ -1,0 +1,40 @@
+site_name: 'MkDocs Site: output-h2'
+
+docs_dir: .splitme-ai/output-h2
+
+nav:
+- Introduction: introduction.md
+- Getting Started: getting-started.md
+- Acknowledgments: acknowledgments.md
+- Configuration: configuration.md
+- Contributing: contributing.md
+- Demo: demo.md
+- Examples: examples.md
+- Features: features.md
+- License: license.md
+- Quick Links: quick-links.md
+- Roadmap: roadmap.md
+
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: indigo
+    accent: indigo
+  features:
+  - navigation.instant
+  - navigation.tracking
+  - navigation.tabs
+  - navigation.sections
+  - navigation.expand
+  - search.highlight
+
+markdown_extensions:
+- admonition
+- pymdownx.details
+- pymdownx.superfences
+- pymdownx.highlight
+- pymdownx.inlinehilite
+- pymdownx.snippets
+- tables
+- footnotes
