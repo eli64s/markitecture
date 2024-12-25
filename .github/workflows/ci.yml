@@ -69,12 +69,9 @@ jobs:
       with:
         python-version-file: pyproject.toml
 
-    - name: Create uv environment
-      run: uv venv --python 3.11
-
     - name: Build package
       run: |
-        uv pip install build hatch
+        uv pip install --system build hatch
         hatch build
 
     - name: Store build artifacts
