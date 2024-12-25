@@ -5,7 +5,7 @@ from splitme_ai.errors import ParseError as ParseError
 from splitme_ai.errors import SplitmeAIBaseError
 from splitme_ai.utils.file_handler import FileHandler
 
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 
 __all__: list[str] = [
     "Config",
