@@ -30,7 +30,7 @@ __Why Use SplitmeAI?__
 
 Install from [PyPI][pypi] using any of the package managers listed below.
 
-#### ![pip][python-svg]{width="2%"} &emsp13;Pip
+#### <img width="2%" src="https://simpleicons.org/icons/python.svg">&emsp13;pip
 
 Use [pip][pip] (recommended for most users):
 
@@ -38,7 +38,7 @@ Use [pip][pip] (recommended for most users):
 pip install -U splitme-ai
 ```
 
-#### ![pipx][pipx-svg]{ width="2%" }&emsp13;Pipx
+#### <img width="2%" src="https://simpleicons.org/icons/pipx.svg">&emsp13;pipx
 
 Install in an isolated environment with [pipx][pipx]:
 
@@ -46,7 +46,7 @@ Install in an isolated environment with [pipx][pipx]:
 ❯ pipx install readmeai
 ```
 
-#### ![uv][uv-svg]{ width="2%" }&emsp13;Uv
+#### <img width="2%" src="https://simpleicons.org/icons/uv.svg">&emsp13;uv
 
 For the fastest installation use [uv][uv]:
 
