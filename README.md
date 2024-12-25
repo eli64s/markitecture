@@ -2,7 +2,7 @@
 
 <div align="center">
   
-<img src="docs/assets/logo.svg" alt="splitme-ai" width="100%" height="100%" />
+<img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/logo.svg" alt="splitme-ai" width="100%" height="100%" />
 
 __Markdown Splitter: Modular Docs, Maximum Flexibility__
 
@@ -22,7 +22,7 @@ __Why Use SplitmeAI?__
 
 </div>
 
-<img src="docs/assets/line.svg" alt="---" width="100%" height="3.5px">
+<img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg" alt="---" width="100%" height="3.5px">
 
 ## Quick Start
 
@@ -117,11 +117,11 @@ Released under the [MIT][license] license.
 
 <div align="left">
   <a href="#top">
-    <img src="docs/assets/button-circles.svg" alt="Return" width="100px" height="100px">
+    <img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/button-circles.svg" alt="Return" width="100px" height="100px">
   </a>
 </div>
 
-<img src="docs/assets/line.svg" alt="---" width="100%" height="3.5px">
+<img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg" alt="---" width="100%" height="3.5px">
 
 <!-- REFERENCE LINKS -->
 
