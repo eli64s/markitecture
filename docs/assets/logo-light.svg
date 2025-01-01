@@ -3,9 +3,9 @@
         <!-- Main gradient for cutting elements and text -->
         <linearGradient id="sliceGradientLight" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="20%" style="stop-color:#FFD700" /> <!-- Gold -->
-            <stop offset="40%" style="stop-color:#FF4500" /> <!-- OrangeRed -->
-            <stop offset="60%" style="stop-color:#0073E6" /> <!-- Blue -->
-            <stop offset="80%" style="stop-color:#4CAF50" /> <!-- Green -->
+            <stop offset="40%" style="stop-color:#00E5FF" /> <!-- Cyan -->
+            <stop offset="60%" style="stop-color:#7934C5" /> <!-- Purple -->
+            <stop offset="80%" style="stop-color:#FF00FF" /> <!-- Magenta -->
         </linearGradient>
         <!-- Grid pattern with more complex geometric overlay -->
         <pattern id="slicePatternLight" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
