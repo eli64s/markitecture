@@ -1,53 +1,68 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="900" height="300">
     <defs>
-        <!-- The main gradient defines the vibrant color scheme used for the cutting elements and text -->
+        <!-- Main gradient for cutting elements and text -->
         <linearGradient id="sliceGradientLight" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="20%" style="stop-color:#FFD700" /> <!-- Gold -->
             <stop offset="40%" style="stop-color:#00E5FF" /> <!-- Cyan -->
             <stop offset="60%" style="stop-color:#7934C5" /> <!-- Purple -->
             <stop offset="80%" style="stop-color:#FF00FF" /> <!-- Magenta -->
         </linearGradient>
-        <!-- Secondary gradient for subtle background accents -->
-        <linearGradient id="accentGradientLight" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#7934C5;stop-opacity:0.3" />
-            <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:0.3" />
-        </linearGradient>
-        <!-- Grid pattern that creates a technical background texture -->
+        <!-- Grid pattern with more complex geometric overlay -->
         <pattern id="slicePatternLight" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M0,20 L40,20 M20,0 L20,40" stroke="#7934C5" stroke-width="0.5" opacity="0.08" />
+            <path d="M0,20 L40,20 M20,0 L20,40 M0,0 L40,40 M40,0 L0,40" stroke="#000000" stroke-width="0.4" opacity="0.03" />
+            <path d="M20,0 L20,40 M0,20 L40,20" stroke="#000000" stroke-width="0.3" opacity="0.02" />
         </pattern>
-        <!-- Enhanced glow effect for depth and emphasis -->
-        <filter id="precisionGlowLight" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 12 -2" result="glow" />
+        <!-- Enhanced glow effect -->
+        <filter id="precisionGlowLight" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 12 -3" result="glow" />
             <feMerge>
                 <feMergeNode in="glow" />
                 <feMergeNode in="SourceGraphic" />
             </feMerge>
         </filter>
+        <!-- Geometric accent gradient -->
+        <linearGradient id="geometricAccentGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#7934C5;stop-opacity:0.2" />
+            <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:0.1" />
+        </linearGradient>
     </defs>
-    <!-- Clean white background with subtle grid overlay -->
-    <rect width="1200" height="300" fill="#ffffff" />
+    <!-- Light background -->
+    <rect width="1200" height="300" fill="#FFFFFF" />
     <rect width="1200" height="300" fill="url(#slicePatternLight)" />
-    <!-- Dotted lines bordering the first and last letters -->
-    <g opacity="0.7">
+    <!-- Geometric slice accents -->
+    <g opacity="0.6">
+        <!-- Diagonal dotted lines -->
         <path d="M100,0 L400,300" stroke="url(#sliceGradientLight)" stroke-width="2.5" stroke-dasharray="10 10" fill="none" />
         <path d="M800,0 L1100,300" stroke="url(#sliceGradientLight)" stroke-width="2.5" stroke-dasharray="10 10" fill="none" />
+        <!-- Geometric triangular overlays -->
+        <path d="M50,0 L250,300 L150,300 Z" fill="url(#geometricAccentGradientLight)" opacity="0.2" />
+        <path d="M1150,0 L950,300 L1050,300 Z" fill="url(#geometricAccentGradientLight)" opacity="0.2" />
+        <!-- Triangular wire frames -->
+        <path d="M50,0 L250,300 L150,300 Z" fill="none" stroke="url(#sliceGradientLight)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.5" />
+        <path d="M1150,0 L950,300 L1050,300 Z" fill="none" stroke="url(#sliceGradientLight)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.5" />
     </g>
     <!-- Central title group with enhanced glow effect -->
     <g transform="translate(600, 150)" filter="url(#precisionGlowLight)">
-        <text font-family="'JetBrains Mono', sans-serif" font-size="130" font-weight="650" fill="url(#sliceGradientLight)" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.12em">
+        <text font-family="'JetBrains Mono', sans-serif" font-size="140" font-weight="700" fill="url(#sliceGradientLight)" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.12em">
             SPLITME-AI
         </text>
-        <!-- Horizontal precision lines that frame the text -->
+        <!-- Geometric precision framing -->
         <g opacity="0.6">
+            <!-- Horizontal dotted lines -->
             <line x1="-300" y1="40" x2="300" y2="40" stroke="url(#sliceGradientLight)" stroke-width="1.2" stroke-dasharray="6 6" />
             <line x1="-300" y1="-40" x2="300" y2="-40" stroke="url(#sliceGradientLight)" stroke-width="1.2" stroke-dasharray="6 6" />
+            <!-- Angled guide lines -->
+            <line x1="-300" y1="-40" x2="300" y2="40" stroke="url(#sliceGradientLight)" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.4" />
+            <line x1="-300" y1="40" x2="300" y2="-40" stroke="url(#sliceGradientLight)" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.4" />
         </g>
     </g>
-    <!-- Technical grid markers for precision alignment -->
-    <g>
-        <path d="M0,150 L1200,150" stroke="#7934C5" stroke-width="0.6" stroke-dasharray="4 4" opacity="0.25" />
-        <path d="M600,0 L600,300" stroke="#7934C5" stroke-width="0.6" stroke-dasharray="4 4" opacity="0.25" />
+    <!-- Technical grid markers with geometric precision -->
+    <g opacity="0.3">
+        <path d="M0,150 L1200,150" stroke="#000000" stroke-width="0.6" stroke-dasharray="4 4" />
+        <path d="M600,0 L600,300" stroke="#000000" stroke-width="0.6" stroke-dasharray="4 4" />
+        <!-- Diagonal grid extension -->
+        <path d="M0,0 L1200,300" stroke="#000000" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.2" />
+        <path d="M1200,0 L0,300" stroke="#000000" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.2" />
     </g>
 </svg>
