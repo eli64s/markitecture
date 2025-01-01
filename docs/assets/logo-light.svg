@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" width="900" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" width="100%" height="200">
     <defs>
         <!-- Main gradient for cutting elements and text -->
         <linearGradient id="sliceGradientLight" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="20%" style="stop-color:#FFD700" /> <!-- Gold -->
-            <stop offset="40%" style="stop-color:#00E5FF" /> <!-- Cyan -->
-            <stop offset="60%" style="stop-color:#7934C5" /> <!-- Purple -->
-            <stop offset="80%" style="stop-color:#FF00FF" /> <!-- Magenta -->
+            <stop offset="40%" style="stop-color:#FF4500" /> <!-- OrangeRed -->
+            <stop offset="60%" style="stop-color:#0073E6" /> <!-- Blue -->
+            <stop offset="80%" style="stop-color:#4CAF50" /> <!-- Green -->
         </linearGradient>
         <!-- Grid pattern with more complex geometric overlay -->
         <pattern id="slicePatternLight" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M0,20 L40,20 M20,0 L20,40 M0,0 L40,40 M40,0 L0,40" stroke="#000000" stroke-width="0.4" opacity="0.03" />
-            <path d="M20,0 L20,40 M0,20 L40,20" stroke="#000000" stroke-width="0.3" opacity="0.02" />
+            <path d="M0,20 L40,20 M20,0 L20,40 M0,0 L40,40 M40,0 L0,40" stroke="#000000" stroke-width="0.4" opacity="0.05" />
+            <path d="M20,0 L20,40 M0,20 L40,20" stroke="#000000" stroke-width="0.3" opacity="0.03" />
         </pattern>
         <!-- Enhanced glow effect -->
         <filter id="precisionGlowLight" x="-50%" y="-50%" width="200%" height="200%">
@@ -23,46 +23,46 @@
         </filter>
         <!-- Geometric accent gradient -->
         <linearGradient id="geometricAccentGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#7934C5;stop-opacity:0.2" />
-            <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:0.1" />
+            <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:0.2" />
+            <stop offset="100%" style="stop-color:#0073E6;stop-opacity:0.1" />
         </linearGradient>
     </defs>
     <!-- Light background -->
-    <rect width="1200" height="300" fill="#FFFFFF" />
-    <rect width="1200" height="300" fill="url(#slicePatternLight)" />
+    <rect width="1200" height="200" fill="#FFFFFF" />
+    <rect width="1200" height="200" fill="url(#slicePatternLight)" />
     <!-- Geometric slice accents -->
     <g opacity="0.6">
-        <!-- Diagonal dotted lines -->
-        <path d="M100,0 L400,300" stroke="url(#sliceGradientLight)" stroke-width="2.5" stroke-dasharray="10 10" fill="none" />
-        <path d="M800,0 L1100,300" stroke="url(#sliceGradientLight)" stroke-width="2.5" stroke-dasharray="10 10" fill="none" />
-        <!-- Geometric triangular overlays -->
-        <path d="M50,0 L250,300 L150,300 Z" fill="url(#geometricAccentGradientLight)" opacity="0.2" />
-        <path d="M1150,0 L950,300 L1050,300 Z" fill="url(#geometricAccentGradientLight)" opacity="0.2" />
-        <!-- Triangular wire frames -->
-        <path d="M50,0 L250,300 L150,300 Z" fill="none" stroke="url(#sliceGradientLight)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.5" />
-        <path d="M1150,0 L950,300 L1050,300 Z" fill="none" stroke="url(#sliceGradientLight)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.5" />
+        <!-- Diagonal dotted lines adjusted to new viewbox -->
+        <path d="M100,0 L400,200" stroke="url(#sliceGradientLight)" stroke-width="2.5" stroke-dasharray="10 10" fill="none" />
+        <path d="M800,0 L1100,200" stroke="url(#sliceGradientLight)" stroke-width="2.5" stroke-dasharray="10 10" fill="none" />
+        <!-- Geometric triangular overlays adjusted -->
+        <path d="M50,0 L250,200 L150,200 Z" fill="url(#geometricAccentGradientLight)" opacity="0.3" />
+        <path d="M1150,0 L950,200 L1050,200 Z" fill="url(#geometricAccentGradientLight)" opacity="0.3" />
+        <!-- Triangular wire frames adjusted -->
+        <path d="M50,0 L250,200 L150,200 Z" fill="none" stroke="url(#sliceGradientLight)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.5" />
+        <path d="M1150,0 L950,200 L1050,200 Z" fill="none" stroke="url(#sliceGradientLight)" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.5" />
     </g>
     <!-- Central title group with enhanced glow effect -->
-    <g transform="translate(600, 150)" filter="url(#precisionGlowLight)">
-        <text font-family="'JetBrains Mono', sans-serif" font-size="140" font-weight="700" fill="url(#sliceGradientLight)" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.12em">
+    <g transform="translate(600, 100)" filter="url(#precisionGlowLight)">
+        <text font-family="'JetBrains Mono', monospace" font-size="120" font-weight="400" fill="url(#sliceGradientLight)" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.08em">
             SPLITME-AI
         </text>
         <!-- Geometric precision framing -->
         <g opacity="0.6">
             <!-- Horizontal dotted lines -->
-            <line x1="-300" y1="40" x2="300" y2="40" stroke="url(#sliceGradientLight)" stroke-width="1.2" stroke-dasharray="6 6" />
-            <line x1="-300" y1="-40" x2="300" y2="-40" stroke="url(#sliceGradientLight)" stroke-width="1.2" stroke-dasharray="6 6" />
+            <line x1="-300" y1="30" x2="300" y2="30" stroke="url(#sliceGradientLight)" stroke-width="1.2" stroke-dasharray="6 6" />
+            <line x1="-300" y1="-30" x2="300" y2="-30" stroke="url(#sliceGradientLight)" stroke-width="1.2" stroke-dasharray="6 6" />
             <!-- Angled guide lines -->
-            <line x1="-300" y1="-40" x2="300" y2="40" stroke="url(#sliceGradientLight)" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.4" />
-            <line x1="-300" y1="40" x2="300" y2="-40" stroke="url(#sliceGradientLight)" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.4" />
+            <line x1="-300" y1="-30" x2="300" y2="30" stroke="url(#sliceGradientLight)" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.4" />
+            <line x1="-300" y1="30" x2="300" y2="-30" stroke="url(#sliceGradientLight)" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.4" />
         </g>
     </g>
     <!-- Technical grid markers with geometric precision -->
     <g opacity="0.3">
-        <path d="M0,150 L1200,150" stroke="#000000" stroke-width="0.6" stroke-dasharray="4 4" />
-        <path d="M600,0 L600,300" stroke="#000000" stroke-width="0.6" stroke-dasharray="4 4" />
+        <path d="M0,100 L1200,100" stroke="#000000" stroke-width="0.6" stroke-dasharray="4 4" />
+        <path d="M600,0 L600,200" stroke="#000000" stroke-width="0.6" stroke-dasharray="4 4" />
         <!-- Diagonal grid extension -->
-        <path d="M0,0 L1200,300" stroke="#000000" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.2" />
-        <path d="M1200,0 L0,300" stroke="#000000" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.2" />
+        <path d="M0,0 L1200,200" stroke="#000000" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.2" />
+        <path d="M1200,0 L0,200" stroke="#000000" stroke-width="0.4" stroke-dasharray="3 3" opacity="0.2" />
     </g>
 </svg>
