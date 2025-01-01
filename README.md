@@ -2,9 +2,9 @@
 
 <!-- HEADER -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/412d6da0419f00b14fe58537f72d48a651473d78/docs/assets/logo-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/48db335ada973e99b42f6cbf44fb09b5f858e308/docs/assets/logo-light.svg">
-  <img alt="SplitMe-AI Logo" src="https://raw.githubusercontent.com/eli64s/splitme-ai/48db335ada973e99b42f6cbf44fb09b5f858e308/docs/assets/logo-light.svg" width="900" style="max-width: 100%;">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/1ac9891ee2e1c238ed8cf3124d1a764f6d01150b/docs/assets/logo-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/1ac9891ee2e1c238ed8cf3124d1a764f6d01150b/docs/assets/logo-light.svg">
+  <img alt="SplitMe-AI Logo" src="https://raw.githubusercontent.com/eli64s/splitme-ai/1ac9891ee2e1c238ed8cf3124d1a764f6d01150b/docs/assets/logo-light.svg" width="900" style="max-width: 100%;">
 </picture>
 
 <h3 align="center">
