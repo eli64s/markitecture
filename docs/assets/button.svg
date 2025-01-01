@@ -15,7 +15,7 @@
         }
       </style>
     </defs>
-    <rect x="1" y="1" width="98" height="28" rx="6" fill="transparent" 
+    <rect x="1" y="1" width="98" height="28" rx="6" fill="transparent"
           stroke="url(#grad1)" stroke-width="2"/>
     <text x="50" y="17" fill="#2d3436" font-size="12" class="button-text" text-anchor="middle" dominant-baseline="middle">
       ⬆ Return

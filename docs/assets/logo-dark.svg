@@ -1,53 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 600" width="900" height="250">
     <defs>
-        <!-- Enhanced gradient with brighter colors for dark theme visibility -->
-        <linearGradient id="sliceGradientDark" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="20%" style="stop-color:#FFE45E" /> <!-- Brightened gold -->
-            <stop offset="40%" style="stop-color:#00F7FF" /> <!-- Brightened cyan -->
-            <stop offset="60%" style="stop-color:#9B4FE6" /> <!-- Brightened purple -->
-            <stop offset="80%" style="stop-color:#FF40FF" /> <!-- Brightened magenta -->
+        <!-- Enhanced gradient with more color stops for depth -->
+        <linearGradient id="enhancedSplitGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="10%" style="stop-color:#FFD700;stop-opacity:0.7" /> <!-- Sharp gold -->
+            <stop offset="30%" style="stop-color:#00E5FF;stop-opacity:0.8" /> <!-- Bright cyan -->
+            <stop offset="50%" style="stop-color:#7934C5;stop-opacity:0.9" /> <!-- Rich purple -->
+            <stop offset="70%" style="stop-color:#FF00FF;stop-opacity:1" /> <!-- Vivid magenta -->
         </linearGradient>
-        <!-- Accent gradient with increased opacity for dark background -->
-        <linearGradient id="accentGradientDark" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#9B4FE6;stop-opacity:0.4" />
-            <stop offset="100%" style="stop-color:#00F7FF;stop-opacity:0.4" />
-        </linearGradient>
-        <!-- Grid pattern with increased visibility for dark theme -->
-        <pattern id="slicePatternDark" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M0,20 L40,20 M20,0 L20,40" stroke="#9B4FE6" stroke-width="0.5" opacity="0.15" />
+        <!-- More intricate grid pattern for background -->
+        <pattern id="splitGridPatternDark" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M0,20 L40,20 M20,0 L20,40" stroke="#FFFFFF" stroke-width="0.3" opacity="0.05" />
+            <path d="M0,0 L40,40 M40,0 L0,40" stroke="#FFFFFF" stroke-width="0.2" opacity="0.03" />
         </pattern>
-        <!-- Enhanced glow effect for better visibility on dark background -->
-        <filter id="precisionGlowDark" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 15 -2" result="glow" />
+        <!-- Enhanced glow effect with more subtle blur -->
+        <filter id="splitGlowEffectDark" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 10 -3" result="glow" />
             <feMerge>
                 <feMergeNode in="glow" />
                 <feMergeNode in="SourceGraphic" />
             </feMerge>
         </filter>
     </defs>
-    <!-- Dark background with subtle grid pattern -->
-    <rect width="1200" height="300" fill="#1a1a1a" />
-    <rect width="1200" height="300" fill="url(#slicePatternDark)" />
-    <!-- Enhanced geometric elements with increased opacity -->
+    <!-- Dark background -->
+    <rect width="2400" height="600" fill="#000000" />
+    <rect width="2400" height="600" fill="url(#splitGridPatternDark)" />
+    <!-- Symmetrical abstract text splitting representation -->
     <g opacity="0.8">
-        <path d="M100,0 L400,300" stroke="url(#sliceGradientDark)" stroke-width="2.5" fill="none" />
-        <path d="M800,0 L1100,300" stroke="url(#sliceGradientDark)" stroke-width="2.5" fill="none" />
+        <!-- Left side lines -->
+        <path d="M0,0 L400,600" stroke="url(#enhancedSplitGradient)" stroke-width="4" fill="none" />
+        <path d="M400,0 L800,600" stroke="url(#enhancedSplitGradient)" stroke-width="4" fill="none" />
+        <!-- Right side lines (mirrored) -->
+        <path d="M2400,0 L2000,600" stroke="url(#enhancedSplitGradient)" stroke-width="4" fill="none" />
+        <path d="M2000,0 L1600,600" stroke="url(#enhancedSplitGradient)" stroke-width="4" fill="none" />
     </g>
-    <!-- Main title with enhanced glow effect -->
-    <g transform="translate(600, 150)" filter="url(#precisionGlowDark)">
-        <text font-family="'Chakra Petch', sans-serif" font-size="110" font-weight="700" fill="url(#sliceGradientDark)" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.12em">
+    <!-- Center title with enhanced glow -->
+    <g transform="translate(1200, 300)" filter="url(#splitGlowEffectDark)">
+        <text font-family="'JetBrains Mono', monospace" font-size="250" font-weight="800" fill="url(#enhancedSplitGradient)" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.05em" style="paint-order: stroke fill;">
             SPLITME-AI
         </text>
-        <!-- Enhanced precision lines with increased opacity -->
-        <g opacity="0.7">
-            <line x1="-300" y1="40" x2="300" y2="40" stroke="url(#sliceGradientDark)" stroke-width="1.2" />
-            <line x1="-300" y1="-40" x2="300" y2="-40" stroke="url(#sliceGradientDark)" stroke-width="1.2" />
+        <!-- Abstract splitting bars -->
+        <g>
+            <line x1="-600" y1="-100" x2="600" y2="-100" stroke="url(#enhancedSplitGradient)" stroke-width="3" opacity="0.6" />
+            <line x1="-600" y1="100" x2="600" y2="100" stroke="url(#enhancedSplitGradient)" stroke-width="3" opacity="0.6" />
+            <!-- Vertical split indicators -->
+            <line x1="-400" y1="-150" x2="-400" y2="150" stroke="url(#enhancedSplitGradient)" stroke-width="2" opacity="0.5" />
+            <line x1="400" y1="-150" x2="400" y2="150" stroke="url(#enhancedSplitGradient)" stroke-width="2" opacity="0.5" />
         </g>
     </g>
-    <!-- Technical grid markers with adjusted opacity -->
+    <!-- Measurement guides -->
     <g>
-        <path d="M0,150 L1200,150" stroke="#9B4FE6" stroke-width="0.6" stroke-dasharray="4 4" opacity="0.3" />
-        <path d="M600,0 L600,300" stroke="#9B4FE6" stroke-width="0.6" stroke-dasharray="4 4" opacity="0.3" />
+        <path d="M0,300 L2400,300" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="8 8" opacity="0.2" />
+        <path d="M1200,0 L1200,600" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="8 8" opacity="0.2" />
     </g>
 </svg>

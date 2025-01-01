@@ -26,7 +26,7 @@
         <!-- Outer ring -->
         <circle cx="256" cy="256" r="220" fill="none" stroke="url(#ptahGradient)" stroke-width="4" stroke-dasharray="30 15" />
         <!-- Scarab wings -->
-        <path d="M256 76 
+        <path d="M256 76
              C356 76, 436 156, 436 256
              C436 356, 356 436, 256 436
              C156 436, 76 356, 76 256
