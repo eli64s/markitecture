@@ -2,15 +2,10 @@
 
 <!-- HEADER -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/3ef5d52975c2a237f2b245cd15c9e091631e2d5f/docs/assets/logo-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/3ef5d52975c2a237f2b245cd15c9e091631e2d5f/docs/assets/logo-light.svg">
-  <img alt="SplitMe-AI Logo" src="https://raw.githubusercontent.com/eli64s/splitme-ai/3ef5d52975c2a237f2b245cd15c9e091631e2d5f/docs/assets/logo-light.svg" width="800" style="max-width: 100%;">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/48db335ada973e99b42f6cbf44fb09b5f858e308/docs/assets/logo-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/splitme-ai/48db335ada973e99b42f6cbf44fb09b5f858e308/docs/assets/logo-light.svg">
+  <img alt="SplitMe-AI Logo" src="https://raw.githubusercontent.com/eli64s/splitme-ai/48db335ada973e99b42f6cbf44fb09b5f858e308/docs/assets/logo-light.svg" width="900" style="max-width: 100%;">
 </picture>
-
-<!--
-<img src="https://raw.githubusercontent.com/eli64s/splitme-ai/3ef5d52975c2a237f2b245cd15c9e091631e2d5f/docs/assets/logo-light.svg#gh-light-mode-only" alt="SplitMe-AI Logo Light" width="800" style="max-width: 100%;">
-<img src="https://raw.githubusercontent.com/eli64s/splitme-ai/3ef5d52975c2a237f2b245cd15c9e091631e2d5f/docs/assets/logo-dark.svg#gh-dark-mode-only" alt="SplitMe-AI Logo Dark" width="800" style="max-width: 100%;"> 
--->
 
 <h3 align="center">
   Break down your docs. Build up your knowledge.
@@ -24,20 +19,20 @@
 <div align="center">
   <p align="center" style="margin-bottom: 20px;">
     <a href="https://github.com/eli64s/splitme-ai/actions">
-      <img src="https://img.shields.io/github/actions/workflow/status/eli64s/splitme-ai/ci.yml?label=CI&style=flat&logo=githubactions&logoColor=white&color=FFD700&labelColor=2A2A2A" alt="GitHub Actions" />
+      <img src="https://img.shields.io/github/actions/workflow/status/eli64s/splitme-ai/ci.yml?label=CI&style=flat&logo=githubactions&logoColor=white&labelColor=2A2A2A&color=ffd700" alt="GitHub Actions" />
     </a>
     <a href="https://app.codecov.io/gh/eli64s/splitme-ai">
-      <img src="https://img.shields.io/codecov/c/github/eli64s/splitme-ai?label=Coverage&style=flat&labelColor=2A2A2A&logo=codecov&logoColor=white&color=20B2AA" alt="Coverage" />
+      <img src="https://img.shields.io/codecov/c/github/eli64s/splitme-ai?label=Coverage&style=flat&logo=codecov&logoColor=white&labelColor=2A2A2A&color=3fe1c0" alt="Coverage" />
     </a>
     <a href="https://pypi.org/project/splitme-ai/">
-      <img src="https://img.shields.io/pypi/v/splitme-ai?label=PyPI&logo=pypi&labelColor=2A2A2A&style=flat&logoColor=white&color=00E5FF" alt="PyPI Version" />
+      <img src="https://img.shields.io/pypi/v/splitme-ai?label=PyPI&style=flat&logo=pypi&logoColor=white&labelColor=2A2A2A&color=3d8be1" alt="PyPI Version" />
     </a>
     <a href="https://github.com/eli64s/splitme-ai">
-      <img src="https://img.shields.io/pypi/pyversions/splitme-ai?label=Python&labelColor=2A2A2A&style=flat&logo=python&logoColor=white&color=7934C5" alt="Python Version" />
+      <img src="https://img.shields.io/pypi/pyversions/splitme-ai?label=Python&style=flat&logo=python&logoColor=white&labelColor=2A2A2A&color=9b26d4" alt="Python Version" />
     </a>
     <a href="https://opensource.org/license/mit/">
-      <img src="https://img.shields.io/github/license/eli64s/splitme-ai?label=License&style=flat&labelColor=2A2A2A&logo=opensourceinitiative&logoColor=white&color=FF00FF" alt="MIT License">
-  </a>
+      <img src="https://img.shields.io/github/license/eli64s/splitme-ai?label=License&style=flat&logo=opensourceinitiative&logoColor=white&labelColor=2A2A2A&color=ff00ff" alt="MIT License">
+    </a>
   </p>
 </div>
 
@@ -49,7 +44,7 @@
 
 ## What is SplitmeAI?
 
-`SplitmeAI` is a Python module that addresses challenges in managing large Markdown files, particularly when creating and maintaining structured static documentation websites such as [Mkdocs][mkdocs].
+SplitmeAI is a Python module that addresses challenges in managing large Markdown files, particularly when creating and maintaining structured static documentation sites such as [Mkdocs][mkdocs].
 
 __Key Features:__
 
@@ -67,7 +62,7 @@ __Key Features:__
 
 ### Installation
 
-Install from [PyPI][pypi] using any of the package managers listed below.
+Install from [PyPI][pypi] using your preferred package manager listed below.
 
 #### <img width="2%" src="https://simpleicons.org/icons/python.svg">&emsp13;pip
 
@@ -141,7 +136,7 @@ splitme-ai \
 View the output generated for [splitting on heading level 4 here](./examples/output-h4).
 
 >[!NOTE]
-> The Official Documentation site with extensive examples and usage instructions is under development Stay tuned for updates!
+> Explore the [Official Documentation][docs] for more detailed guides and examples.
 
 ---
 
@@ -163,7 +158,7 @@ Contributions are welcome! For bug reports, feature requests, or questions, plea
 
 ## License
 
-Copyright © 2024 [splitme-ai][splitme-ai]. <br />
+Copyright © 2024-2025 [splitme-ai][splitme-ai]. <br />
 Released under the [MIT][mit-license] license.
 
 <div align="left">
