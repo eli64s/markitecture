@@ -140,7 +140,7 @@ __Example 5:__ Convert inline links to reference-style links:
 splitme-ai --reflinks.i tests/data/pydantic.md --reflinks.o with_reflinks.md
 ```
 
-View the output of all examples above [here](./docs/examples).
+View the output of all examples above [here][examples].
 
 >[!NOTE]
 > Explore the [Official Documentation][docs] for more detailed guides and examples.
@@ -187,6 +187,7 @@ Released under the [MIT][mit-license] license.
 [github-issues]: https://github.com/eli64s/splitme-ai/issues
 [github-pulls]: https://github.com/eli64s/splitme-ai/pulls
 [mit-license]: https://github.com/eli64s/splitme-ai/blob/main/LICENSE
+[examples]: https://github.com/eli64s/splitme-ai/tree/main/docs/examples
 
 <!-- DEV TOOLS -->
 [python]: https://www.python.org/
