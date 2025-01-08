@@ -32,12 +32,6 @@ class ConfigCommand(BaseModel):
 
     def cli_cmd(self) -> None:
         """Execute the config command."""
-        if self.show:
-            settings = SplitmeSettings()
-            _logger.info("Current configuration settings:")
-            for field, value in settings.model_dump().items():
-                _logger.info(f"Field: {field}, Value: {value}")
-
         if self.generate:
             settings = SplitmeSettings()
             config_path = Path(".splitme.yml")
@@ -45,6 +39,15 @@ class ConfigCommand(BaseModel):
                 with open(".splitme.yml", "w") as f:
                     f.write(settings.model_dump_json())
                 _logger.info("Generated default configuration in .splitme.yml")
+
+        if self.show:
+            settings = SplitmeSettings()
+            print("\nCurrent configuration settings:")
+            print("-" * 32)
+            max_field_len = max(len(field) for field in settings.model_dump())
+            for field, value in settings.model_dump().items():
+                print(f"{field:<{max_field_len}} = {value}")
+            print()
 
 
 class RefLinksCommand(BaseModel):
