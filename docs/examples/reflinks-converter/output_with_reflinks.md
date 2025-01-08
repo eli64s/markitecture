@@ -54,7 +54,6 @@ print(user.id)
 #> 123
 ```
 
-
 ---
 
 <!-- REFERENCE LINKS -->
