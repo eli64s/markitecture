@@ -128,7 +128,6 @@ class ReflinkConverter:
         ref = re.sub(r"[^\w\s-]", "", text.lower())
         ref = re.sub(r"[-\s]+", "-", ref).strip("-")
 
-        # If empty or only special characters, use 'link'
         if not ref:
             ref = "link"
 
@@ -203,10 +202,8 @@ class ReflinkConverter:
         if not input_path.exists():
             raise FileNotFoundError(f"Input file not found: {input_path}")
 
-        _logger.info(f"Processing markdown file: {input_path}")
         content = input_path.read_text(encoding="utf-8")
         modified_content = self.convert_to_reflinks(content)
 
         output_path = Path(output_path) if output_path else input_path
         output_path.write_text(modified_content, encoding="utf-8")
-        _logger.info(f"Saved processed file to: {output_path}")

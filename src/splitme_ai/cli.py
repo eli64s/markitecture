@@ -78,11 +78,9 @@ class RefLinksCommand(BaseModel):
     def cli_cmd(self) -> None:
         """Execute the reference links command."""
         converter = ReflinkConverter()
-        _logger.info(
-            f"Converting all links in {self.input_file} to reference-style links"
-        )
+        _logger.info(f"Converting all links in {self.input_file} to reference-style.")
         converter.process_file(self.input_file, self.output_file)
-        _logger.info("Successfully converted links. Check the {self.output_file} file.")
+        _logger.info(f"Output written to {self.output_file}")
 
 
 class SplitCommand(BaseModel):
