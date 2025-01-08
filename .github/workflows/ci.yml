@@ -20,66 +20,66 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [ "3.9", "3.10", "3.11", "3.12" ]
+        python-version: [ "3.9", "3.10", "3.11", "3.12", "3.13" ]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v4
-      with:
-        enable-cache: true
-        cache-dependency-glob: "pyproject.toml"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+          cache-dependency-glob: "pyproject.toml"
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
-        python-version-file: pyproject.toml
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          python-version-file: pyproject.toml
 
-    - name: Install dependencies
-      run: |
-        uv sync --all-extras --group test
+      - name: Install dependencies
+        run: |
+          uv sync --all-extras --group test
 
-    - name: Create report directories
-      run: |
-        mkdir -p tests/.reports
+      - name: Create report directories
+        run: |
+          mkdir -p tests/.reports
 
-    - name: Run tests with coverage
-      run: |
-        uv run pytest \
-          -vv \
-          --tb=short \
-          --durations=5 \
-          --cov=src/splitme_ai \
-          --cov-branch \
-          --cov-fail-under=0 \
-          --cov-report=term-missing:skip-covered \
-          --cov-report=json:tests/.reports/coverage.json \
-          --asyncio-mode=auto \
-          --numprocesses=auto
+      - name: Run tests with coverage
+        run: |
+          uv run pytest \
+            -vv \
+            --tb=short \
+            --durations=5 \
+            --cov=src/splitme_ai \
+            --cov-branch \
+            --cov-fail-under=0 \
+            --cov-report=term-missing:skip-covered \
+            --cov-report=json:tests/.reports/coverage.json \
+            --asyncio-mode=auto \
+            --numprocesses=auto
 
-    - name: Verify coverage report
-      run: |
-        ls -la tests/.reports/coverage.json
-        echo "Coverage report size: $(stat -f%z tests/.reports/coverage.json)"
-        echo "Coverage report content preview:"
-        head -n 20 tests/.reports/coverage.json
-      continue-on-error: true
+      - name: Verify coverage report
+        run: |
+          ls -la tests/.reports/coverage.json
+          echo "Coverage report size: $(stat -f%z tests/.reports/coverage.json)"
+          echo "Coverage report content preview:"
+          head -n 20 tests/.reports/coverage.json
+        continue-on-error: true
 
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v5
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        files: tests/.reports/coverage.json
-        flags: unittests-${{ matrix.python-version }}
-        name: Python ${{ matrix.python-version }}
-        fail_ci_if_error: true
-        directory: tests/.reports
-        verbose: true
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: tests/.reports/coverage.json
+          flags: unittests-${{ matrix.python-version }}
+          name: Python ${{ matrix.python-version }}
+          fail_ci_if_error: true
+          directory: tests/.reports
+          verbose: true
 
   build:
     name: Build Package
@@ -88,29 +88,29 @@ jobs:
     if: success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v4
-      with:
-        enable-cache: true
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version-file: pyproject.toml
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: pyproject.toml
 
-    - name: Build package
-      run: |
-        uv pip install --system build hatch
-        hatch build
+      - name: Build package
+        run: |
+          uv pip install --system build hatch
+          hatch build
 
-    - name: Store build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: dist
-        path: dist/
+      - name: Store build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
 
   docs:
     name: Build Documentation
@@ -119,32 +119,32 @@ jobs:
     if: success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v4
-      with:
-        enable-cache: true
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version-file: pyproject.toml
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: pyproject.toml
 
-    - name: Install dependencies
-      run: |
-        uv sync --all-extras --group docs
+      - name: Install dependencies
+        run: |
+          uv sync --all-extras --group docs
 
-    - name: Build documentation
-      run: |
-        uv run mkdocs build
+      - name: Build documentation
+        run: |
+          uv run mkdocs build
 
-    - name: Store documentation
-      uses: actions/upload-artifact@v4
-      with:
-        name: site
-        path: site/
+      - name: Store documentation
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site/
 
   deploy:
     name: Deploy to PyPI
@@ -158,11 +158,11 @@ jobs:
       id-token: write
 
     steps:
-    - name: Download dist artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: dist
-        path: dist/
+      - name: Download dist artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
 
-    - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

@@ -53,6 +53,7 @@ __Key Features:__
 - **Filename Sanitization:** Generates clean, unique filenames for each section, ensuring compatibility and readability.
 - **Reference Link Management:** Extracts and appends reference-style links used within each section.
 - **Reference Link Conversion:** Convert all inline links to reference-style links for improved readability and maintainability.
+- **Link Validation:** Checks and validates all links within a Markdown file for accuracy and integrity.
 - **Thematic Break Handling:** Recognizes and handles line breaks (`---`, `***`, `___`) for intelligent content segmentation.
 - **MkDocs Integration:** Automatically generates an `mkdocs.yml` configuration file based on the split sections.
 - **CLI Support:** Provides a user-friendly Command-Line Interface for seamless operation.
@@ -140,6 +141,38 @@ __Example 5:__ Convert inline links to reference-style links:
 splitme-ai --reflinks.i tests/data/pydantic.md --reflinks.o with_reflinks.md
 ```
 
+##### Validating Links
+
+__Example 6:__ Validate all links in a Markdown file:
+
+```sh
+splitme-ai --validate-links.i tests/data/pydantic.md
+```
+
+The output will display the results of whether the links are valid or broken.
+
+```console
+Scanning markdown file tests/data/pydantic.md for broken links...
+
+Markdown Link Check Results:
+--------------------------------------------------------------------------------
+✓ Line 2: [![CI](https://img.shields.io/github/actions/workflow/status/pydantic/pydantic/ci.yml?branch=main&logo=github&label=CI)
+✓ Line 3: [![Coverage](https://coverage-badge.samuelcolvin.workers.dev/pydantic/pydantic.svg)
+✓ Line 4: [![pypi](https://img.shields.io/pypi/v/pydantic.svg)
+✓ Line 5: [![CondaForge](https://img.shields.io/conda/v/conda-forge/pydantic.svg)
+✓ Line 6: [![downloads](https://static.pepy.tech/badge/pydantic/month)
+✓ Line 7: [![versions](https://img.shields.io/pypi/pyversions/pydantic.svg)
+✓ Line 8: [![license](https://img.shields.io/github/license/pydantic/pydantic.svg)
+✓ Line 9: [![Pydantic v2](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json)
+✓ Line 18: [Learn more](https://pydantic.dev/articles/logfire-announcement)
+✓ Line 24: [pydantic V1.10 Documentation](https://docs.pydantic.dev/)
+✓ Line 24: [`1.10.X-fixes` git branch](https://github.com/pydantic/pydantic/tree/1.10.X-fixes)
+✓ Line 28: [documentation](https://docs.pydantic.dev/)
+✓ Line 34: [Install](https://docs.pydantic.dev/install/)
+
+Summary: 0 broken links out of 13 total links.
+```
+
 View the output of all examples above [here][examples].
 
 >[!NOTE]
@@ -171,7 +204,7 @@ Released under the [MIT][mit-license] license.
 
 <div align="left">
   <a href="#top">
-    <img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/button-circles.svg" alt="Return to Top" width="80px" height="80px">
+    <img src="https://raw.githubusercontent.com/eli64s/splitme-ai/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/button.svg" width="100px" height="100px" alt="Return to Top">
   </a>
 </div>
 

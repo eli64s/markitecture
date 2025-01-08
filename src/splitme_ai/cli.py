@@ -3,19 +3,85 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import TYPE_CHECKING, Optional, Union
+from typing import TYPE_CHECKING, Annotated, Set
 
 if TYPE_CHECKING:
     pass
 
-from pydantic import AliasChoices, BaseModel, Field, field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import AfterValidator, AliasChoices, BaseModel, Field
+from pydantic_settings import BaseSettings, CliImplicitFlag, SettingsConfigDict
 
+from splitme_ai.generators.mkdocs_config import MkDocsConfig
 from splitme_ai.logger import Logger
-from splitme_ai.settings import SplitmeSettings
-from splitme_ai.utils.reference_links import ReflinkConverter
+from splitme_ai.tools.markdown_link_converter import MarkdownLinkConverter
+from splitme_ai.tools.markdown_link_validator import MarkdownLinkValidator
 
 _logger = Logger(__name__)
+
+
+def validate_path(v: Path) -> Path:
+    """Check if the path exists and is a file."""
+    if not v.exists():
+        raise ValueError(f"Path '{v}' does not exist.")
+    if not v.is_file():
+        raise ValueError(f"Path '{v}' is not a file.")
+    return v
+
+
+# Reusable custom type with validation
+ExistingFilePath = Annotated[Path, AfterValidator(validate_path)]
+
+
+class SplitmeSettings(BaseSettings):
+    """
+    Configuration settings for splitme-ai.
+    """
+
+    case_sensitive: bool = Field(
+        default=False, description="Use case-sensitive heading matching"
+    )
+    exclude_patterns: Set[str] = Field(
+        default_factory=set, description="Patterns to exclude from splitting"
+    )
+    generate_mkdocs: CliImplicitFlag[bool] = Field(
+        default=False,
+        description="Generate MkDocs configuration",
+        validation_alias=AliasChoices("mk", "mkdocs"),
+    )
+    heading_level: str = Field(
+        default="##",
+        description="Heading level to split on (e.g., '#', '##', '###')",
+        validation_alias=AliasChoices("hl", "heading_level"),
+    )
+    output_dir: Path = Field(
+        default=Path(".splitme-ai/output"),
+        description="Output directory for split files",
+        validation_alias=AliasChoices("o", "output"),
+    )
+    preserve_context: bool = Field(
+        default=True, description="Preserve parent heading context in split files"
+    )
+
+    model_config = SettingsConfigDict(
+        case_sensitive=False,
+        cli_implicit_flags=True,
+        env_file=".env",
+        env_file_encoding="utf-8",
+        env_prefix="SPLITME_",
+        extra="ignore",
+        validate_default=True,
+    )
+
+    def process_mkdocs(self) -> None:
+        """Generate MkDocs configuration file if enabled."""
+        if not self.generate_mkdocs:
+            return
+        config = MkDocsConfig(
+            docs_dir=self.output_dir,
+            site_name=f"MkDocs Site: {self.output_dir.name}",
+            enable_material=True,
+        )
+        config.generate_config()
 
 
 class ConfigCommand(BaseModel):
@@ -50,17 +116,69 @@ class ConfigCommand(BaseModel):
             print()
 
 
-class RefLinksCommand(BaseModel):
+class LinkValidatorCommand(BaseModel):
     """
-    CLI command for converting markdown links to reference-style links.
+    CLI command for checking if Markdown links are valid.
     """
 
-    input_file: Path = Field(
+    input_file: ExistingFilePath = Field(
         ...,
         description="Input markdown file to process",
         validation_alias=AliasChoices("i", "input"),
     )
-    output_file: Optional[Path] = Field(
+    timeout: int = Field(
+        default=10,
+        description="Timeout in seconds for each HTTP request",
+    )
+    max_workers: int = Field(
+        default=5,
+        description="Maximum number of concurrent requests",
+    )
+
+    model_config = SettingsConfigDict(validate_default=True, extra="forbid")
+
+    def cli_cmd(self) -> None:
+        """Execute the check links command."""
+        print(f"Scanning markdown file {self.input_file} for broken links...")
+
+        checker = MarkdownLinkValidator(
+            timeout=self.timeout, max_workers=self.max_workers
+        )
+        results = checker.check_markdown_file(str(self.input_file))
+
+        if not results:
+            print("No links found.")
+            return
+
+        print("\nMarkdown Link Check Results:")
+        print("-" * 80)
+
+        broken_links = 0
+        for result in results:
+            status = "✓" if result["status"] == "ok" else "𝗫"
+            print(
+                f"{status} Line {result['line']}: [{result['text']}]({result['url']})"
+            )
+            if result["error"]:
+                print(f"   Error: {result['error']}")
+                broken_links += 1
+
+        print(
+            f"\nSummary: {broken_links} broken links out of {len(results)} total links."
+        )
+
+
+class LinkConverterCommand(BaseModel):
+    """
+    CLI command for converting markdown links to reference-style links.
+    """
+
+    input_file: ExistingFilePath = Field(
+        ...,
+        description="Input markdown file to process",
+        validation_alias=AliasChoices("i", "input"),
+    )
+    output_file: Path | None = Field(
         default=None,
         description="Output file path (defaults to input file)",
         validation_alias=AliasChoices("o", "output"),
@@ -68,16 +186,9 @@ class RefLinksCommand(BaseModel):
 
     model_config = SettingsConfigDict(validate_default=True, extra="forbid")
 
-    @field_validator("input_file", "output_file")
-    def validate_file(cls, v: Union[str, Path] | None) -> Path | None:
-        """Convert string to Path if necessary."""
-        if v is None:
-            return None
-        return Path(v) if isinstance(v, str) else v
-
     def cli_cmd(self) -> None:
         """Execute the reference links command."""
-        converter = ReflinkConverter()
+        converter = MarkdownLinkConverter()
         _logger.info(f"Converting all links in {self.input_file} to reference-style.")
         converter.process_file(self.input_file, self.output_file)
         _logger.info(f"Output written to {self.output_file}")
@@ -88,7 +199,7 @@ class SplitCommand(BaseModel):
     CLI command for splitting markdown files.
     """
 
-    input_file: Path = Field(
+    input_file: ExistingFilePath = Field(
         ...,
         description="Input markdown file to split",
         validation_alias=AliasChoices("i", "input"),
@@ -117,16 +228,29 @@ class SplitmeApp(BaseSettings):
     Main application CLI interface.
     """
 
-    config: Optional[ConfigCommand] = Field(
+    config: ConfigCommand | None = Field(
         default=None, description="Manage configuration"
     )
-    reflinks: Optional[RefLinksCommand] = Field(
-        default=None, description="Convert to reference-style links"
+    split: SplitCommand | None = Field(
+        default=None,
+        description="Split markdown files",
+        validation_alias=AliasChoices("s", "split"),
     )
-    split: Optional[SplitCommand] = Field(
-        default=None, description="Split markdown files"
+    reference_links: LinkConverterCommand | None = Field(
+        default=None,
+        description="Convert all links to reference-style syntax",
+        validation_alias=AliasChoices("rl", "reflinks"),
     )
-    version: bool = Field(default=False, description="Package version")
+    validate_links: LinkValidatorCommand | None = Field(
+        default=None,
+        description="Check if links in a markdown file are valid",
+        validation_alias=AliasChoices("vl", "validate-links"),
+    )
+    version: bool = Field(
+        default=False,
+        description="Package version",
+        validation_alias=AliasChoices("v", "V", "version"),
+    )
 
     model_config = SettingsConfigDict(
         case_sensitive=True,
@@ -138,7 +262,7 @@ class SplitmeApp(BaseSettings):
         env_file_encoding="utf-8",
         env_prefix="SPLITME_",
         protected_namespaces=(),
-        str_to_bool=["true", "t", "yes", "y", "on", "1", ""],
+        # str_to_bool=["true", "t", "yes", "y", "on", "1", ""],
         validate_default=True,
     )
 
@@ -147,11 +271,13 @@ class SplitmeApp(BaseSettings):
         from splitme_ai import __version__
 
         if self.version:
-            _logger.info(f"splitme-ai {__version__}")
+            print(f"splitme-ai version {__version__}")
             return
-        if self.reflinks:
-            self.reflinks.cli_cmd()
-        elif self.split:
+        if self.split:
             self.split.cli_cmd()
         elif self.config:
             self.config.cli_cmd()
+        elif self.reference_links:
+            self.reference_links.cli_cmd()
+        elif self.validate_links:
+            self.validate_links.cli_cmd()
