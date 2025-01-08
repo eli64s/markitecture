@@ -1,6 +1,6 @@
 #### ![streamlit][streamlit-svg]{ width="2%" }&emsp13;Streamlit
 
-Try readme-ai directly in your browser on Streamlit Cloud, no installation required. 
+Try readme-ai directly in your browser on Streamlit Cloud, no installation required.
 
 [<img align="center" src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" width="20%">][streamlit]
 

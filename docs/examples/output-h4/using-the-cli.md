@@ -5,7 +5,7 @@
 Below is the minimal command required to run `readmeai` using the `OpenAI` client:
 
 ```sh
-❯ readmeai --api openai -o readmeai-openai.md -r https://github.com/eli64s/readme-ai 
+❯ readmeai --api openai -o readmeai-openai.md -r https://github.com/eli64s/readme-ai
 ```
 
 > [!IMPORTANT]

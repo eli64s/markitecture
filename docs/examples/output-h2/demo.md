@@ -4,7 +4,7 @@
 
 [readmeai-cli-demo][cli-demo]
 
-<!-- 
+<!--
 **Run from your browser:**
 
 [readmeai-streamlit-demo][streamlit-demo]

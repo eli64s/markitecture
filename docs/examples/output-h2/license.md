@@ -90,14 +90,14 @@ Released under the [MIT][license] license.
 [examples-directory]: https://github.com/eli64s/readme-ai/tree/main/examples
 [default]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-ai.md
 [ascii-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/ascii.md
-[classic-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/classic.md 
-[compact-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/compact.md 
-[modern-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/modern.md 
-[svg-banner]: https://github.com/eli64s/readme-ai/blob/main/examples/banners/svg-banner.md 
+[classic-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/classic.md
+[compact-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/compact.md
+[modern-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/modern.md
+[svg-banner]: https://github.com/eli64s/readme-ai/blob/main/examples/banners/svg-banner.md
 [dalle-logo]: https://github.com/eli64s/readme-ai/blob/main/examples/logos/dalle.md
-[readme-kotlin]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-kotlin.md 
-[for-the-badge]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-docker-go.md 
-[fastapi-redis]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-fastapi-redis.md 
+[readme-kotlin]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-kotlin.md
+[for-the-badge]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-docker-go.md
+[fastapi-redis]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-fastapi-redis.md
 [offline-mode]: https://github.com/eli64s/readme-ai/blob/main/examples/offline-mode/readme-litellm.md
 
 ---
