@@ -40,6 +40,4 @@ site/
 docs/integrations/
 docs/notes.md
 docs/roadmap.md
-src/splitme_ai/tools/
-src/splitme_ai/tools
 tests/data/readme-ai.html

@@ -7,11 +7,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
 
-from splitme_ai.cli import SplitmeApp
+from splitme_ai.cli import SplitmeApp, SplitmeSettings
 from splitme_ai.logger import Logger
-from splitme_ai.settings import SplitmeSettings
+from splitme_ai.tools.reference_link_extractor import ReferenceLinkExtractor
 from splitme_ai.utils.filename_sanitizer import sanitize_filename
-from splitme_ai.utils.reference_links import ReferenceHandler
 
 _logger = Logger(__name__)
 
@@ -71,8 +70,8 @@ class MarkdownSplitter:
         """
         _logger.info("Executing text splitting...")
 
-        # Initialize reference handler
-        ref_handler = ReferenceHandler(content)
+        ref_handler = ReferenceLinkExtractor(content)
+
         _logger.debug(
             f"Extracted {len(ref_handler.references)} references from content"
         )
