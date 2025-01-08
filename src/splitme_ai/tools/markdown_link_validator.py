@@ -129,27 +129,3 @@ class MarkdownLinkValidator:
                 })
 
         return results
-
-
-def main():
-    """
-    Example usage of the MarkdownLinkValidator.
-    """
-    filepath = "../README.md"
-    checker = MarkdownLinkValidator()
-    results = checker.check_markdown_file(filepath)
-
-    _logger.info("\nMarkdown Link Check Results:")
-    _logger.info("-" * 80)
-
-    for result in results:
-        status = "✅" if result["status"] == "ok" else "❌"
-        _logger.info(
-            f"{status} Line {result['line']}: [{result['text']}]({result['url']})"
-        )
-        if result["error"]:
-            _logger.info(f"   Error: {result['error']}")
-
-    total = len(results)
-    broken = sum(1 for r in results if r["status"] != "ok")
-    _logger.info(f"\nSummary: {broken} broken links out of {total} total links")
