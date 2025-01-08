@@ -8,8 +8,8 @@ Let's begin by exploring various customization options and styles supported by R
   <table>
     <tr>
       <td align="left">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/custom-dragon.png" 
-             alt="custom-dragon-project-logo" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/custom-dragon.png"
+             alt="custom-dragon-project-logo"
              width="800"
              style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px;">
         <p align="left"><b>CLI Command:</b></p>
@@ -23,8 +23,8 @@ Let's begin by exploring various customization options and styles supported by R
     </tr>
     <tr>
       <td align="left">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/toc/roman-numeral.png" 
-             alt="docker-go-readme-example" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/toc/roman-numeral.png"
+             alt="docker-go-readme-example"
              width="800"
              style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px;">
         <p align="left"><b>CLI Command:</b></p>
@@ -44,7 +44,7 @@ Let's begin by exploring various customization options and styles supported by R
     <tr>
       <td align="left">
         <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/ascii-art.png"
-          alt="ascii-readme-header-style" 
+          alt="ascii-readme-header-style"
           width="800"
           style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px;">
         <p align="left"><b>CLI Command:</b></p>
@@ -54,8 +54,8 @@ Let's begin by exploring various customization options and styles supported by R
     </tr>
     <tr>
       <td align="left">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/svg-banner.png" 
-          alt="svg-banner" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/svg-banner.png"
+          alt="svg-banner"
           width="800"
           style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px;">
         <p align="left"><b>CLI Command:</b></p>
@@ -71,7 +71,7 @@ Let's begin by exploring various customization options and styles supported by R
   <table>
     <tr>
       <td align="left" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/refs/heads/main/docs/docs/assets/img/headers/cloud.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/refs/heads/main/docs/docs/assets/img/headers/cloud.png"
             alt="cloud-logo"
             width="800"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">
@@ -87,7 +87,7 @@ Let's begin by exploring various customization options and styles supported by R
   <table>
     <tr>
       <td align="left" width="50%" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/custom-balloon.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/custom-balloon.png"
             alt="balloon-logo"
             width="100%"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">
@@ -99,7 +99,7 @@ Let's begin by exploring various customization options and styles supported by R
           &emsp13;https://www.svgrepo.com/show/395851/balloon.svg</code></pre>
       </td>
       <td align="left" width="50%" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/skill-icons-light.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/skill-icons-light.png"
             alt="skill-icons"
             width="100%"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">
@@ -114,7 +114,7 @@ Let's begin by exploring various customization options and styles supported by R
   <table>
     <tr>
       <td align="left" width="50%" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/compact.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/compact.png"
             alt="compact-header"
             width="100%"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">
@@ -125,7 +125,7 @@ Let's begin by exploring various customization options and styles supported by R
           &emsp13;--navigation-style fold</code></pre>
       </td>
       <td align="left" width="50%" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/refs/heads/main/docs/docs/assets/img/headers/modern-flat-square.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/refs/heads/main/docs/docs/assets/img/headers/modern-flat-square.png"
             alt="modern-style"
             width="100%"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">

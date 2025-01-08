@@ -3,16 +3,17 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Optional, Union
 
 if TYPE_CHECKING:
     pass
 
-from pydantic import AliasChoices, BaseModel, Field
+from pydantic import AliasChoices, BaseModel, Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from splitme_ai.logger import Logger
 from splitme_ai.settings import SplitmeSettings
+from splitme_ai.utils.reference_links import ReflinkConverter
 
 _logger = Logger(__name__)
 
@@ -31,18 +32,57 @@ class ConfigCommand(BaseModel):
 
     def cli_cmd(self) -> None:
         """Execute the config command."""
-        if self.show:
-            settings = SplitmeSettings()
-            _logger.info("Current splitme-ai configuration:")
-            for field, value in settings.model_dump().items():
-                _logger.info(f"Field: {field}, Value: {value}")
-
         if self.generate:
             settings = SplitmeSettings()
-            if Path(".splitme.yml").exists() or Path(".splitme.yaml").exists():
+            config_path = Path(".splitme.yml")
+            if config_path.exists() or config_path.with_suffix(".yaml").exists():
                 with open(".splitme.yml", "w") as f:
                     f.write(settings.model_dump_json())
                 _logger.info("Generated default configuration in .splitme.yml")
+
+        if self.show:
+            settings = SplitmeSettings()
+            print("\nCurrent configuration settings:")
+            print("-" * 32)
+            max_field_len = max(len(field) for field in settings.model_dump())
+            for field, value in settings.model_dump().items():
+                print(f"{field:<{max_field_len}} = {value}")
+            print()
+
+
+class RefLinksCommand(BaseModel):
+    """
+    CLI command for converting markdown links to reference-style links.
+    """
+
+    input_file: Path = Field(
+        ...,
+        description="Input markdown file to process",
+        validation_alias=AliasChoices("i", "input"),
+    )
+    output_file: Optional[Path] = Field(
+        default=None,
+        description="Output file path (defaults to input file)",
+        validation_alias=AliasChoices("o", "output"),
+    )
+
+    model_config = SettingsConfigDict(validate_default=True, extra="forbid")
+
+    @field_validator("input_file", "output_file")
+    def validate_file(cls, v: Union[str, Path] | None) -> Path | None:
+        """Convert string to Path if necessary."""
+        if v is None:
+            return None
+        return Path(v) if isinstance(v, str) else v
+
+    def cli_cmd(self) -> None:
+        """Execute the reference links command."""
+        converter = ReflinkConverter()
+        _logger.info(
+            f"Converting all links in {self.input_file} to reference-style links"
+        )
+        converter.process_file(self.input_file, self.output_file)
+        _logger.info("Successfully converted links. Check the {self.output_file} file.")
 
 
 class SplitCommand(BaseModel):
@@ -82,6 +122,9 @@ class SplitmeApp(BaseSettings):
     config: Optional[ConfigCommand] = Field(
         default=None, description="Manage configuration"
     )
+    reflinks: Optional[RefLinksCommand] = Field(
+        default=None, description="Convert to reference-style links"
+    )
     split: Optional[SplitCommand] = Field(
         default=None, description="Split markdown files"
     )
@@ -108,7 +151,9 @@ class SplitmeApp(BaseSettings):
         if self.version:
             _logger.info(f"splitme-ai {__version__}")
             return
-        if self.split:
+        if self.reflinks:
+            self.reflinks.cli_cmd()
+        elif self.split:
             self.split.cli_cmd()
         elif self.config:
             self.config.cli_cmd()

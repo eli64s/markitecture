@@ -66,7 +66,7 @@ This project aims to streamline the process of creating and maintaining document
 
 [readmeai-cli-demo][cli-demo]
 
-<!-- 
+<!--
 **Run from your browser:**
 
 [readmeai-streamlit-demo][streamlit-demo]
@@ -84,8 +84,8 @@ Let's begin by exploring various customization options and styles supported by R
   <table>
     <tr>
       <td align="left">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/custom-dragon.png" 
-             alt="custom-dragon-project-logo" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/custom-dragon.png"
+             alt="custom-dragon-project-logo"
              width="800"
              style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px;">
         <p align="left"><b>CLI Command:</b></p>
@@ -99,8 +99,8 @@ Let's begin by exploring various customization options and styles supported by R
     </tr>
     <tr>
       <td align="left">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/toc/roman-numeral.png" 
-             alt="docker-go-readme-example" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/examples/toc/roman-numeral.png"
+             alt="docker-go-readme-example"
              width="800"
              style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px;">
         <p align="left"><b>CLI Command:</b></p>
@@ -120,7 +120,7 @@ Let's begin by exploring various customization options and styles supported by R
     <tr>
       <td align="left">
         <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/ascii-art.png"
-          alt="ascii-readme-header-style" 
+          alt="ascii-readme-header-style"
           width="800"
           style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px;">
         <p align="left"><b>CLI Command:</b></p>
@@ -130,8 +130,8 @@ Let's begin by exploring various customization options and styles supported by R
     </tr>
     <tr>
       <td align="left">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/svg-banner.png" 
-          alt="svg-banner" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/svg-banner.png"
+          alt="svg-banner"
           width="800"
           style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px;">
         <p align="left"><b>CLI Command:</b></p>
@@ -147,7 +147,7 @@ Let's begin by exploring various customization options and styles supported by R
   <table>
     <tr>
       <td align="left" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/refs/heads/main/docs/docs/assets/img/headers/cloud.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/refs/heads/main/docs/docs/assets/img/headers/cloud.png"
             alt="cloud-logo"
             width="800"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">
@@ -163,7 +163,7 @@ Let's begin by exploring various customization options and styles supported by R
   <table>
     <tr>
       <td align="left" width="50%" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/custom-balloon.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/custom-balloon.png"
             alt="balloon-logo"
             width="100%"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">
@@ -175,7 +175,7 @@ Let's begin by exploring various customization options and styles supported by R
           &emsp13;https://www.svgrepo.com/show/395851/balloon.svg</code></pre>
       </td>
       <td align="left" width="50%" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/skill-icons-light.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/skill-icons-light.png"
             alt="skill-icons"
             width="100%"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">
@@ -190,7 +190,7 @@ Let's begin by exploring various customization options and styles supported by R
   <table>
     <tr>
       <td align="left" width="50%" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/compact.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/main/docs/docs/assets/img/headers/compact.png"
             alt="compact-header"
             width="100%"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">
@@ -201,7 +201,7 @@ Let's begin by exploring various customization options and styles supported by R
           &emsp13;--navigation-style fold</code></pre>
       </td>
       <td align="left" width="50%" style="padding: 20px;">
-        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/refs/heads/main/docs/docs/assets/img/headers/modern-flat-square.png" 
+        <img src="https://raw.githubusercontent.com/eli64s/readme-ai/refs/heads/main/docs/docs/assets/img/headers/modern-flat-square.png"
             alt="modern-style"
             width="100%"
             style="border: 1px solid #E7E9EB; border-radius: 5px; padding: 5px; margin-bottom: 15px;">
@@ -502,7 +502,7 @@ When running `readmeai` with a third-party service, you must provide a valid API
 <details closed><summary>Ollama</summary>
 <br>
 
-Refer to the [Ollama documentation][ollama] for more information on setting up the Ollama server. 
+Refer to the [Ollama documentation][ollama] for more information on setting up the Ollama server.
 
 To start, follow these steps:
 
@@ -546,7 +546,7 @@ To start, follow these steps:
 Below is the minimal command required to run `readmeai` using the `OpenAI` client:
 
 ```sh
-❯ readmeai --api openai -o readmeai-openai.md -r https://github.com/eli64s/readme-ai 
+❯ readmeai --api openai -o readmeai-openai.md -r https://github.com/eli64s/readme-ai
 ```
 
 > [!IMPORTANT]
@@ -618,7 +618,7 @@ Run the `readmeai` CLI in a Docker container:
 
 #### ![streamlit][streamlit-svg]{ width="2%" }&emsp13;Streamlit
 
-Try readme-ai directly in your browser on Streamlit Cloud, no installation required. 
+Try readme-ai directly in your browser on Streamlit Cloud, no installation required.
 
 [<img align="center" src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" width="20%">][streamlit]
 
@@ -782,7 +782,7 @@ Contributions are welcome! Please read the [Contributing Guide][contributing] to
 A big shoutout to the projects below for their awesome work and open-source contributions:
 
 <div style="display: flex; align-items: left;">
-  <a href="https://shields.io/"> 
+  <a href="https://shields.io/">
     <img src="https://avatars.githubusercontent.com/u/6254238?s=200&v=4" alt="shields.io" style="width: 50px; margin-right: 10px;">
   </a>
   <a href="https://simpleicons.org/">
@@ -793,7 +793,7 @@ A big shoutout to the projects below for their awesome work and open-source cont
   </a>
   <a href="https://github.com/astrit/css.gg">
     <img src="https://avatars.githubusercontent.com/u/2398447?v=4" alt="astrit/css.gg" style="width: 50px; margin-right: 10px;">
-  </a> 
+  </a>
   <a href="https://github.com/Ileriayo/markdown-badges">
     <img src="https://avatars.githubusercontent.com/u/31800695?v=4" alt="Ileriayo/markdown-badges" style="width: 50px; margin-right: 10px;">
   </a>
@@ -896,12 +896,12 @@ Released under the [MIT][license] license.
 [examples-directory]: https://github.com/eli64s/readme-ai/tree/main/examples
 [default]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-ai.md
 [ascii-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/ascii.md
-[classic-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/classic.md 
-[compact-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/compact.md 
-[modern-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/modern.md 
-[svg-banner]: https://github.com/eli64s/readme-ai/blob/main/examples/banners/svg-banner.md 
+[classic-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/classic.md
+[compact-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/compact.md
+[modern-header]: https://github.com/eli64s/readme-ai/blob/main/examples/headers/modern.md
+[svg-banner]: https://github.com/eli64s/readme-ai/blob/main/examples/banners/svg-banner.md
 [dalle-logo]: https://github.com/eli64s/readme-ai/blob/main/examples/logos/dalle.md
-[readme-kotlin]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-kotlin.md 
-[for-the-badge]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-docker-go.md 
-[fastapi-redis]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-fastapi-redis.md 
-[offline-mode]: https://github.com/eli64s/readme-ai/blob/main/examples/offline-mode/readme-litellm.md 
+[readme-kotlin]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-kotlin.md
+[for-the-badge]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-docker-go.md
+[fastapi-redis]: https://github.com/eli64s/readme-ai/blob/main/examples/readme-fastapi-redis.md
+[offline-mode]: https://github.com/eli64s/readme-ai/blob/main/examples/offline-mode/readme-litellm.md

@@ -14,7 +14,7 @@ When running `readmeai` with a third-party service, you must provide a valid API
 <details closed><summary>Ollama</summary>
 <br>
 
-Refer to the [Ollama documentation][ollama] for more information on setting up the Ollama server. 
+Refer to the [Ollama documentation][ollama] for more information on setting up the Ollama server.
 
 To start, follow these steps:
 

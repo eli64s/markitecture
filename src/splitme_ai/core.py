@@ -284,7 +284,6 @@ class MarkdownSplitter:
 
 def main():
     """CLI entry point for splitme-ai."""
-    _logger.info("Starting splitme_ai CLI")
     app = SplitmeApp()
     app.cli_cmd()
 

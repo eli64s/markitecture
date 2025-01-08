@@ -29,7 +29,7 @@ class CustomFormatter(logging.Formatter):
     Custom logging formatter with color and emoji support.
     """
 
-    def format(self, record) -> str:
+    def format(self, record: logging.LogRecord) -> str:
         """Format the log record."""
         record.emoji = LOG_LEVEL_EMOJIS.get(record.levelname, "")
         record.color = LOG_LEVEL_COLORS.get(record.levelname, "")
@@ -44,7 +44,9 @@ class Logger:
 
     _instances: typing.ClassVar[dict[str, "Logger"]] = {}
 
-    def __new__(cls, name, level="DEBUG"):
+    def __new__(
+        cls: typing.Type["Logger"], name: str, level: str = "DEBUG"
+    ) -> "Logger":
         """Creates a new logger instance."""
         if name not in cls._instances:
             instance = super().__new__(cls)
@@ -54,7 +56,7 @@ class Logger:
             cls._instances[name] = instance
         return cls._instances[name]
 
-    def _configure_logger(self):
+    def _configure_logger(self) -> None:
         """Configures the logger."""
         formatter = CustomFormatter(
             "%(asctime)s | %(name)s | %(levelname)s | %(message)s",
@@ -66,26 +68,28 @@ class Logger:
         logger.addHandler(handler)
         logger.setLevel(self._level)
 
-    def info(self, msg, *args, **kwargs):
+    def info(self, msg: str, *args: typing.Any, **kwargs: typing.Any) -> None:
         """Logs an info message."""
         logging.getLogger(self._name).info(msg, *args, **kwargs)
 
-    def debug(self, msg, *args, **kwargs):
+    def debug(self, msg: str, *args: typing.Any, **kwargs: typing.Any) -> None:
         """Logs a debug message."""
         logging.getLogger(self._name).debug(msg, *args, **kwargs)
 
-    def warning(self, msg, *args, **kwargs):
+    def warning(self, msg: str, *args: typing.Any, **kwargs: typing.Any) -> None:
         """Logs a warning message."""
         logging.getLogger(self._name).warning(msg, *args, **kwargs)
 
-    def error(self, msg, *args, **kwargs):
+    def error(self, msg: str, *args: typing.Any, **kwargs: typing.Any) -> None:
         """Logs an error message."""
         logging.getLogger(self._name).error(msg, *args, **kwargs)
 
-    def critical(self, msg, *args, **kwargs):
+    def critical(self, msg: str, *args: typing.Any, **kwargs: typing.Any) -> None:
         """Logs a critical message."""
         logging.getLogger(self._name).critical(msg, *args, **kwargs)
 
-    def log(self, level, msg, *args, **kwargs):
+    def log(
+        self, level: int, msg: str, *args: typing.Any, **kwargs: typing.Any
+    ) -> None:
         """Logs a message at the specified level."""
         logging.getLogger(self._name).log(level, msg, *args, **kwargs)

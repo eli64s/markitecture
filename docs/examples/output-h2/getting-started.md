@@ -162,7 +162,7 @@ When running `readmeai` with a third-party service, you must provide a valid API
 <details closed><summary>Ollama</summary>
 <br>
 
-Refer to the [Ollama documentation][ollama] for more information on setting up the Ollama server. 
+Refer to the [Ollama documentation][ollama] for more information on setting up the Ollama server.
 
 To start, follow these steps:
 
@@ -206,7 +206,7 @@ To start, follow these steps:
 Below is the minimal command required to run `readmeai` using the `OpenAI` client:
 
 ```sh
-❯ readmeai --api openai -o readmeai-openai.md -r https://github.com/eli64s/readme-ai 
+❯ readmeai --api openai -o readmeai-openai.md -r https://github.com/eli64s/readme-ai
 ```
 
 > [!IMPORTANT]
@@ -278,7 +278,7 @@ Run the `readmeai` CLI in a Docker container:
 
 #### ![streamlit][streamlit-svg]{ width="2%" }&emsp13;Streamlit
 
-Try readme-ai directly in your browser on Streamlit Cloud, no installation required. 
+Try readme-ai directly in your browser on Streamlit Cloud, no installation required.
 
 [<img align="center" src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" width="20%">][streamlit]
 

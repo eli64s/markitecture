@@ -49,9 +49,10 @@ SplitmeAI is a Python module that addresses challenges in managing large Markdow
 __Key Features:__
 
 - **Section Splitting:** Breaks down large Markdown files into smaller, manageable sections based on specified heading levels.
+- **Hierarchy Preservation:** Maintains parent heading context within each split file.
 - **Filename Sanitization:** Generates clean, unique filenames for each section, ensuring compatibility and readability.
 - **Reference Link Management:** Extracts and appends reference-style links used within each section.
-- **Hierarchy Preservation:** Maintains parent heading context within each split file.
+- **Reference Link Conversion:** Convert all inline links to reference-style links for improved readability and maintainability.
 - **Thematic Break Handling:** Recognizes and handles line breaks (`---`, `***`, `___`) for intelligent content segmentation.
 - **MkDocs Integration:** Automatically generates an `mkdocs.yml` configuration file based on the split sections.
 - **CLI Support:** Provides a user-friendly Command-Line Interface for seamless operation.
@@ -94,46 +95,52 @@ For the fastest installation use [uv][uv]:
 
 Let's take a look at some examples of how to use the `splitme-ai` CLI.
 
+##### Splitting a Markdown File
+
 __Example 1:__ Split a Markdown file on heading level 2 (default setting):
 
 ```sh
 splitme-ai \
-    --split.i examples/data/README-AI.md \
-    --split.settings.o examples/output-h2
+    --split.i docs/examples/data/README-AI.md \
+    --split.settings.o docs/examples/output-h2
 ```
 
 __Example 2:__ Split on heading level 2 and generate an [mkdocs.yml] configuration file:
 
 ```sh
 splitme-ai \
-    --split.i examples/data/README-AI.md \
-    --split.settings.o examples/output-h2 \
+    --split.i docs/examples/data/README-AI.md \
+    --split.settings.o docs/examples/output-h2 \
     --split.settings.mkdocs
 ```
-
-View the output generated for [splitting on heading level 2 here](./examples/output-h2).
 
 __Example 3:__ Split on heading level 3:
 
 ```sh
 splitme-ai \
-    --split.i examples/data/README-AI.md \
-    --split.settings.o examples/output-h3 \
+    --split.i docs/examples/data/README-AI.md \
+    --split.settings.o docs/examples/output-h3 \
     --split.settings.hl "###"
 ```
-
-View the output generated for [splitting on heading level 3 here](./examples/output-h3).
 
 __Example 4:__ Split on heading level 4:
 
 ```sh
 splitme-ai \
-    --split.i examples/data/README-AI.md \
-    --split.settings.o examples/output-h4 \
+    --split.i docs/examples/data/README-AI.md \
+    --split.settings.o docs/examples/output-h4 \
     --split.settings.hl "####"
 ```
 
-View the output generated for [splitting on heading level 4 here](./examples/output-h4).
+##### Converting Reference Links
+
+__Example 5:__ Convert inline links to reference-style links:
+
+```sh
+splitme-ai --reflinks.i tests/data/pydantic.md --reflinks.o with_reflinks.md
+```
+
+View the output of all examples above [here](./docs/examples).
 
 >[!NOTE]
 > Explore the [Official Documentation][docs] for more detailed guides and examples.
@@ -142,6 +149,7 @@ View the output generated for [splitting on heading level 4 here](./examples/out
 
 ## Roadmap
 
+- [X] Implement reference link conversion and management.
 - [ ] Enhance CLI usability and user experience.
 - [ ] Integrate AI-powered content analysis and segmentation.
 - [ ] Add robust chunking and splitting algorithms for LLM applications.
