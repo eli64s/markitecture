@@ -42,7 +42,7 @@
     <g transform="translate(600, 150)" filter="url(#precisionGlow)">
         <!-- Split text effect -->
         <text font-family="'Chakra Petch', sans-serif" font-size="110" font-weight="700" fill="url(#sliceGradient)" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.1em">
-            SPLITME-AI
+            SPLITME
         </text>
         <!-- Precision lines -->
         <g opacity="0.5">

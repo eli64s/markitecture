@@ -5,13 +5,15 @@ SHELL := /bin/bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 
+PYPROJECT_TOML := pyproject.toml
+PYPI_VERSION := 0.1.11
 PYTHON_VERSION := 3.11
-PYPROJECT := pyproject.toml
-TARGET := splitme_ai tests
+TARGET := splitme tests
 TARGET_TEST := tests
 
 
-# -- Clean Up ------------------------------------------------------------------
+# -- Clean ---------------------------
+
 
 .PHONY: clean
 clean: ## Clean build and virtual environment directories
@@ -21,17 +23,18 @@ clean: ## Clean build and virtual environment directories
 	-find . -name "*.pyc" -type f -exec rm -f {} +
 
 
-# -- Dependencies ------------------------------------------------------------
+# -- Dev ---------------------------
+
 
 .PHONY: build-hatch
 build-hatch: ## Build the distribution package using hatch
 	hatch build
-	pip show splitme-ai
+	pip show splitme
 
 .PHONY: build
 build: ## Build the distribution package using uv
 	uv build
-	uv pip install dist/splitme_ai-0.1.0-py3-none-any.whl
+	uv pip install dist/splitme-$(PYPI_VERSION)-py3-none-any.whl
 
 .PHONY: install
 install: ## Install all dependencies from pyproject.toml
@@ -39,12 +42,12 @@ install: ## Install all dependencies from pyproject.toml
 
 .PHONY: lock
 lock: ## Lock dependencies declared in pyproject.toml
-	uv pip compile pyproject.toml --all-extras
+	uv pip compile $(PYPROJECT_TOML) --all-extras
 
 .PHONY: requirements
 requirements: ## Generate requirements files from pyproject.toml
-	uv pip compile pyproject.toml -o requirements.txtiu
-	uv pip compile pyproject.toml --all-extras -o requirements-dev.txt
+	uv pip compile $(PYPROJECT_TOML) -o requirements.txtiu
+	uv pip compile $(PYPROJECT_TOML) --all-extras -o requirements-dev.txt
 
 .PHONY: sync
 sync: ## Sync environment with pyproject.toml
@@ -59,16 +62,15 @@ venv: ## Create a virtual environment
 	uv venv --python $(PYTHON_VERSION)
 
 
-# -- Documentation --------------------------------------------------------------
+# -- Docs ---------------------------
 
 .PHONY: docs
 docs: ## Build documentation site using mkdocs
-	cd docs && \
 	uv run mkdocs build --clean
 	uv run mkdocs serve
 
 
-# -- Linting ---------------------------------------------------------------
+# -- Lint ---------------------------
 
 .PHONY: format-toml
 format-toml: ## Format TOML files using pyproject-fmt
@@ -96,26 +98,28 @@ typecheck-pyright: ## Type-check Python files using Pyright
 	uv run pyright $(TARGET)
 
 
-# -- Testing -------------------------------------------------------------------
+# -- Tests ----------------------------
+
 
 .PHONY: test
 test: ## Run test suite using Pytest
-	poetry run pytest $(TARGET_TEST) --config-file $(PYPROJECT)
+	uv run pytest $(TARGET_TEST) --config-file $(PYPROJECT_TOML)
 
 
-# -- Utilities ------------------------------------------------------------------
+# -- Utils ---------------------------
+
 
 .PHONY: run-pypi
 run-pypi:
-	uvx --isolated splitme-ai --split.i tests/data/readme-ai.md --split.settings.o .splitme-ai/pypi-h2/ --split.settings.hl "##"
-	uvx --isolated splitme-ai --split.i tests/data/readme-ai.md --split.settings.o .splitme-ai/pypi-h3/ --split.settings.hl "###"
-	uvx --isolated splitme-ai --split.i tests/data/readme-ai.md --split.settings.o .splitme-ai/pypi-h4/ --split.settings.hl "####"
+	uvx --isolated splitme --split.i tests/data/markdown/readme-ai.md --split.o .splitme/pypi-h2/ --split.level "##"
+	uvx --isolated splitme --split.i tests/data/markdown/readme-ai.md --split.o .splitme/pypi-h3/ --split.level "###"
+	uvx --isolated splitme --split.i tests/data/markdown/readme-ai.md --split.o .splitme/pypi-h4/ --split.level "####"
 
 .PHONY: run-splitter
 run-splitter: ## Run the main application
-	uv run splitme-ai --split.i tests/data/readme-ai.md --s.settings.o .splitme-ai/test-docs-h2/ --s.settings.hl "##" --s.settings.mkdocs
-	uv run splitme-ai --split.i tests/data/readme-ai.md --s.settings.o .splitme-ai/test-docs-h3/ --s.settings.hl "###"
-	uv run splitme-ai --split.i tests/data/readme-ai.md --s.settings.o .splitme-ai/test-docs-h4/ --s.settings.hl "####"
+	uv run splitme --split.i tests/data/markdown/readme-ai.md --split.o docs/examples/split-sections-h2 --split.level "##" --mkdocs.dir docs/examples/split-sections-h2
+	uv run splitme --split.i tests/data/markdown/readme-ai.md --split.o docs/examples/split-sections-h3/ --split.level "###"
+	uv run splitme --split.i tests/data/markdown/readme-ai.md --split.o docs/examples/split-sections-h4/ --split.level "####"
 
 .PHONY: help
 help: ## Display this help

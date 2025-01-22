@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 400">
+    <defs>
+        <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="20%" style="stop-color:#FFD700" />
+            <stop offset="40%" style="stop-color:#00E5FF" />
+            <stop offset="60%" style="stop-color:#7934C5" />
+            <stop offset="80%" style="stop-color:#FF00FF" />
+        </linearGradient>
+        <!-- Enhanced shadow -->
+        <filter id="enhancedShadow">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+            <feOffset dx="2" dy="2" />
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.15" />
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <!-- Icon glow -->
+        <filter id="iconGlow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="1.5" />
+            </feComponentTransfer>
+        </filter>
+    </defs>
+    <!-- Info Box -->
+    <g transform="translate(0,0)" filter="url(#enhancedShadow)">
+        <rect x="0" y="0" width="560" height="80" rx="12" fill="#FFFFFF" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <circle cx="45" cy="40" r="22" fill="#FFFFFF" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <text x="45" y="49" font-family="Arial, sans-serif" font-size="28" fill="url(#mainGradient)" text-anchor="middle" font-weight="bold" filter="url(#iconGlow)">i</text>
+        <text x="90" y="35" font-family="Arial, sans-serif" font-size="16" fill="#333333" font-weight="bold">
+            Information Note
+        </text>
+        <text x="90" y="60" font-family="Arial, sans-serif" font-size="14" fill="#666666">
+            General information and helpful details about the topic.
+        </text>
+    </g>
+    <!-- Warning Box -->
+    <g transform="translate(0,100)" filter="url(#enhancedShadow)">
+        <rect x="0" y="0" width="560" height="80" rx="12" fill="#FFFFFF" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <circle cx="45" cy="40" r="22" fill="#FFFFFF" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <!-- Warning icon -->
+        <path d="M35,30 L45,50 L55,30 Z" fill="none" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <line x1="45" y1="36" x2="45" y2="44" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <circle cx="45" cy="47" r="1" fill="url(#mainGradient)" />
+        <text x="90" y="35" font-family="Arial, sans-serif" font-size="16" fill="#333333" font-weight="bold">
+            Warning Alert
+        </text>
+        <text x="90" y="60" font-family="Arial, sans-serif" font-size="14" fill="#666666">
+            Important warning message that requires attention.
+        </text>
+    </g>
+    <!-- Success Box -->
+    <g transform="translate(0,200)" filter="url(#enhancedShadow)">
+        <rect x="0" y="0" width="560" height="80" rx="12" fill="#FFFFFF" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <circle cx="45" cy="40" r="22" fill="#FFFFFF" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <!-- Checkmark icon -->
+        <path d="M35,40 L42,47 L55,34" fill="none" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <text x="90" y="35" font-family="Arial, sans-serif" font-size="16" fill="#333333" font-weight="bold">
+            Success Message
+        </text>
+        <text x="90" y="60" font-family="Arial, sans-serif" font-size="14" fill="#666666">
+            Operation completed successfully with desired outcome.
+        </text>
+    </g>
+    <!-- Code Box -->
+    <g transform="translate(0,300)" filter="url(#enhancedShadow)">
+        <rect x="0" y="0" width="560" height="80" rx="12" fill="#FFFFFF" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <circle cx="45" cy="40" r="22" fill="#FFFFFF" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <!-- Code icon -->
+        <path d="M35,40 L42,33 L42,47 L35,40 M55,40 L48,33 L48,47 L55,40" fill="none" stroke="url(#mainGradient)" stroke-width="2.5" />
+        <text x="90" y="35" font-family="Arial, sans-serif" font-size="16" fill="#333333" font-weight="bold">
+            Code Example
+        </text>
+        <text x="90" y="60" font-family="Arial, sans-serif" font-size="14" fill="#666666">
+            Technical implementation details and code snippets.
+        </text>
+    </g>
+</svg>
