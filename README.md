@@ -25,10 +25,10 @@
       <img src="https://img.shields.io/codecov/c/github/eli64s/splitme?label=Coverage&style=flat&logo=codecov&logoColor=white&labelColor=2A2A2A&color=3fe1c0" alt="Coverage" />
     </a>
     <a href="https://pypi.org/project/splitme/">
-      <img src="https://img.shields.io/pypi/v/splitme-ai?label=PyPI&style=flat&logo=pypi&logoColor=white&labelColor=2A2A2A&color=00E5FF" alt="PyPI Version" />
+      <img src="https://img.shields.io/pypi/v/splitme?label=PyPI&style=flat&logo=pypi&logoColor=white&labelColor=2A2A2A&color=00E5FF" alt="PyPI Version" />
     </a>
     <a href="https://github.com/eli64s/splitme">
-      <img src="https://img.shields.io/pypi/pyversions/splitme-ai?label=Python&style=flat&logo=python&logoColor=white&labelColor=2A2A2A&color=7934C5" alt="Python Version" />
+      <img src="https://img.shields.io/pypi/pyversions/splitme?label=Python&style=flat&logo=python&logoColor=white&labelColor=2A2A2A&color=7934C5" alt="Python Version" />
     </a>
     <a href="https://opensource.org/license/mit/">
       <img src="https://img.shields.io/github/license/eli64s/splitme?label=License&style=flat&logo=opensourceinitiative&logoColor=white&labelColor=2A2A2A&color=FF00FF" alt="MIT License">
