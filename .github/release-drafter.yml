@@ -1,57 +1,96 @@
-# This release drafter follows the conventions
-# from https://keepachangelog.com
-
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
+
 categories:
-  - title: Features
+  - title: 'Features'
     labels:
-      - feat
-      - feature
-      - enhancement
-  - title: Bug Fixes
+      - 'feature'
+      - 'enhancement'
+  - title: 'Bug Fixes'
     labels:
-      - fix
-      - bug
-  - title: Chore
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
+  - title: 'Maintenance'
     labels:
-      - chore
-      - maintenance
-      - refactor
-  - title: Deprecated
+      - 'chore'
+      - 'maintenance'
+  - title: 'Documentation'
     labels:
-      - deprecated
-  - title: Removed
+      - 'docs'
+      - 'documentation'
+  - title: 'Dependencies'
     labels:
-      - removed
-  - title: Security
-    labels:
-      - security
-      - vulnerability
-  - title: Documentation
-    labels:
-      - docs
-      - documentation
-  - title: Dependency Updates
-    labels:
-      - deps
-      - dependencies
-    collapse-after: 5
+      - 'dependencies'
+      - 'deps'
 
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
-change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+change-title-escapes: '\<*_&'
+
 version-resolver:
   major:
     labels:
-      - major
+      - 'major'
+      - 'breaking'
   minor:
     labels:
-      - minor
+      - 'minor'
+      - 'feature'
+      - 'enhancement'
   patch:
     labels:
-      - patch
+      - 'patch'
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
+      - 'maintenance'
+      - 'docs'
+      - 'dependencies'
+      - 'security'
   default: patch
+
+exclude-labels:
+  - 'skip-changelog'
+
+autolabeler:
+  - label: 'bug'
+    branch:
+      - '/fix\/.+/'
+    title:
+      - '/fix/i'
+  - label: 'enhancement'
+    branch:
+      - '/feat\/.+/'
+      - '/feature\/.+/'
+    title:
+      - '/feat/i'
+  - label: 'documentation'
+    branch:
+      - '/docs\/.+/'
+    files:
+      - '*.md'
+      - 'docs/*'
+  - label: 'maintenance'
+    branch:
+      - '/chore\/.+/'
+    files:
+      - '.github/*'
+      - '*.yaml'
+      - '*.yml'
+  - label: 'dependencies'
+    branch:
+      - '/deps\/.+/'
+      - '/dependabot\/.+/'
+    files:
+      - 'pyproject.toml'
+      - 'requirements.txt'
+      - 'requirements/*.txt'
+
 template: |
   ## Release Notes
 
   $CHANGES
+
+  ## Contributors
+
+  $CONTRIBUTORS
