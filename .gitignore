@@ -31,13 +31,14 @@ ENV/
 .mypy_cache/
 .pytest_cache/
 .ruff_cache/
-.splitme-ai/
 .reports/
 notebooks/
 site/
+.continuerules
 
-# wip
+# Splitme
+.splitme/
+docs/*.md
+docs/features/
 docs/integrations/
-docs/notes.md
-docs/roadmap.md
-tests/data/readme-ai.html
+src/splitme/ai/

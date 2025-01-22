@@ -2,16 +2,16 @@ from pathlib import Path
 
 import pytest
 
-from splitme_ai.utils.file_handler import FileHandler
+from splitme.utils.file_handler import FileHandler
 
 
+@pytest.fixture
 def file_handler() -> FileHandler:
-    """Return a file handler instance."""
     return FileHandler()
 
 
 @pytest.fixture
-def markdown_file(filename: str = "readme-ai.md") -> str:
+def input_file(filename: str = "tests/data/markdown/readme-ai.md") -> str:
     """Return markdown file content."""
-    file_path = Path.cwd() / f"tests/data/{filename}"
+    file_path = Path.cwd() / filename
     return file_handler().read(file_path)

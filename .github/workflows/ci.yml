@@ -54,7 +54,7 @@ jobs:
             -vv \
             --tb=short \
             --durations=5 \
-            --cov=src/splitme_ai \
+            --cov=src/splitme \
             --cov-branch \
             --cov-fail-under=0 \
             --cov-report=term-missing:skip-covered \
@@ -153,7 +153,7 @@ jobs:
     if: success() && startsWith(github.ref, 'refs/tags/v')
     environment:
       name: pypi
-      url: https://pypi.org/p/splitme-ai
+      url: https://pypi.org/p/splitme
     permissions:
       id-token: write
 

@@ -45,7 +45,7 @@
     <!-- Central title group with enhanced glow effect -->
     <g transform="translate(600, 100)" filter="url(#precisionGlowLight)">
         <text font-family="Roboto, sans-serif" font-size="120" font-weight="bold" fill="url(#sliceGradientLight)" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.08em">
-            SPLITME-AI
+            SPLITME
         </text>
         <!-- Geometric precision framing -->
         <g opacity="0.6">

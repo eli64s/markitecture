@@ -3,9 +3,9 @@ build-backend = 'hatchling.build'
 requires = [ "hatch-fancy-pypi-readme", "hatchling" ]
 
 [project]
-name = "splitme-ai"
-version = "0.1.10"
-description = "Break down docs, build up knowledge."
+name = "splitme"
+version = "0.1.11"
+description = "⌖ Markdown tools for modular docs."
 dynamic = ["readme"]
 keywords = [
     "ai",
@@ -24,7 +24,7 @@ keywords = [
 ]
 license = "MIT"
 authors = [ { name = "Eli Salamie", email = "egsalamie@gmail.com" } ]
-requires-python = ">=3.9, <=3.13"
+requires-python = ">=3.9, <=3.14"
 classifiers = [
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.9",
@@ -32,13 +32,25 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+    "Framework :: Pytest",
+    "Framework :: Pydantic",
 ]
 dependencies = [
-    "aiofiles>=24.1.0",
+    "mistletoe>=1.4.0",
     "pydantic>=2.10.3",
     "pydantic-settings>=2.6.1",
     "pyyaml>=6.0.2",
     "requests>=2.32.3",
+    "rich>=13.9.4",
     "toml>=0.10.2 ; python_full_version < '3.11'",
 ]
 
@@ -49,18 +61,24 @@ optional-dependencies.docs = [
     "mkdocs>=1.6.1",
     "mkdocs-material>=9.5.47",
 ]
-urls.Homepage = 'https://github.com/eli64s/splitme-ai'
-scripts.splitme-ai = "splitme_ai.core:main"
+urls.Homepage = 'https://github.com/eli64s/splitme'
+scripts.splitme = "splitme.__main__:main"
 
 [dependency-groups]
 dev = [
+    "commonmark>=0.9.1",
     "hatch>=1.13",
+    "ipykernel>=6.29.5",
+    "keybert>=0.8.5",
+    "markdown-it-py>=3.0.0",
+    "mdit-py-plugins>=0.4.2",
 ]
 test = [
     "coverage[toml]>=7.6.9",
     "pytest>=8.3.4",
     "pytest-asyncio>=0.25",
     "pytest-cov>=6",
+    "pytest-mock>=3.14.0",
     "pytest-pretty>=1.2",
     "pytest-randomly>=3.16",
     "pytest-sugar>=1",
@@ -85,7 +103,7 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = [ "src/splitme_ai" ]
+packages = [ "src/splitme" ]
 
 [tool.hatch.build.targets.sdist]
 include = [
@@ -100,7 +118,7 @@ include = [
 ]
 
 [tool.hatch.version]
-path = 'src/splitme_ai/__init__.py'
+path = 'src/splitme/__init__.py'
 
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -108,10 +126,10 @@ allow-direct-references = true
 [tool.hatch.metadata.hooks.fancy-pypi-readme]
 content-type = 'text/markdown'
 substitutions = [
-    { pattern = '(\s+)#(\d+)', replacement = '\1[#\2](https://github.com/eli64s/splitme-ai/issues/\2)' },
+    { pattern = '(\s+)#(\d+)', replacement = '\1[#\2](https://github.com/eli64s/splitme/issues/\2)' },
     { pattern = '(\s+)@([\w\-]+)', replacement = '\1[@\2](https://github.com/\2)' },
     # replace relative links with absolute links
-    { pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)', replacement = '[\1](https://github.com/eli64s/splitme-ai/tree/main/\g<2>)'},
+    { pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)', replacement = '[\1](https://github.com/eli64s/splitme/tree/main/\g<2>)'},
 ]
 
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
@@ -123,7 +141,7 @@ addopts = [
     "-rfEsxX",
     "--tb=short",
     "--durations=3",
-    "--cov=src/splitme_ai",
+    "--cov=splitme",
     "--cov-branch",
     "--cov-fail-under=0",
     "--cov-report=term-missing:skip-covered",
@@ -162,7 +180,7 @@ omit = [
     "**/__init__.py",
     "noxfile.py",
 ]
-source = ["splitme_ai"]
+source = ["splitme"]
 
 [tool.coverage.json]
 output = "tests/.reports/coverage.json"
@@ -173,7 +191,7 @@ typeCheckingMode = "strict"
 reportMissingTypeStubs = false
 reportUnnecessaryIsInstance = false
 reportUnnecessaryTypeIgnoreComment = true
-include = [ "splitme_ai", "tests" ]
+include = [ "splitme", "tests" ]
 venvPath = ".venv"
 executionEnvironments = [
     { root = "tests", reportUnusedFunction = false },
