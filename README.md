@@ -272,7 +272,7 @@ Copyright © 2024-2025 [splitme][splitme]. <br />
 Released under the [MIT][mit-license] license.
 -->
 
-Splitme is released under the [MIT license][mit-license]
+Splitme is released under the [MIT license][mit-license] <br />
 Copyright © 2024-2025 [Splitme][splitme]
 
 <div align="left">
