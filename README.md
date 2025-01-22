@@ -155,8 +155,10 @@ splitme \
 
 View the output of all examples above [here][examples].
 
+<!--
 >[!NOTE]
 > Explore the [Official Documentation][docs] for more detailed guides and examples.
+-->
 
 ---
 
