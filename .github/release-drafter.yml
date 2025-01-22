@@ -4,35 +4,35 @@
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 categories:
-  - title: ✨ Features
+  - title: Features
     labels:
       - feat
       - feature
       - enhancement
-  - title: 🪲 Bug Fixes
+  - title: Bug Fixes
     labels:
       - fix
       - bug
-  - title: 🧹 Chore
+  - title: Chore
     labels:
       - chore
       - maintenance
       - refactor
-  - title: ⛔️ Deprecated
+  - title: Deprecated
     labels:
       - deprecated
-  - title: 🗑 Removed
+  - title: Removed
     labels:
       - removed
-  - title: 🔐 Security
+  - title: Security
     labels:
       - security
       - vulnerability
-  - title: 📄 Documentation
+  - title: Documentation
     labels:
       - docs
       - documentation
-  - title: ⚙️ Dependency Updates
+  - title: Dependency Updates
     labels:
       - deps
       - dependencies
@@ -52,6 +52,6 @@ version-resolver:
       - patch
   default: patch
 template: |
-  ## What's Changed
+  ## Release Notes
 
   $CHANGES
