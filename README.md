@@ -2,9 +2,9 @@
 
 <!-- HEADER -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/splitme/docs/assets/splitme-circle-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/splitme/docs/assets/splitme-circle-light.svg">
-  <img alt="splitme Logo" src="https://raw.githubusercontent.com/eli64s/splitme/docs/assets/splitme-circle-light.svg" width="900" style="max-width: 100%;">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/splitme/77bec69129dd3a075d7d0816c7bd826da131ccc7/docs/assets/splitme-circle-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/splitme/77bec69129dd3a075d7d0816c7bd826da131ccc7/docs/assets/splitme-circle-light.svg">
+  <img alt="splitme Logo" src="https://raw.githubusercontent.com/eli64s/splitme/77bec69129dd3a075d7d0816c7bd826da131ccc7/docs/assets/splitme-circle-light.svg" width="900" style="max-width: 100%;">
 </picture>
 
 <h3 align="center">
@@ -275,7 +275,7 @@ Copyright © 2024-2025 [Splitme][splitme]
 
 <div align="left">
   <a href="#top">
-    <img src="https://raw.githubusercontent.com/eli64s/splitme/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/buttons/rectangle.svg" width="100px" height="100px" alt="Return to Top">
+    <img src="https://raw.githubusercontent.com/eli64s/splitme/77bec69129dd3a075d7d0816c7bd826da131ccc7/docs/assets/buttons/rectangle.svg" width="100px" height="100px" alt="Return to Top">
   </a>
 </div>
 
