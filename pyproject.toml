@@ -3,36 +3,34 @@ build-backend = 'hatchling.build'
 requires = [ "hatch-fancy-pypi-readme", "hatchling" ]
 
 [project]
-name = "splitme"
-version = "0.1.12"
-description = "⌖ Markdown tools for modular docs."
+name = "markitecture"
+version = "0.1.13"
+description = "❂ Markdown tools for modular and flexible docs: link validation, reference link conversion, text splitting, & more."
 dynamic = ["readme"]
 keywords = [
-    "ai",
-    "devtools",
-    "docs",
-    "documentation",
-    "documentation-tool",
-    "markdown",
+    "automated-markdown",
+    "content-management",
+    "documentation-tools",
+    "intelligent-documentation",
+    "markdown-ai",
+    "markdown-link-checker",
     "markdown-parser",
-    "markdown-split",
+    "markdown-splitter",
+    "markdown-tools",
     "mkdocs",
-    "python",
-    "readme",
-    "reflinks",
+    "modular-docs",
+    "readme-generator",
     "reference-links",
+    "smart-markdown",
 ]
 license = "MIT"
 authors = [ { name = "Eli Salamie", email = "egsalamie@gmail.com" } ]
-requires-python = ">=3.9, <=3.14"
+requires-python = ">=3.10, <=3.14"
 classifiers = [
-    "Programming Language :: Python :: 3 :: Only",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Development Status :: 3 - Alpha",
@@ -45,56 +43,46 @@ classifiers = [
     "Framework :: Pydantic",
 ]
 dependencies = [
-    "mistletoe>=1.4.0",
-    "pydantic>=2.10.3",
-    "pydantic-settings>=2.6.1",
-    "pyyaml>=6.0.2",
-    "requests>=2.32.3",
-    "rich>=13.9.4",
-    "toml>=0.10.2 ; python_full_version < '3.11'",
+    "httpx",
+    "pydantic",
+    "pydantic-settings",
+    "pyyaml",
+    "rich",
+    "toml ; python_full_version < '3.11'",
 ]
 
-optional-dependencies.ai = [
-    "pydantic-ai>=0.0.15",
-]
-optional-dependencies.docs = [
-    "mkdocs>=1.6.1",
-    "mkdocs-material>=9.5.47",
-]
-urls.Homepage = 'https://github.com/eli64s/splitme'
-scripts.splitme = "splitme.__main__:main"
+[project.urls]
+documentation = "https://github.com/eli64s/markitecture/blob/main/README.md"
+homepage = "https://github.com/eli64s/markitecture"
+repository = "https://github.com/eli64s/markitecture"
+
+[project.scripts]
+markitect = "markitecture.__main__:run_cli"
 
 [dependency-groups]
 dev = [
-    "commonmark>=0.9.1",
-    "hatch>=1.13",
-    "ipykernel>=6.29.5",
-    "keybert>=0.8.5",
-    "markdown-it-py>=3.0.0",
-    "mdit-py-plugins>=0.4.2",
+    "devtools",
+    "dspy",
+    "hatch",
+    "ipykernel",
 ]
 test = [
-    "coverage[toml]>=7.6.9",
-    "pytest>=8.3.4",
-    "pytest-asyncio>=0.25",
-    "pytest-cov>=6",
-    "pytest-mock>=3.14.0",
-    "pytest-pretty>=1.2",
-    "pytest-randomly>=3.16",
-    "pytest-sugar>=1",
-    "pytest-xdist>=3.6.1",
-]
-docs = [
-    "mkdocs>=1.6.1",
-    "mkdocs-material>=9.5.47",
+    "coverage[toml]",
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "pytest-mock",
+    "pytest-pretty",
+    "pytest-randomly",
+    "pytest-sugar",
+    "pytest-xdist",
 ]
 lint = [
-    "mypy>=1.14",
-    "pyright>=1.1.391",
-    "ruff>=0.8.4",
-    "types-aiofiles>=24.1.0.20241221",
-    "types-pyyaml>=6.0.12.20240917",
-    "types-requests>=2.32.0.20241016",
+    "mypy",
+    "pyright",
+    "ruff",
+    "types-pyyaml",
+    "types-requests",
 ]
 
 [tool.hatch.build]
@@ -103,7 +91,7 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = [ "src/splitme" ]
+packages = [ "src/markitecture" ]
 
 [tool.hatch.build.targets.sdist]
 include = [
@@ -118,7 +106,7 @@ include = [
 ]
 
 [tool.hatch.version]
-path = 'src/splitme/__init__.py'
+path = 'src/markitecture/__init__.py'
 
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -126,24 +114,24 @@ allow-direct-references = true
 [tool.hatch.metadata.hooks.fancy-pypi-readme]
 content-type = 'text/markdown'
 substitutions = [
-    { pattern = '(\s+)#(\d+)', replacement = '\1[#\2](https://github.com/eli64s/splitme/issues/\2)' },
+    { pattern = '(\s+)#(\d+)', replacement = '\1[#\2](https://github.com/eli64s/markitecture/issues/\2)' },
     { pattern = '(\s+)@([\w\-]+)', replacement = '\1[@\2](https://github.com/\2)' },
     # replace relative links with absolute links
-    { pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)', replacement = '[\1](https://github.com/eli64s/splitme/tree/main/\g<2>)'},
+    { pattern = '\[(.+?)\]\(((?!https?://)\S+?)\)', replacement = '[\1](https://github.com/eli64s/markitecture/tree/main/\g<2>)'},
 ]
 
 [[tool.hatch.metadata.hooks.fancy-pypi-readme.fragments]]
-path = "README.md"# replace relative links with absolute links
+path = "README.md"
 
 [tool.pytest.ini_options]
 addopts = [
     "-vv",
     "-rfEsxX",
     "--tb=short",
-    "--durations=3",
-    "--cov=splitme",
+    "--durations=5",
+    "--cov=src/",
     "--cov-branch",
-    "--cov-fail-under=0",
+    "--cov-fail-under=1",
     "--cov-report=term-missing:skip-covered",
     "--cov-report=json:tests/.reports/coverage.json",
     "--asyncio-mode=auto",
@@ -151,6 +139,8 @@ addopts = [
 ]
 asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
+log_cli = true
+log_level = "INFO"
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
@@ -180,7 +170,7 @@ omit = [
     "**/__init__.py",
     "noxfile.py",
 ]
-source = ["splitme"]
+source = ["src/markitecture"]
 
 [tool.coverage.json]
 output = "tests/.reports/coverage.json"
@@ -191,7 +181,7 @@ typeCheckingMode = "strict"
 reportMissingTypeStubs = false
 reportUnnecessaryIsInstance = false
 reportUnnecessaryTypeIgnoreComment = true
-include = [ "splitme", "tests" ]
+include = [ "markitecture", "tests" ]
 venvPath = ".venv"
 executionEnvironments = [
     { root = "tests", reportUnusedFunction = false },

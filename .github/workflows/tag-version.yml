@@ -1,77 +1,77 @@
-name: Tag Version
+# name: Tag Version
 
-on:
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**.md'
-      - '.github/**'
-      - 'docs/**'
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths-ignore:
+#       - '**.md'
+#       - '.github/**'
+#       - 'docs/**'
 
-jobs:
-  tag-version:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+# jobs:
+#   tag-version:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: write
+#     steps:
+#       - uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
 
-      - name: Get latest version
-        id: get_version
-        run: |
-          # Get the latest version tag
-          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "Current version: $latest_tag"
+#       - name: Get latest version
+#         id: get_version
+#         run: |
+#           # Get the latest version tag
+#           latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+#           echo "Current version: $latest_tag"
 
-          # Remove 'v' prefix and split into major, minor, patch
-          version=${latest_tag#v}
-          IFS='.' read -r major minor patch <<< "$version"
+#           # Remove 'v' prefix and split into major, minor, patch
+#           version=${latest_tag#v}
+#           IFS='.' read -r major minor patch <<< "$version"
 
-          # Increment patch version
-          new_patch=$((patch + 1))
-          new_version="v$major.$minor.$new_patch"
-          new_version_without_v="$major.$minor.$new_patch"
+#           # Increment patch version
+#           new_patch=$((patch + 1))
+#           new_version="v$major.$minor.$new_patch"
+#           new_version_without_v="$major.$minor.$new_patch"
 
-          echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
-          echo "NEW_VERSION_WITHOUT_V=$new_version_without_v" >> $GITHUB_ENV
-          echo "New version will be: $new_version"
+#           echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
+#           echo "NEW_VERSION_WITHOUT_V=$new_version_without_v" >> $GITHUB_ENV
+#           echo "New version will be: $new_version"
 
-      - name: Update pyproject.toml version
-        run: |
-          # Update version in pyproject.toml using sed
-          sed -i "s/^version = .*/version = \"${{ env.NEW_VERSION_WITHOUT_V }}\"/" pyproject.toml
+#       - name: Update pyproject.toml version
+#         run: |
+#           # Update version in pyproject.toml using sed
+#           sed -i "s/^version = .*/version = \"${{ env.NEW_VERSION_WITHOUT_V }}\"/" pyproject.toml
 
-          # Commit the version update
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add pyproject.toml
-          git commit -m "chore: bump version to ${{ env.NEW_VERSION }}"
-          git push origin main
+#           # Commit the version update
+#           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+#           git config --local user.name "github-actions[bot]"
+#           git add pyproject.toml
+#           git commit -m "chore: bump version to ${{ env.NEW_VERSION }}"
+#           git push origin main
 
-      - name: Create and push tag
-        run: |
-          git tag -a ${{ env.NEW_VERSION }} -m "Release ${{ env.NEW_VERSION }}"
-          git push origin ${{ env.NEW_VERSION }}
+#       - name: Create and push tag
+#         run: |
+#           git tag -a ${{ env.NEW_VERSION }} -m "Release ${{ env.NEW_VERSION }}"
+#           git push origin ${{ env.NEW_VERSION }}
 
-      - name: Generate changelog
-        id: changelog
-        run: |
-          # Get commits since last tag
-          commits=$(git log --pretty=format:"- %s (%h)" $(git describe --tags --abbrev=0 2>/dev/null || git rev-list --max-parents=0 HEAD)..HEAD)
-          echo "CHANGELOG<<EOF" >> $GITHUB_ENV
-          echo "$commits" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+#       - name: Generate changelog
+#         id: changelog
+#         run: |
+#           # Get commits since last tag
+#           commits=$(git log --pretty=format:"- %s (%h)" $(git describe --tags --abbrev=0 2>/dev/null || git rev-list --max-parents=0 HEAD)..HEAD)
+#           echo "CHANGELOG<<EOF" >> $GITHUB_ENV
+#           echo "$commits" >> $GITHUB_ENV
+#           echo "EOF" >> $GITHUB_ENV
 
-      - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ env.NEW_VERSION }}
-          release_name: Release ${{ env.NEW_VERSION }}
-          body: |
-            Changes in this Release:
-            ${{ env.CHANGELOG }}
+#       - name: Create Release
+#         uses: actions/create-release@v1
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         with:
+#           tag_name: ${{ env.NEW_VERSION }}
+#           release_name: Release ${{ env.NEW_VERSION }}
+#           body: |
+#             Changes in this Release:
+#             ${{ env.CHANGELOG }}

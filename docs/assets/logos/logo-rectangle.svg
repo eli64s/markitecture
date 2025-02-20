@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
+    <defs>
+        <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="20%" style="stop-color:#FFD700"/>
+            <stop offset="40%" style="stop-color:#00E5FF"/>
+            <stop offset="60%" style="stop-color:#7934C5"/>
+            <stop offset="80%" style="stop-color:#FF00FF"/>
+        </linearGradient>
+        <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(0.5)">
+            <path d="M25,0 L50,14.433 L50,43.3 L25,57.733 L0,43.3 L0,14.433 Z"
+                  fill="none" stroke="url(#mainGradient)" stroke-width="1" opacity="0.1"/>
+        </pattern>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <rect width="40" height="40" fill="none" stroke="url(#mainGradient)" stroke-width="0.5" opacity="0.05"/>
+        </pattern>
+        <filter id="lightGlow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.3"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+
+    <!-- Background Patterns -->
+    <rect width="1200" height="400" fill="white"/>
+    <rect width="1200" height="400" fill="url(#hexagons)"/>
+    <rect width="1200" height="400" fill="url(#grid)"/>
+
+    <!-- Main Container -->
+    <g transform="translate(600,200)">
+        <!-- Outer frame -->
+        <rect x="-500" y="-150" width="1000" height="300" fill="none" stroke="url(#mainGradient)" stroke-width="3" opacity="0.2"/>
+
+        <!-- Split lines -->
+        <g filter="url(#lightGlow)">
+            <line x1="-500" y1="0" x2="500" y2="0" stroke="url(#mainGradient)" stroke-width="4"/>
+            <line x1="0" y1="-150" x2="0" y2="150" stroke="url(#mainGradient)" stroke-width="4"/>
+        </g>
+
+        <!-- Text -->
+        <text font-family="Arial Black, sans-serif" font-size="120" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="url(#mainGradient)">
+            MARKITECTURE
+        </text>
+    </g>
+
+    <!-- Corners -->
+    <g stroke="url(#mainGradient)" stroke-width="3" opacity="0.3">
+        <path d="M50,50 L120,50 L120,120"/>
+        <path d="M1150,50 L1080,50 L1080,120"/>
+        <path d="M50,350 L120,350 L120,280"/>
+        <path d="M1150,350 L1080,350 L1080,280"/>
+    </g>
+</svg>

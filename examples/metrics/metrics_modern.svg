@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140"><defs>
+  <linearGradient id='gradientBg' x1='0%' y1='0%' x2='100%' y2='0%'>
+    <stop offset='0%' style='stop-color:#7934C5; stop-opacity:1' />
+    <stop offset='50%' style='stop-color:#6A2C70; stop-opacity:0.8' />
+    <stop offset='100%' style='stop-color:#4158D0; stop-opacity:1' />
+  </linearGradient>
+  <filter id='dropShadow' x='-10%' y='-10%' width='120%' height='120%'>
+    <feGaussianBlur in='SourceAlpha' stdDeviation='3' />
+    <feOffset dx='3' dy='3' result='offsetblur'/>
+    <feMerge>
+      <feMergeNode/>
+      <feMergeNode in='SourceGraphic'/>
+    </feMerge>
+  </filter>
+</defs>
+<!-- Improved Modern badge content -->
+<rect x='0' y='0' width='560' height='140' fill='url(#gradientBg)' filter='url(#dropShadow)' rx='15'/>
+<text x='30' y='60.0' font-family='Helvetica, Arial, sans-serif' font-size='24' fill='white' font-weight='bold'>23.5 min read</text>
+<text x='30' y='90.0' font-family='Helvetica, Arial, sans-serif' font-size='16' fill='white'>2,982 words | 100% complexity</text>
+</svg>

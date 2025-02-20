@@ -1,0 +1,218 @@
+---
+title: "Examples & Recipes"
+description: "Common usage patterns and examples for Markitecture"
+---
+
+## Basic Examples
+
+### Split Large Documentation
+
+Break down a large README into sections by heading:
+
+```bash
+markitecture \
+  --split.i README.md \
+  --split.o docs/ \
+  --split.hl "##"
+```
+
+<Accordion title="Generated Structure">
+```text
+docs/
+├── introduction.md
+├── getting-started.md
+├── features.md
+└── configuration.md
+```
+</Accordion>
+
+### Validate Documentation Links
+
+Check your documentation for broken links:
+
+```bash
+markitect --check-links.i docs/guide.md --check-links.rp report.txt
+```
+
+<Accordion title="Sample Report">
+```text
+Markdown Link Check Results
+
+┏━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┓
+┃ Status ┃ Line ┃ Link                   ┃ Error    ┃
+┡━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━┩
+│ ✓      │ 2    │ https://docs.site.com │          │
+│ 𝗫      │ 34   │ https://broken.link   │ HTTP 404 │
+└────────┴──────┴───────────────────────┴──────────┘
+```
+</Accordion>
+
+### Convert Link Styles
+
+Convert inline links to reference-style:
+
+```bash
+markitect --reflinks.i guide.md --reflinks.o guide_refs.md
+```
+
+<CodeGroup>
+  <CodeBlock title="Before">
+  ```markdown
+  This is a [link to docs](https://docs.example.com) and
+  another [link to API](https://api.example.com).
+  ```
+  </CodeBlock>
+
+  <CodeBlock title="After">
+  ```markdown
+  This is a [link to docs][1] and another [link to API][2].
+
+  [1]: https://docs.example.com
+  [2]: https://api.example.com
+  ```
+  </CodeBlock>
+</CodeGroup>
+
+## Advanced Examples
+
+### Create Documentation Site
+
+Generate a complete MkDocs site with navigation and search:
+
+```bash
+markitecture \
+  --split.i README.md \
+  --split.o docs/ \
+  --mkdocs.dir docs/ \
+  --mkdocs.site-name "API Documentation"
+```
+
+<Accordion title="Generated MkDocs Config">
+```yaml
+site_name: API Documentation
+docs_dir: docs/
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - search.highlight
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - API Reference: api-reference.md
+```
+</Accordion>
+
+### Custom Link Validation
+
+Validate links with custom timeouts and concurrency:
+
+```bash
+markitecture \
+  --check-links.i docs/*.md \
+  --check-links.t 30 \
+  --check-links.mw 10
+```
+
+### Preserve Heading Context
+
+Split documentation while maintaining parent heading context:
+
+<CodeGroup>
+  <CodeBlock title="Original (guide.md)">
+  ```markdown
+  # API Guide
+  Main intro text.
+
+  ## Authentication
+  Auth details...
+
+  ### API Keys
+  Key information...
+
+  ## Endpoints
+  Endpoint info...
+  ```
+  </CodeBlock>
+
+  <CodeBlock title="Split (api-keys.md)">
+  ```markdown
+  # API Guide
+  ## Authentication
+  ### API Keys
+
+  Key information...
+  ```
+  </CodeBlock>
+</CodeGroup>
+
+## Common Recipes
+
+### Blog Post Processing
+Convert blog posts to documentation format:
+
+```bash
+markitecture \
+  --split.i posts/*.md \
+  --split.o docs/blog \
+  --split.hl "#" \
+  --reflinks.o docs/blog/*.md
+```
+
+### API Documentation
+Process API documentation with specific settings:
+
+```yaml
+split:
+  heading_level: "###"
+  output_dir: "docs/api"
+  preserve_refs: true
+  case_sensitive: true
+
+links:
+  validate_urls: true
+  max_workers: 10
+
+mkdocs:
+  site_name: "API Documentation"
+  theme: "material"
+  features:
+    - navigation.tabs
+    - search.highlight
+```
+
+### Technical Documentation
+Settings for large technical documentation:
+
+<CodeGroup>
+```yaml Configuration
+split:
+  min_length: 1000
+  max_length: 5000
+  preserve_context: true
+  smart_splitting: true
+
+analysis:
+  enable_clustering: true
+  min_topic_coherence: 0.8
+
+output:
+  format: mkdocs
+  theme: material
+  syntax_highlight: true
+  math_support: true
+```
+
+```bash Command
+markitecture \
+  --split.i technical_docs/*.md \
+  --split.o docs/technical \
+  --split.hl "##" \
+  --check-links.i docs/technical/*.md \
+  --mkdocs.dir docs/technical
+```
+</CodeGroup>
+
+<Note>
+These examples can be customized further through configuration files or command-line arguments to match your specific needs.
+</Note>

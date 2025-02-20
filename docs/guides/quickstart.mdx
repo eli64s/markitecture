@@ -1,0 +1,145 @@
+---
+title: 'Quick Start'
+description: 'Learn how to install and use Markitecture for your documentation workflow'
+---
+
+## Prerequisites
+
+<Check>
+To use Markitecture, you'll need:
+- Python 3.9 or higher
+- pip (Python package manager)
+- A markdown file to work with
+</Check>
+
+## Installation
+
+Install Markitecture using your preferred package manager:
+
+<CodeGroup>
+```bash pip (recommended)
+pip install -U markitecture
+```
+
+```bash pipx
+pipx install markitecture
+```
+
+```bash uv
+uv pip install markitecture
+```
+</CodeGroup>
+
+Verify the installation by checking the version:
+
+```bash
+markitect --version
+```
+
+## Basic Usage
+
+### Split Markdown Files
+
+Break down large markdown files into smaller, organized sections:
+
+```bash
+markitecture \
+    --split.i docs/guide.md \
+    --split.o docs/sections
+```
+
+This will:
+1. Read the input file `guide.md`
+2. Split it into sections based on headings
+3. Write the sections to separate files in `docs/sections`
+
+### Validate Links
+
+Check your documentation for broken or invalid links:
+
+```bash
+markitect --check-links.i docs/guide.md
+```
+
+You'll see a summary of link validation results:
+
+<Frame>
+```console
+Markdown Link Check Results
+
+┏━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┓
+┃ Status ┃ Line ┃ Link                   ┃ Error   ┃
+┡━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━┩
+│ ✓      │ 2    │ https://docs.site.com │           │
+│ 𝗫      │ 34   │ https://broken.link   │ HTTP 404  │
+└────────┴──────┴───────────────────────┴──────────┘
+
+
+Summary: 1 broken links out of 2 total links.
+```
+</Frame>
+
+### Convert Link Styles
+
+Convert inline links to reference-style for better maintainability:
+
+```bash
+markitect --reflinks.i docs/guide.md --reflinks.o docs/with_refs.md
+```
+
+This converts from:
+
+```markdown
+Check out [our docs](https://docs.example.com) and [repo](https://github.com/example).
+```
+
+To:
+
+```markdown
+Check out [our docs][1] and [repo][2].
+
+[1]: https://docs.example.com
+[2]: https://github.com/example
+```
+
+### Generate Documentation Site
+
+Create a MkDocs static site from your markdown:
+
+```bash
+markitecture \
+    --split.i docs/guide.md \
+    --split.o docs/sections \
+    --mkdocs.dir docs/sections \
+    --mkdocs.site-name "My Documentation"
+```
+
+## Configuration
+
+Create a `markitect.yml` file to configure default settings:
+
+```yaml
+# Core settings
+split:
+  min_length: 500
+  max_length: 2000
+  preserve_context: true
+  smart_splitting: true
+
+# Output settings
+output:
+  format: mkdocs
+  theme: material
+  syntax_highlight: true
+```
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="View Examples" icon="code" href="/examples">
+    See real-world examples of Markitecture usage
+  </Card>
+  <Card title="Core Features" icon="stars" href="/features">
+    Learn about Markitecture's key capabilities
+  </Card>
+</CardGroup>

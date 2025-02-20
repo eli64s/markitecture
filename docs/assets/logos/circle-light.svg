@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+    <defs>
+        <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="20%" style="stop-color:#FFD700" />
+            <stop offset="40%" style="stop-color:#00E5FF" />
+            <stop offset="60%" style="stop-color:#7934C5" />
+            <stop offset="80%" style="stop-color:#FF00FF" />
+        </linearGradient>
+        <!-- Subtle glow for light mode -->
+        <filter id="lightGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0
+                                  0 1 0 0 0
+                                  0 0 1 0 0
+                                  0 0 0 2 -0.5" />
+            <feComposite in="blur" operator="over" in2="SourceGraphic" />
+        </filter>
+        <!-- Light background pattern -->
+        <pattern id="lightPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect width="40" height="40" fill="#FFFFFF" />
+            <path d="M0,20 L40,20 M20,0 L20,40" stroke="url(#mainGradient)" stroke-width="0.5" opacity="0.05" />
+        </pattern>
+    </defs>
+    <!-- Light background -->
+    <rect width="1200" height="800" fill="#FFFFFF" />
+    <rect width="1200" height="800" fill="url(#lightPattern)" />
+    <!-- Large circular frame -->
+    <g transform="translate(600,400)">
+        <!-- Outer circle -->
+        <circle cx="0" cy="0" r="380" fill="none" stroke="url(#mainGradient)" stroke-width="3" opacity="0.2" />
+        <!-- Middle circle -->
+        <circle cx="0" cy="0" r="320" fill="none" stroke="url(#mainGradient)" stroke-width="2" opacity="0.3" />
+        <!-- Inner circle -->
+        <circle cx="0" cy="0" r="260" fill="none" stroke="url(#mainGradient)" stroke-width="1" opacity="0.4" />
+        <!-- Main split lines -->
+        <g filter="url(#lightGlow)">
+            <line x1="-380" y1="0" x2="380" y2="0" stroke="url(#mainGradient)" stroke-width="4" opacity="0.6" />
+            <line x1="0" y1="-380" x2="0" y2="380" stroke="url(#mainGradient)" stroke-width="4" opacity="0.6" />
+        </g>
+        <!-- Diagonal split lines -->
+        <line x1="-269" y1="-269" x2="269" y2="269" stroke="url(#mainGradient)" stroke-width="3" opacity="0.4" />
+        <line x1="-269" y1="269" x2="269" y2="-269" stroke="url(#mainGradient)" stroke-width="3" opacity="0.4" />
+    </g>
+    <!-- Main text -->
+    <g transform="translate(600,400)">
+        <!-- Text shadow -->
+        <text font-family="Arial Black, sans-serif" font-size="120" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="url(#mainGradient)" opacity="0.1" filter="url(#lightGlow)">
+            Markitecture
+        </text>
+        <!-- Main text -->
+        <text font-family="Arial Black, sans-serif" font-size="120" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="url(#mainGradient)">
+            Markitecture
+        </text>
+    </g>
+    <!-- Decorative corner elements -->
+    <g stroke="url(#mainGradient)" stroke-width="3" opacity="0.3">
+        <!-- Top corners -->
+        <path d="M50,50 L120,50 L120,120" />
+        <path d="M1150,50 L1080,50 L1080,120" />
+        <!-- Bottom corners -->
+        <path d="M50,750 L120,750 L120,680" />
+        <path d="M1150,750 L1080,750 L1080,680" />
+    </g>
+</svg>
