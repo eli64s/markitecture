@@ -2,9 +2,9 @@
 
 <!-- HEADER -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/markitecture/77bec69129dd3a075d7d0816c7bd826da131ccc7/docs/assets/markitecture-circle-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/markitecture/77bec69129dd3a075d7d0816c7bd826da131ccc7/docs/assets/markitecture-circle-light.svg">
-  <img alt="markitecture Logo" src="https://raw.githubusercontent.com/eli64s/markitecture/77bec69129dd3a075d7d0816c7bd826da131ccc7/docs/assets/markitecture-circle-light.svg" width="900" style="max-width: 100%;">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/markitecture/13c4b28213fb8e8c75299ef5c905ce1d195a6988/docs/assets/logos/circle-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/markitecture/13c4b28213fb8e8c75299ef5c905ce1d195a6988/docs/assets/logos/circle-light.svg">
+  <img alt="markitecture Logo" src="https://raw.githubusercontent.com/eli64s/markitecture/13c4b28213fb8e8c75299ef5c905ce1d195a6988/docs/assets/logos/circle-light.svg" width="900" style="max-width: 100%;">
 </picture>
 
 <h3 align="center">
