@@ -32,13 +32,10 @@ ENV/
 .pytest_cache/
 .ruff_cache/
 .reports/
-notebooks/
 site/
 .continuerules
 
-# Splitme
-.splitme/
-docs/*.md
-docs/features/
-docs/integrations/
-src/splitme/ai/
+# -- Markitect ---------
+markitect.yml
+.markitecture/
+notebooks/

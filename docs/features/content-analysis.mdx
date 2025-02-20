@@ -1,0 +1,327 @@
+---
+title: "Document Analytics & Badges"
+description: "Generate beautiful metric badges and analyze document readability"
+---
+
+<Frame>
+  <img
+    className="hidden dark:block"
+    src="../../examples/metrics/metrics_modern.svg"
+    alt="Markitecture Metric Badge - Modern"
+  />
+  <img
+    className="block dark:hidden"
+    src="../../examples/metrics/metrics_modern.svg"
+    alt="Markitecture Metric Badge - Modern"
+  />
+</Frame>
+
+## Overview
+
+Markitecture can analyze your documentation to provide insights on readability, complexity, and content structure through beautiful metric badges.
+
+<CodeGroup>
+```bash Command Line
+markitect --metrics.i docs/guide.md --metrics.s modern
+```
+
+```python Python
+from markitecture.metrics import MetricsGenerator
+
+# Generate metrics badge
+metrics = MetricsGenerator().create_badge(
+    input_file='docs/guide.md',
+    style='modern'
+)
+```
+</CodeGroup>
+
+## Badge Styles
+
+Choose from 6 beautiful badge styles to match your documentation aesthetic.
+
+<Tabs>
+  <Tab title="Modern">
+    <Frame>
+        <div className="text-center mb-8">
+        <div className="relative dark:hidden">
+            <img
+            className="mx-auto max-w-3xl"
+            src="/assets/badges/modern.svg"
+            />
+        </div>
+        <div className="relative hidden dark:block">
+            <img
+            className="mx-auto max-w-3xl"
+            src="/assets/badges/modern.svg"
+            />
+            </div>
+        </div>
+    </Frame>
+
+    A sleek, modern design with gradients and comprehensive metrics.
+    ```bash
+    markitect --metrics.i input.md --metrics.s modern
+    ```
+  </Tab>
+
+  <Tab title="Compact">
+    <Frame>
+        <div className="text-center mb-8">
+        <div className="relative dark:hidden">
+            <img
+            className="mx-auto max-w-3xl"
+            src="/assets/badges/comapct.svg"
+            />
+        </div>
+        <div className="relative hidden dark:block">
+            <img
+            className="mx-auto max-w-3xl"
+            src="/assets/badges/comapct.svg"
+            />
+            </div>
+        </div>
+    </Frame>
+    Minimalist single-line design for essential metrics.
+    ```bash
+    markitect --metrics.i input.md --metrics.s compact
+    ```
+  </Tab>
+
+  <Tab title="Detailed">
+    <Frame>
+        <div className="text-center mb-8">
+        <svg xmlns="favicon.svg width="200" height="55">
+            <defs>
+                <!-- Updated Linear Gradient with specified colors -->
+                <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="25%" style="stop-color:#FFD700" />
+                    <stop offset="50%" style="stop-color:#00E5FF" />
+                    <stop offset="75%" style="stop-color:#7934C5" />
+                    <stop offset="100%" style="stop-color:#FF00FF" />
+                </linearGradient>
+                <!-- Neon Glow Filter -->
+                <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="2" result="glow" />
+                    <feComposite operator="over" in="glow" in2="SourceGraphic" />
+                    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#29a1f3" flood-opacity="0.5" />
+                </filter>
+            </defs>
+            <!-- Badge Background -->
+            <rect x="0" y="0" width="200" height="50" fill="#0a0a0a" rx="8" />
+            <!-- Logo Group -->
+            <g transform="translate(10, 5)">
+                <g transform="scale(0.07)">
+                    <!-- Outer Circle -->
+                    <circle cx="256" cy="256" r="256" fill="#0a0a0a" />
+                    <!-- Main Logo with Neon Glow -->
+                    <g filter="url(#neonGlow)">
+                        <!-- Outer Ring -->
+                        <circle cx="256" cy="256" r="220" fill="none" stroke="url(#neonGradient)" stroke-width="4" stroke-dasharray="30 15" />
+                        <!-- Diamond Shape -->
+                        <path d="M256 76 L436 256 L256 436 L76 256 Z" fill="none" stroke="url(#neonGradient)" stroke-width="4" />
+                        <!-- Central Circles -->
+                        <circle cx="256" cy="256" r="40" fill="none" stroke="url(#neonGradient)" stroke-width="8" />
+                        <circle cx="256" cy="256" r="20" fill="" />
+                    </g>
+                </g>
+            </g>
+            <text x="50" y="25" font-family="'Helvetica Neue', sans-serif" font-size="22" font-weight="600" fill="url(#neonGradient)" letter-spacing="0.5"
+                alignment-baseline="middle">
+                Markitecture
+            </text>
+        </svg>
+        </div>
+    </Frame>
+    Expanded view with all document metrics and complexity score.
+    ```bash
+    markitect --metrics.i input.md --metrics.s detailed
+    ```
+  </Tab>
+
+  <Tab title="Minimal">
+    <Frame>
+      <img src="/assets/badges/minimal.svg" alt="Minimal Badge" />
+    </Frame>
+    Clean, simple design focused on key metrics.
+    ```bash
+    markitect --metrics.i input.md --metrics.s minimal
+    ```
+  </Tab>
+
+  <Tab title="Retro">
+    <Frame>
+      <img src="/assets/badges/retro.svg" alt="Retro Badge" />
+    </Frame>
+    Classic badge style with pixelated corners.
+    ```bash
+    markitect --metrics.i input.md --metrics.s retro
+    ```
+  </Tab>
+
+  <Tab title="Shields">
+    <Frame>
+      <img src="/assets/badges/shields.svg" alt="Shields Badge" />
+    </Frame>
+    shields.io style badges for each metric.
+    ```bash
+    markitect --metrics.i input.md --metrics.s shields
+    ```
+  </Tab>
+</Tabs>
+
+## Content Analysis
+
+<AccordionGroup>
+  <Accordion title="Reading Metrics" icon="book-open">
+    * **Reading Time**: Estimated time to read content
+    * **Word Count**: Total words excluding code and URLs
+    * **Average Sentence Length**: Words per sentence
+    * **Content Density**: Distribution of content types
+  </Accordion>
+
+  <Accordion title="Structure Analysis" icon="sitemap">
+    * **Heading Count**: Number of section headers
+    * **Code Blocks**: Count of code snippets
+    * **Links**: Number of internal/external links
+    * **Images**: Count of embedded images
+  </Accordion>
+
+  <Accordion title="Complexity Score" icon="chart-line">
+    Document complexity (0-100) based on:
+    * Sentence length (30%)
+    * Code density (30%)
+    * Heading structure (20%)
+    * Link density (10%)
+    * Image ratio (10%)
+  </Accordion>
+</AccordionGroup>
+
+## Style Customization
+
+Customize badge appearance through color gradients and thresholds.
+
+<CodeGroup>
+```python Custom Colors
+# Configure gradient colors for complexity levels
+GRADIENT_COLORS = {
+    "low": ["#7934C5", "#4158D0"],    # Purple -> Blue
+    "medium": ["#00E5FF", "#4158D0"],  # Cyan -> Blue
+    "high": ["#FFD700", "#FF00FF"]     # Gold -> Pink
+}
+```
+
+```python Thresholds
+# Adjust complexity thresholds
+def get_gradient_colors(score: float) -> tuple[str, str]:
+    if score < 40:          # Low complexity
+        return GRADIENT_COLORS["low"]
+    elif score < 70:        # Medium complexity
+        return GRADIENT_COLORS["medium"]
+    return GRADIENT_COLORS["high"]  # High complexity
+```
+</CodeGroup>
+
+## Integration
+
+Add metric badges to your documentation automatically:
+
+<Steps>
+  <Step title="Add to Pipeline">
+    Include metrics generation in your documentation pipeline:
+    ```python
+    from markitecture.metrics import add_metrics_badge
+
+    add_metrics_badge(
+        input_file="README.md",
+        style="modern",
+        position="top"  # or "bottom"
+    )
+    ```
+  </Step>
+
+  <Step title="Configure Style">
+    Choose badge style and customize colors:
+    ```python
+    # Available styles
+    BadgeStyle = Enum(
+        "MODERN",    # Default modern with gradients
+        "COMPACT",   # Minimalist single-line
+        "DETAILED",  # Expanded with all metrics
+        "MINIMAL",   # Clean, simple design
+        "RETRO",     # Classic badge style
+        "SHIELDS"    # shields.io style
+    )
+    ```
+  </Step>
+
+  <Step title="Generate Badge">
+    Run metrics generation:
+    ```bash
+    markitect --metrics.i input.md --metrics.o badge.svg
+    ```
+  </Step>
+</Steps>
+
+## API Reference
+
+<ResponseField name="analyze_document" type="function">
+  ```python
+  def analyze_document(content: str) -> ReadabilityMetrics:
+      """Analyze document and generate readability metrics."""
+  ```
+  Returns metrics object with:
+  * `word_count`: Total word count
+  * `sentence_count`: Number of sentences
+  * `avg_words_per_sentence`: Average words per sentence
+  * `reading_time_mins`: Estimated reading time
+  * `complexity_score`: Document complexity (0-100)
+  * `heading_count`: Number of headings
+  * `code_block_count`: Number of code blocks
+  * `link_count`: Number of links
+  * `image_count`: Number of images
+</ResponseField>
+
+<ResponseField name="generate_svg" type="function">
+  ```python
+  def generate_svg(
+      metrics: ReadabilityMetrics,
+      style: BadgeStyle = BadgeStyle.MODERN
+  ) -> str:
+      """Generate SVG badge with specified style."""
+  ```
+</ResponseField>
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Badge Placement" icon="arrow-up-right-from-square">
+    Position badges at the top of documentation for visibility:
+    ```markdown
+    ![Metrics](badge.svg)
+    # Document Title
+    Content...
+    ```
+  </Card>
+
+  <Card title="Style Selection" icon="paintbrush">
+    Choose badge style based on:
+    - Modern/Detailed: Main documentation
+    - Compact/Minimal: READMEs
+    - Shields: Technical docs
+  </Card>
+
+  <Card title="Color Schemes" icon="palette">
+    Match badge colors to your:
+    - Documentation theme
+    - Brand colors
+    - Code highlighting
+  </Card>
+
+  <Card title="Updates" icon="rotate">
+    Regenerate badges when:
+    - Content changes significantly
+    - Structure is modified
+    - New sections added
+  </Card>
+</CardGroup>

@@ -1,0 +1,124 @@
+{
+  "name": "Markitecture",
+  "logo": {
+    "light": "/assets/logos/circle-light.svg",
+    "dark": "/assets/logos/circle-dark.svg"
+  },
+  "favicon": "/assets/favicon.svg",
+  "colors": {
+    "primary": "#7934C5",
+    "light": "#FF00FF",
+    "dark": "#00E5FF",
+    "background": {
+      "dark": "#000000",
+      "light": "#FFFFFF"
+    }
+  },
+  "layout": "sidenav",
+  "background": {
+    "style": "gradient"
+  },
+  "font": {
+    "headings": {
+      "family": "JetBrains Mono"
+    },
+    "body": {
+      "family": "Inter"
+    }
+  },
+  "modeToggle": {
+    "default": "light",
+    "isHidden": false
+  },
+  "sidebar": {
+    "items": "border"
+  },
+  "search": {
+    "location": "top",
+    "prompt": "what's up?"
+  },
+  "rounded": "default",
+  "codeBlock": {
+    "mode": "auto"
+  },
+  "topbarLinks": [
+    {
+      "name": "Contact Us",
+      "url": "mailto:egsalamie@gmail.com"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Install Now",
+    "url": "https://pypi.org/project/markitecture/"
+  },
+  "anchors": [
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "color": "#FFD700",
+      "url": "https://github.com/eli64s/markitecture"
+    },
+    {
+      "name": "Community",
+      "icon": "comments",
+      "color": "#00E5FF",
+      "url": "https://github.com/eli64s/markitecture/discussions"
+    },
+    {
+      "name": "Twitter",
+      "icon": "twitter",
+      "color": "#7934C5",
+      "url": "https://twitter.com/zerox_eli"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "color": "#FF00FF",
+      "url": "https://www.linkedin.com/in/salamieeli/"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "/index",
+        "/guides/quickstart",
+        "/philosophy",
+        "/community"
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "/guides/installation",
+        "/guides/configuration",
+        "/guides/cli-reference",
+        "/guides/api-reference"
+      ]
+    },
+    {
+      "group": "Features",
+      "pages": [
+        "/features/text-splitting",
+        "/features/link-management",
+        "/features/content-analysis",
+        "/features/static-site-generation"
+      ]
+    },
+    {
+      "group": "Cookbooks",
+      "pages": [
+        "/cookbooks/examples"
+      ]
+    },
+    {
+      "group": "Community",
+      "pages": [
+        "community"
+      ]
+    }
+  ],
+  "versions": [
+    "v0.1.12"
+  ]
+}

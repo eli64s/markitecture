@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 120"><!-- Retro badge content -->
+<rect x='4' y='4' width='472' height='112' fill='white' stroke='#333' stroke-width='2' />
+<rect x='0' y='0' width='4' height='4' fill='#333' />
+<rect x='476' y='0' width='4' height='4' fill='#333' />
+<rect x='0' y='116' width='4' height='4' fill='#333' />
+<rect x='476' y='116' width='4' height='4' fill='#333' />
+<text x='240.0' y='40' font-family='Courier, monospace' font-size='16' fill='#333' text-anchor='middle'>DOCUMENT METRICS</text>
+<text x='240.0' y='70' font-family='Courier, monospace' font-size='14' fill='#666' text-anchor='middle'>23.5m | 2,982 words | 100% comp.</text>
+<text x='240.0' y='95' font-family='Courier, monospace' font-size='12' fill='#999' text-anchor='middle'>H:41 C:33 L:9 I:1</text>
+</svg>

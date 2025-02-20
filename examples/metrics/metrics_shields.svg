@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 195">
+  <defs>
+    <style>
+      @font-face {
+        font-family: "DejaVu Sans";
+        src: url("https://cdn.jsdelivr.net/npm/dejavu-fonts-ttf@2.37.3/ttf/DejaVuSans.ttf");
+      }
+    </style>
+  </defs>
+  <g transform="translate(10, 10)">
+
+  <linearGradient id="smooth" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="round">
+    <rect width="144" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#round)">
+    <rect width="84" height="20" fill="#555555"/>
+    <rect x="84" width="60" height="20" fill="#4c1"/>
+    <rect width="144" height="20" fill="url(#smooth)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <text x="42.0" y="15" fill="#010101" fill-opacity=".3">reading time</text>
+    <text x="42.0" y="14">reading time</text>
+    <text x="114.0" y="15" fill="#010101" fill-opacity=".3">23.5 min</text>
+    <text x="114.0" y="14">23.5 min</text>
+  </g>
+
+  </g>
+  <g transform="translate(10, 35)">
+
+  <linearGradient id="smooth" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="round">
+    <rect width="108" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#round)">
+    <rect width="72" height="20" fill="#555555"/>
+    <rect x="72" width="36" height="20" fill="#FFD700"/>
+    <rect width="108" height="20" fill="url(#smooth)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <text x="36.0" y="15" fill="#010101" fill-opacity=".3">complexity</text>
+    <text x="36.0" y="14">complexity</text>
+    <text x="90.0" y="15" fill="#010101" fill-opacity=".3">100%</text>
+    <text x="90.0" y="14">100%</text>
+  </g>
+
+  </g>
+  <g transform="translate(10, 60)">
+
+  <linearGradient id="smooth" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="round">
+    <rect width="78" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#round)">
+    <rect width="42" height="20" fill="#555555"/>
+    <rect x="42" width="36" height="20" fill="#1E90FF"/>
+    <rect width="78" height="20" fill="url(#smooth)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <text x="21.0" y="15" fill="#010101" fill-opacity=".3">words</text>
+    <text x="21.0" y="14">words</text>
+    <text x="60.0" y="15" fill="#010101" fill-opacity=".3">2982</text>
+    <text x="60.0" y="14">2982</text>
+  </g>
+
+  </g>
+  <g transform="translate(10, 85)">
+
+  <linearGradient id="smooth" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="round">
+    <rect width="84" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#round)">
+    <rect width="60" height="20" fill="#555555"/>
+    <rect x="60" width="24" height="20" fill="#9370DB"/>
+    <rect width="84" height="20" fill="url(#smooth)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <text x="30.0" y="15" fill="#010101" fill-opacity=".3">headings</text>
+    <text x="30.0" y="14">headings</text>
+    <text x="72.0" y="15" fill="#010101" fill-opacity=".3">41</text>
+    <text x="72.0" y="14">41</text>
+  </g>
+
+  </g>
+  <g transform="translate(10, 110)">
+
+  <linearGradient id="smooth" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="round">
+    <rect width="102" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#round)">
+    <rect width="78" height="20" fill="#555555"/>
+    <rect x="78" width="24" height="20" fill="#FF6347"/>
+    <rect width="102" height="20" fill="url(#smooth)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <text x="39.0" y="15" fill="#010101" fill-opacity=".3">code blocks</text>
+    <text x="39.0" y="14">code blocks</text>
+    <text x="90.0" y="15" fill="#010101" fill-opacity=".3">33</text>
+    <text x="90.0" y="14">33</text>
+  </g>
+
+  </g>
+  <g transform="translate(10, 135)">
+
+  <linearGradient id="smooth" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="round">
+    <rect width="60" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#round)">
+    <rect width="42" height="20" fill="#555555"/>
+    <rect x="42" width="18" height="20" fill="#20B2AA"/>
+    <rect width="60" height="20" fill="url(#smooth)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <text x="21.0" y="15" fill="#010101" fill-opacity=".3">links</text>
+    <text x="21.0" y="14">links</text>
+    <text x="51.0" y="15" fill="#010101" fill-opacity=".3">9</text>
+    <text x="51.0" y="14">9</text>
+  </g>
+
+  </g>
+  <g transform="translate(10, 160)">
+
+  <linearGradient id="smooth" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="round">
+    <rect width="66" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#round)">
+    <rect width="48" height="20" fill="#555555"/>
+    <rect x="48" width="18" height="20" fill="#DEB887"/>
+    <rect width="66" height="20" fill="url(#smooth)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+    <text x="24.0" y="15" fill="#010101" fill-opacity=".3">images</text>
+    <text x="24.0" y="14">images</text>
+    <text x="57.0" y="15" fill="#010101" fill-opacity=".3">1</text>
+    <text x="57.0" y="14">1</text>
+  </g>
+
+  </g>
+</svg>

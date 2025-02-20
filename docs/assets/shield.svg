@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="30" viewBox="0 0 140 30" preserveAspectRatio="xMinYMin meet">
+    <defs>
+        <!-- Updated Linear Gradient with specified colors -->
+        <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="25%" style="stop-color:#FFD700" />
+            <stop offset="50%" style="stop-color:#00E5FF" />
+            <stop offset="75%" style="stop-color:#7934C5" />
+            <stop offset="100%" style="stop-color:#FF00FF" />
+        </linearGradient>
+        <!-- Neon Glow Filter -->
+        <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="1.5" result="glow" />
+            <feComposite operator="over" in="glow" in2="SourceGraphic" />
+            <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#29a1f3" flood-opacity="0.5" />
+        </filter>
+    </defs>
+    <!-- Badge Background -->
+    <rect x="0" y="0" width="140" height="30" fill="#0a0a0a" rx="5" />
+    <!-- Logo Group -->
+    <g transform="translate(5,3) scale(0.05)">
+        <!-- Outer Circle -->
+        <circle cx="256" cy="256" r="256" fill="#0a0a0a" />
+        <!-- Main Logo with Neon Glow -->
+        <g filter="url(#neonGlow)">
+            <!-- Outer Ring -->
+            <circle cx="256" cy="256" r="220" fill="none" stroke="url(#neonGradient)" stroke-width="4" stroke-dasharray="30 15" />
+            <!-- Diamond Shape -->
+            <path d="M256 76 L436 256 L256 436 L76 256 Z" fill="none" stroke="url(#neonGradient)" stroke-width="4" />
+            <!-- Central Circles -->
+            <circle cx="256" cy="256" r="40" fill="none" stroke="url(#neonGradient)" stroke-width="8" />
+            <circle cx="256" cy="256" r="20" fill="" />
+        </g>
+    </g>
+    <text x="40" y="15" font-family="'Helvetica Neue', sans-serif" font-size="14" font-weight="500" fill="url(#neonGradient)" letter-spacing="0.5" alignment-baseline="middle">
+        markitecture
+    </text>
+</svg>
