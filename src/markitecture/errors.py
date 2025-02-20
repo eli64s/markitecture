@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from typing import Any
 
-# ----- Base ----- #
+# -------------------------------------------------------------------
+# Base Exceptions
+# -------------------------------------------------------------------
 
 
 class MarkitectureBaseError(Exception):
@@ -25,7 +27,9 @@ class FileOperationError(MarkitectureBaseError):
     ...
 
 
-# ----- CLI ----- #
+# -------------------------------------------------------------------
+# Command-Line Interface (CLI) Exceptions
+# -------------------------------------------------------------------
 
 
 class CLIError(MarkitectureBaseError):
@@ -35,7 +39,9 @@ class CLIError(MarkitectureBaseError):
         super().__init__(f"Invalid option provided to CLI: {message}", *args)
 
 
-# ----- File IO ----- #
+# -------------------------------------------------------------------
+# File System Exceptions
+# -------------------------------------------------------------------
 
 
 class FileSystemError(MarkitectureBaseError):

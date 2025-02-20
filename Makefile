@@ -7,7 +7,7 @@ MAKEFLAGS += --no-builtin-rules
 
 DOCS_DIR := docs
 PYPROJECT_TOML := pyproject.toml
-PYPI_VERSION := 0.2.2
+PYPI_VERSION := 0.2.3
 PYTHON_VERSION := 3.11
 TARGET := src/markitecture
 TARGET_TEST := tests
@@ -131,10 +131,11 @@ run-pypi: ## Run examples for documentation
 	uvx --from markitecture markitect --split.i $(TEST_DATA) --split.o examples/text-splitter/pypi/header-3/ --split.level "###"
 	uvx --from markitecture markitect --split.i $(TEST_DATA) --split.o examples/text-splitter/pypi/header-4/ --split.level "####"
 	uvx --from markitecture markitect --reflinks.i tests/data/pydantic.md --reflinks.o examples/reference-links/reflinks_conversion.md
+	uvx --from markitecture --isolated markitect --metrics.input $HOME/Projects/GitHub/readme-ai/README.md --metrics.style all --metrics.output-dir markitet_badges
 
 
 # -------------------------------------------------------------------
-# Utils: Utility commands for managing the project
+# Utils: Commands for cleaning up and managing the project
 # -------------------------------------------------------------------
 
 

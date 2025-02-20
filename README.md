@@ -8,7 +8,7 @@
 </picture>
 
 <h3 align="center">
-   Building Blocks for Brilliant Documentation.
+   The Architecture of Better Documentation.
 </h3>
 <p align="center">
   <em>Markitecture: The Python toolkit that empowers modular Markdown workflows.</em>
@@ -204,11 +204,17 @@ Contributions are welcome! Whether it's bug reports, feature requests, or code c
 Copyright © 2024-2025 [Markitecture][markitecture]. <br />
 Released under the [MIT][mit-license] license.
 
-<div align="left">
+<div align="right">
+
+[![][back-to-top]](#top)
+
+</div>
+
+<!-- <div align="left">
   <a href="#top">
     <img src="https://raw.githubusercontent.com/eli64s/markitecture/77bec69129dd3a075d7d0816c7bd826da131ccc7/docs/assets/buttons/rectangle.svg" width="100px" height="100px" alt="Return to Top">
   </a>
-</div>
+</div> -->
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/eli64s/markitecture/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg" alt="separator" width="100%" height="2px" style="margin: 20px 0;">
@@ -216,6 +222,9 @@ Released under the [MIT][mit-license] license.
 
 
 <!-- REFERENCE LINKS -->
+
+<!-- BADGES -->
+[back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-7934C5?style=flat-square
 
 <!-- PROJECT RESOURCES -->
 [pypi]: https://pypi.org/project/markitecture/
