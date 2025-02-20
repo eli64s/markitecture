@@ -7,7 +7,7 @@ MAKEFLAGS += --no-builtin-rules
 
 DOCS_DIR := docs
 PYPROJECT_TOML := pyproject.toml
-PYPI_VERSION := 0.1.13
+PYPI_VERSION := 0.1.15
 PYTHON_VERSION := 3.11
 TARGET := src/markitecture
 TARGET_TEST := tests
