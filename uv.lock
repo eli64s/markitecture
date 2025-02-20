@@ -1458,13 +1458,14 @@ wheels = [
 
 [[package]]
 name = "markitecture"
-version = "0.1.13"
+version = "0.2.1"
 source = { editable = "." }
 dependencies = [
     { name = "httpx" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
     { name = "pyyaml" },
+    { name = "requests" },
     { name = "rich" },
     { name = "toml", marker = "python_full_version < '3.11'" },
 ]
@@ -1501,6 +1502,7 @@ requires-dist = [
     { name = "pydantic" },
     { name = "pydantic-settings" },
     { name = "pyyaml" },
+    { name = "requests" },
     { name = "rich" },
     { name = "toml", marker = "python_full_version < '3.11'" },
 ]
