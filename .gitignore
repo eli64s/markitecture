@@ -39,3 +39,4 @@ site/
 markitect.yml
 .markitecture/
 notebooks/
+.github/workflows/tag-version.yml
