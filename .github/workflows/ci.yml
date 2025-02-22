@@ -11,12 +11,12 @@ on:
 
 env:
   UV_CACHE_DIR: ${{ github.workspace }}/.cache/uv
+  CACHE_NUMBER: 0
 
 jobs:
   test:
     name: Test Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
-
     strategy:
       fail-fast: false
       matrix:
@@ -50,17 +50,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          uv run pytest \
-            -vv \
-            --tb=short \
-            --durations=5 \
-            --cov=src/markitecture \
-            --cov-branch \
-            --cov-fail-under=0 \
-            --cov-report=term-missing:skip-covered \
-            --cov-report=json:tests/.reports/coverage.json \
-            --asyncio-mode=auto \
-            --numprocesses=auto
+          uv run pytest --config-file="pyproject.toml" --cov-config="pyproject.toml"
 
       - name: Verify coverage report
         run: |
@@ -86,7 +76,6 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -116,15 +105,40 @@ jobs:
     name: Deploy to PyPI
     needs: build
     runs-on: ubuntu-latest
-    # if: success() && startsWith(github.ref, 'refs/tags/v')
     environment:
       name: pypi
       url: https://pypi.org/p/markitecture
     permissions:
       id-token: write
-
+    env:
+      CACHE_NUMBER: 1
     steps:
-      - name: Download dist artifacts
+      - name: Checkout repository with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Bump version
+        if: success()
+        run: |
+          version=$(grep -oP '__version__ = "\K[^"]+' vlmrun/hub/version.py)
+          echo "Current version: ${version}"
+
+          version=$(grep -oP '__version__ = "\K[^"]+' src/markitecture/version.py)
+          echo "Current version: ${version}"
+
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          git tag -a "v${version}" -m "Release version ${version}"
+          echo "Tag v${version} created."
+
+          git push origin main
+          git push origin "v${version}"
+          echo "Tag v${version} pushed."
+
+      - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: dist

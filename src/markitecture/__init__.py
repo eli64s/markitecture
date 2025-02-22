@@ -1,5 +1,3 @@
-from importlib.metadata import version
-
 from markitecture import metrics
 
 from .errors import (
@@ -19,8 +17,7 @@ from .processing.reflink_converter import (
 from .processing.text_splitter import MarkdownTextSplitter
 from .utils.file_handler import FileHandler
 from .utils.printer import RichPrinter
-
-__version__ = version("markitecture")
+from .version import __version__
 
 __all__: list[str] = [
     "FileHandler",

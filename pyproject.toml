@@ -4,9 +4,8 @@ requires = [ "hatch-fancy-pypi-readme", "hatchling" ]
 
 [project]
 name = "markitecture"
-version = "0.2.3"
 description = "❂ Markdown tools for modular and flexible docs: link validation, reference link conversion, text splitting, & more."
-dynamic = ["readme"]
+dynamic = ["readme", "version"]
 keywords = [
     "automated-markdown",
     "content-management",
@@ -107,7 +106,7 @@ include = [
 ]
 
 [tool.hatch.version]
-path = 'src/markitecture/__init__.py'
+path = 'src/markitecture/version.py'
 
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -127,16 +126,13 @@ path = "README.md"
 [tool.pytest.ini_options]
 addopts = [
     "-vv",
-    "-rfEsxX",
-    "--tb=short",
+    "-n=auto",
     "--durations=5",
     "--cov=src/",
     "--cov-branch",
-    "--cov-fail-under=1",
+    "--cov-fail-under=0",
     "--cov-report=term-missing:skip-covered",
     "--cov-report=json:tests/.reports/coverage.json",
-    "--asyncio-mode=auto",
-    "--numprocesses=auto",
 ]
 asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
