@@ -111,16 +111,11 @@ jobs:
     environment:
       name: pypi
       url: https://pypi.org/p/markitecture
-    permissions:
-      id-token: write
-    env:
-      CACHE_NUMBER: 1
     steps:
       - name: Checkout repository with full history
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Bump version and push tag
         if: success()
