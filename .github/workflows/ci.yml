@@ -13,9 +13,6 @@ env:
   UV_CACHE_DIR: ${{ github.workspace }}/.cache/uv
   CACHE_NUMBER: 0
 
-permissions:
-  contents: write
-
 jobs:
   test:
     name: Test Python ${{ matrix.python-version }}
@@ -105,6 +102,8 @@ jobs:
           path: dist/
 
   deploy:
+    permissions:
+      id-token: write
     name: Deploy to PyPI
     needs: build
     runs-on: ubuntu-latest
