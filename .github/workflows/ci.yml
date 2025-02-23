@@ -119,9 +119,12 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Bump version
+      - name: Bump version and push tag
         if: success()
         run: |
+          version=$(grep -oP '__version__ = "\K[^"]+' src/markitecture/version.py)
+          echo "Current version: ${version}"
+
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
@@ -131,6 +134,8 @@ jobs:
           git push origin main
           git push origin "v${version}"
           echo "Tag v${version} pushed."
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
