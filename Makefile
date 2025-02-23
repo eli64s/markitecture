@@ -7,17 +7,40 @@ MAKEFLAGS += --no-builtin-rules
 
 DOCS_DIR := docs
 PYPROJECT_TOML := pyproject.toml
-PYPI_VERSION := 0.2.3
+PYPI_VERSION := 0.2.31
 PYTHON_VERSION := 3.11
 TARGET := src/markitecture
 TARGET_TEST := tests
-TEST_DATA := tests/data/readme-ai.md
+
+# -------------------------
+# Repository Cleanup
+# -------------------------
+
+clean: clean-build clean-pyc clean-test ## Remove all build, test, coverage, and Python artifacts
+
+clean-build: ## Remove build artifacts
+	rm -fr build/
+	rm -fr dist/
+	rm -fr .eggs/
+	find . -name '*.egg-info' -exec rm -fr {} +
+	find . -name '*.egg' -exec rm -f {} +
+
+clean-pyc: ## Remove Python file artifacts
+	find . -name '*.pyc' -exec rm -f {} +
+	find . -name '*.pyo' -exec rm -f {} +
+	find . -name '*~' -exec rm -f {} +
+	find . -name '__pycache__' -exec rm -fr {} +
+
+clean-test: ## Remove test and coverage artifacts
+	rm -fr .tox/
+	rm -f .coverage
+	rm -fr htmlcov/
+	rm -fr .pytest_cache
 
 
-# -------------------------------------------------------------------
-# Build: Build the distribution package using uv
-# -------------------------------------------------------------------
-
+# -------------------------
+# Development Environment
+# -------------------------
 
 .PHONY: build
 build: ## Build the distribution package using uv
@@ -50,18 +73,18 @@ venv: ## Create a virtual environment
 	uv venv --python $(PYTHON_VERSION)
 
 
-# -------------------------------------------------------------------
-# Documenation: Build and serve static site using MkDocs
-# -------------------------------------------------------------------
+# -------------------------
+# Documentation
+# -------------------------
 
 .PHONY: docs
 docs: ## Serve mintlify documentation locally
 	cd $(DOCS_DIR) && npx mintlify dev --verbose
 
 
-# -------------------------------------------------------------------
-# Format & Lint: Format and lint Python files using Ruff and MyPy
-# -------------------------------------------------------------------
+# -------------------------
+# Format & Lint
+# -------------------------
 
 
 .PHONY: format-toml
@@ -90,20 +113,20 @@ typecheck-pyright: ## Type-check Python files using Pyright
 	uv run pyright $(TARGET)
 
 
-# -------------------------------------------------------------------
-# Tests: Run test suite using Pytest
-# -------------------------------------------------------------------
-
+# -------------------------
+# Tests
+# -------------------------
 
 .PHONY: test
 test: ## Run test suite using Pytest
 	uv run pytest $(TARGET_TEST) --config-file $(PYPROJECT_TOML)
 
 
-# -------------------------------------------------------------------
-# Examples: Batch run CLI examples for documentation and testing
-# -------------------------------------------------------------------
+# -------------------------
+# CLI Batch Testing
+# -------------------------
 
+TEST_DATA := tests/data/readme-ai.md
 
 .PHONY: run-examples
 run-examples: ## Run examples for documentation and testing
@@ -134,32 +157,13 @@ run-pypi: ## Run examples for documentation
 	uvx --from markitecture --isolated markitect --metrics.input $HOME/Projects/GitHub/readme-ai/README.md --metrics.style all --metrics.output-dir markitet_badges
 
 
-# -------------------------------------------------------------------
-# Utils: Commands for cleaning up and managing the project
-# -------------------------------------------------------------------
+# -------------------------
+# Utils
+# -------------------------
 
+bump-version:
+	python scripts/bump_version.py src/markitecture/version.py patch
 
-clean: clean-build clean-pyc clean-test ## remove all build, test, coverage and Python artifacts
-
-clean-build: ## remove build artifacts
-	rm -fr build/
-	rm -fr dist/
-	rm -fr .eggs/
-	rm -fr .venv/
-	find . -name '*.egg-info' -exec rm -fr {} +
-	find . -name '*.egg' -exec rm -f {} +
-
-clean-pyc: ## remove Python file artifacts
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
-	find . -name '__pycache__' -exec rm -fr {} +
-
-clean-test: ## remove test and coverage artifacts
-	rm -fr .tox/
-	rm -f .coverage
-	rm -fr htmlcov/
-	rm -fr .pytest_cache
 
 .PHONY: help
 help: ## Display this help
