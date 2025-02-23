@@ -13,6 +13,9 @@ env:
   UV_CACHE_DIR: ${{ github.workspace }}/.cache/uv
   CACHE_NUMBER: 0
 
+permissions:
+  contents: write
+
 jobs:
   test:
     name: Test Python ${{ matrix.python-version }}
@@ -135,7 +138,7 @@ jobs:
           git push origin "v${version}"
           echo "Tag v${version} pushed."
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
