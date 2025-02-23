@@ -138,7 +138,7 @@ jobs:
           git push origin "v${version}"
           echo "Tag v${version} pushed."
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
