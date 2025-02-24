@@ -4,7 +4,7 @@ requires = [ "hatch-fancy-pypi-readme", "hatchling" ]
 
 [project]
 name = "markitecture"
-description = "❂ Markdown tools for modular and flexible docs: link validation, reference link conversion, text splitting, & more."
+description = "Markdown tools for modular workflows and content management."
 dynamic = ["readme", "version"]
 keywords = [
     "automated-markdown",

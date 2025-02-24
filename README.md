@@ -1,46 +1,60 @@
-<div id="top" align="center">
+<div align="center" id="top">
 
-<!-- HEADER -->
+
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eli64s/markitecture/13c4b28213fb8e8c75299ef5c905ce1d195a6988/docs/assets/logos/circle-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/markitecture/13c4b28213fb8e8c75299ef5c905ce1d195a6988/docs/assets/logos/circle-light.svg">
-  <img alt="markitecture Logo" src="https://raw.githubusercontent.com/eli64s/markitecture/13c4b28213fb8e8c75299ef5c905ce1d195a6988/docs/assets/logos/circle-light.svg" width="900" style="max-width: 100%;">
+  <source media="(prefers-color-scheme: dark)" srcset="/assets/logo.svg">
+  <source media="(prefers-color-scheme: light)" srcset="/assets/logo.svg">
+  <img alt="markitecture Logo" src="/assets/logo.svg" width="900" style="max-width: 100%;">
 </picture>
 
-<h3 align="center">
-   The Architecture of Better Documentation.
-</h3>
+<h1>Markitecture</h1>
+
+The Architecture of Better Documentation.
+
 <p align="center">
-  <em>Markitecture: The Python toolkit that empowers modular Markdown workflows.</em>
+  <em>Markdown tools for modular workflows and content management.</em>
 </p>
 
-<!-- BADGES -->
+<!-- SHIELD GROUP -->
 <div align="center">
   <p align="center" style="margin-bottom: 20px;">
     <a href="https://github.com/eli64s/markitecture/actions">
       <img src="https://img.shields.io/github/actions/workflow/status/eli64s/markitecture/ci.yml?label=CI&style=flat&logo=githubactions&logoColor=white&labelColor=2A2A2A&color=FFD700" alt="GitHub Actions" />
     </a>
     <a href="https://app.codecov.io/gh/eli64s/markitecture">
-      <img src="https://img.shields.io/codecov/c/github/eli64s/markitecture?label=Coverage&style=flat&logo=codecov&logoColor=white&labelColor=2A2A2A&color=3fe1c0" alt="Coverage" />
+      <img src="https://img.shields.io/codecov/c/github/eli64s/markitecture?label=Coverage&style=flat&logo=codecov&logoColor=white&labelColor=2A2A2A&color=00E5FF" alt="Coverage" />
     </a>
     <a href="https://pypi.org/project/markitecture/">
-      <img src="https://img.shields.io/pypi/v/markitecture?label=PyPI&style=flat&logo=pypi&logoColor=white&labelColor=2A2A2A&color=00E5FF" alt="PyPI Version" />
+      <img src="https://img.shields.io/pypi/v/markitecture?label=PyPI&style=flat&logo=pypi&logoColor=white&labelColor=2A2A2A&color=7934C5" alt="PyPI Version" />
     </a>
-    <a href="https://github.com/eli64s/markitecture">
+    <!-- <a href="https://github.com/eli64s/markitecture">
       <img src="https://img.shields.io/pypi/pyversions/markitecture?label=Python&style=flat&logo=python&logoColor=white&labelColor=2A2A2A&color=7934C5" alt="Python Version" />
-    </a>
+    </a> -->
     <a href="https://opensource.org/license/mit/">
       <img src="https://img.shields.io/github/license/eli64s/markitecture?label=License&style=flat&logo=opensourceinitiative&logoColor=white&labelColor=2A2A2A&color=FF00FF" alt="MIT License">
     </a>
   </p>
 </div>
 
+[Documentation][markitecture] · [Contribute][markitecture] · [Report Bug][github-issues] · [Request Feature][github-issues]
+
+<!--
+<details>
+<summary><kbd>Table of contents</kbd></summary>
+
+- [Installation](#installation)
+- [Usage](#using-the-cli)
+- [Contributing](#contributing)
+- [License](#license)
+
+</details>
+-->
+
 <div align="center">
   <img src="https://raw.githubusercontent.com/eli64s/markitecture/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg" alt="separator" width="100%" height="2px" style="margin: 20px 0;">
 </div>
 
 </div>
-<!-- HEADER END -->
 
 ## What is Markitecture?
 
@@ -231,6 +245,7 @@ Released under the [MIT][mit-license] license.
 [markitecture]: https://github.com/eli64s/markitecture
 [github-issues]: https://github.com/eli64s/markitecture/issues
 [github-pulls]: https://github.com/eli64s/markitecture/pulls
+[contributing]: https://github.com/eli64s/markitecture/blob/main/CONTRIBUTING.md
 [mit-license]: https://github.com/eli64s/markitecture/blob/main/LICENSE
 [examples]: https://github.com/eli64s/markitecture/tree/main/examples
 
