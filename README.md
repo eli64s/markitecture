@@ -3,7 +3,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="[/assets/logo.svg](https://raw.githubusercontent.com/eli64s/markitecture/feb377343f7763e55143268f13de5dcb30934d29/docs/assets/logo.svg)">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/markitecture/feb377343f7763e55143268f13de5dcb30934d29/docs/assets/logo.svg">
-  <img alt="Markitecture Logo" src="[/assets/logo.svg](https://raw.githubusercontent.com/eli64s/markitecture/feb377343f7763e55143268f13de5dcb30934d29/docs/assets/logo.svg)" width="900" style="max-width: 100%;">
+  <img alt="Markitecture Logo" src="[/assets/logo.svg](https://raw.githubusercontent.com/eli64s/markitecture/feb377343f7763e55143268f13de5dcb30934d29/docs/assets/logo.svg)" width="20%" style="max-width: 100%;">
 </picture>
 
 <h1>Markitecture</h1>
@@ -216,13 +216,10 @@ Contributions are welcome! Whether it's bug reports, feature requests, or code c
 
 ## License
 
-Copyright &copy; 2024 - 2025 <a href="https://eli64s/markitecture" target="_blank">Markitecture</a> All rights reserved. <br />
+Copyright &copy; 2024-2025 [Markitecture][markitecture]. <br />
 Released under the [MIT][mit-license] license.
 
-Copyright © 2024-2025 [Markitecture][markitecture]. <br />
-Released under the [MIT][mit-license] license.
-
-<div align="right">
+<div align="left">
 
 [![][return-to-top]](#top)
 
