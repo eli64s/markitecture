@@ -1,9 +1,9 @@
 <div align="center" id="top">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/assets/logo.svg">
-  <source media="(prefers-color-scheme: light)" srcset="/assets/logo.svg">
-  <img alt="Markitecture Logo" src="/assets/logo.svg" width="900" style="max-width: 100%;">
+  <source media="(prefers-color-scheme: dark)" srcset="[/assets/logo.svg](https://raw.githubusercontent.com/eli64s/markitecture/feb377343f7763e55143268f13de5dcb30934d29/docs/assets/logo.svg)">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/eli64s/markitecture/feb377343f7763e55143268f13de5dcb30934d29/docs/assets/logo.svg">
+  <img alt="Markitecture Logo" src="[/assets/logo.svg](https://raw.githubusercontent.com/eli64s/markitecture/feb377343f7763e55143268f13de5dcb30934d29/docs/assets/logo.svg)" width="900" style="max-width: 100%;">
 </picture>
 
 <h1>Markitecture</h1>
