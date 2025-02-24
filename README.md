@@ -37,11 +37,11 @@ The Architecture of Better Documentation.
   </p>
 </div>
 
-[Documentation][markitecture] · [Contribute][markitecture] · [Report Bug][github-issues] · [Request Feature][github-issues]
+[Documentation][markitecture] · [Contribute][contributing] · [Report Bug][github-issues] · [Request Feature][github-issues]
 
 <!--
 <details>
-<summary><kbd>Table of contents</kbd></summary>
+<summary><kbd>Table of Contents</kbd></summary>
 
 - [Installation](#installation)
 - [Usage](#using-the-cli)
