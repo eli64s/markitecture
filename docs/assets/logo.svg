@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 204.8 204.8" width="160" height="160">
+    <defs>
+        <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="20%" style="stop-color:#FFD700" />
+            <stop offset="40%" style="stop-color:#00E5FF" />
+            <stop offset="60%" style="stop-color:#7934C5" />
+            <stop offset="80%" style="stop-color:#FF00FF" />
+        </linearGradient>
+        <pattern id="gridPattern" x="0" y="0" width="6.4" height="6.4" patternUnits="userSpaceOnUse">
+            <path d="M 6.4 0 L 0 0 0 6.4" fill="none" stroke="#FFFFFF" stroke-width="0.1" stroke-opacity="0.05" />
+        </pattern>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="0.4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+    <!-- Background -->
+    <rect width="204.8" height="204.8" rx="36" fill="#0A0218" />
+    <rect width="204.8" height="204.8" rx="36" fill="url(#gridPattern)" />
+    <!-- Main Logo Group -->
+    <g transform="translate(102.4, 102.4) scale(4.6)">
+        <!-- Main M outline -->
+        <path d="M-18,-11 L-11,-11 L-11,6 L-6,-7 L0,6 L6,-7 L11,6 L11,-11 L18,-11 L18,11 L11,11 L0,-6 L-11,11 L-18,11 Z" fill="none" stroke="url(#mainGradient)" stroke-width="0.7" stroke-linejoin="round">
+            <animate attributeName="d" values="M-18,-11 L-11,-11 L-11,6 L-6,-7 L0,6 L6,-7 L11,6 L11,-11 L18,-11 L18,11 L11,11 L0,-6 L-11,11 L-18,11 Z;
+                           M-19,-12 L-12,-12 L-12,7 L-7,-8 L0,7 L7,-8 L12,7 L12,-12 L19,-12 L19,12 L12,12 L0,-7 L-12,12 L-19,12 Z;
+                           M-18,-11 L-11,-11 L-11,6 L-6,-7 L0,6 L6,-7 L11,6 L11,-11 L18,-11 L18,11 L11,11 L0,-6 L-11,11 L-18,11 Z" dur="10s" repeatCount="indefinite" calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1" />
+        </path>
+        <!-- Inner M -->
+        <path d="M-15,-8 L-9,-8 L-9,4 L-5,-5 L0,4 L5,-5 L9,4 L9,-8 L15,-8 L15,8 L9,8 L0,-4 L-9,8 L-15,8 Z" fill="none" stroke="url(#mainGradient)" stroke-width="0.5" stroke-linejoin="round" opacity="0.7" />
+        <!-- Core M -->
+        <path d="M-12,-5 L-7,-5 L-7,3 L-4,-4 L0,3 L4,-4 L7,3 L7,-5 L12,-5 L12,5 L7,5 L0,-3 L-7,5 L-12,5 Z" fill="none" stroke="url(#mainGradient)" stroke-width="0.3" stroke-linejoin="round" opacity="0.5" />
+        <!-- Key Points -->
+        <g>
+            <circle cx="-18" cy="-11" r="0.3" fill="url(#mainGradient)" opacity="0.8" />
+            <circle cx="18" cy="-11" r="0.3" fill="url(#mainGradient)" opacity="0.8" />
+            <circle cx="-18" cy="11" r="0.3" fill="url(#mainGradient)" opacity="0.8" />
+            <circle cx="18" cy="11" r="0.3" fill="url(#mainGradient)" opacity="0.8" />
+        </g>
+    </g>
+</svg>

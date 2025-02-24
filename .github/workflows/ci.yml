@@ -54,7 +54,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          uv run pytest --config-file="pyproject.toml" --cov-config="pyproject.toml"
+          uv run pytest --config-file="pyproject.toml"
 
       - name: Verify coverage report
         run: |
