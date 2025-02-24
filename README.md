@@ -1,10 +1,9 @@
 <div align="center" id="top">
 
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="/assets/logo.svg">
   <source media="(prefers-color-scheme: light)" srcset="/assets/logo.svg">
-  <img alt="markitecture Logo" src="/assets/logo.svg" width="900" style="max-width: 100%;">
+  <img alt="Markitecture Logo" src="/assets/logo.svg" width="900" style="max-width: 100%;">
 </picture>
 
 <h1>Markitecture</h1>
@@ -12,7 +11,7 @@
 The Architecture of Better Documentation.
 
 <p align="center">
-  <em>Markdown tools for modular workflows and content management.</em>
+  <em>Tools for modular Markdown workflows and content management.</em>
 </p>
 
 <!-- SHIELD GROUP -->
@@ -27,9 +26,11 @@ The Architecture of Better Documentation.
     <a href="https://pypi.org/project/markitecture/">
       <img src="https://img.shields.io/pypi/v/markitecture?label=PyPI&style=flat&logo=pypi&logoColor=white&labelColor=2A2A2A&color=7934C5" alt="PyPI Version" />
     </a>
-    <!-- <a href="https://github.com/eli64s/markitecture">
+    <!--
+    <a href="https://github.com/eli64s/markitecture">
       <img src="https://img.shields.io/pypi/pyversions/markitecture?label=Python&style=flat&logo=python&logoColor=white&labelColor=2A2A2A&color=7934C5" alt="Python Version" />
-    </a> -->
+    </a>
+    -->
     <a href="https://opensource.org/license/mit/">
       <img src="https://img.shields.io/github/license/eli64s/markitecture?label=License&style=flat&logo=opensourceinitiative&logoColor=white&labelColor=2A2A2A&color=FF00FF" alt="MIT License">
     </a>
@@ -215,30 +216,32 @@ Contributions are welcome! Whether it's bug reports, feature requests, or code c
 
 ## License
 
+Copyright &copy; 2024 - 2025 <a href="https://eli64s/markitecture" target="_blank">Markitecture</a> All rights reserved. <br />
+Released under the [MIT][mit-license] license.
+
 Copyright © 2024-2025 [Markitecture][markitecture]. <br />
 Released under the [MIT][mit-license] license.
 
 <div align="right">
 
-[![][back-to-top]](#top)
+[![][return-to-top]](#top)
 
 </div>
-
-<!-- <div align="left">
-  <a href="#top">
-    <img src="https://raw.githubusercontent.com/eli64s/markitecture/77bec69129dd3a075d7d0816c7bd826da131ccc7/docs/assets/buttons/rectangle.svg" width="100px" height="100px" alt="Return to Top">
-  </a>
-</div> -->
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/eli64s/markitecture/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg" alt="separator" width="100%" height="2px" style="margin: 20px 0;">
+  <img
+  src="https://raw.githubusercontent.com/eli64s/markitecture/216a92894e6f30c707a214fad5a5fba417e3bc39/docs/assets/line.svg"
+  alt="Thematic Break"
+  width="100%"
+  height="2px"
+  style="margin: 20px 0;"
+  >
 </div>
-
 
 <!-- REFERENCE LINKS -->
 
 <!-- BADGES -->
-[back-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-7934C5?style=flat-square
+[return-to-top]: https://img.shields.io/badge/-BACK_TO_TOP-7934C5?style=flat-square
 
 <!-- PROJECT RESOURCES -->
 [pypi]: https://pypi.org/project/markitecture/

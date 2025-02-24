@@ -33,10 +33,8 @@ ENV/
 .ruff_cache/
 .reports/
 site/
-.continuerules
 
-# -- Markitect ---------
+# Markitecture
+.continuerules
 markitect.yml
-.markitecture/
-notebooks/
-.github/workflows/tag-version.yml
+docs/mkdocs/
