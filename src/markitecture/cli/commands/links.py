@@ -1,16 +1,18 @@
 """Commands for checking and converting markdown links."""
 
+import asyncio # New import
 import re
 from pathlib import Path
 
 from pydantic import AliasChoices, BaseModel, Field
 
-from markitecture.processing.link_validator import LinkValidator
+# Updated imports for the new CrossLinksValidator and ValidatorSettings
+from markitecture.processing.link_validator import CrossLinksValidator 
+from markitecture.settings.validators import ExistingFilePath, ValidatorSettings
 from markitecture.processing.reflink_converter import (
     ReferenceLinkConverter,
     ReferencePlacement,
 )
-from markitecture.settings.validators import ExistingFilePath
 from markitecture.utils.printer import RichPrinter
 
 _printer = RichPrinter()
@@ -49,32 +51,66 @@ class CheckLinksCommand(BaseModel):
     def cli_cmd(self) -> None:
         """Execute the check links command."""
         _printer.print_info(
-            f"Scanning markdown file {self.input_file} for broken links..."
+            f"Starting link validation for {self.input_file}..."
         )
 
-        checker = LinkValidator(timeout=self.timeout, max_workers=self.max_workers)
-        results = checker.check_markdown_file(str(self.input_file))
-        if not results:
-            _printer.print_info("No links found.")
+        # 1. Instantiate ValidatorSettings
+        # Defaulting allow_external_validation to True for typical use-case.
+        # Subtask mentioned default to False if no CLI, but True is more practical for a link checker.
+        settings = ValidatorSettings(
+            timeout=self.timeout,
+            max_workers=self.max_workers,
+            allow_external_validation=True, 
+            # ignore_patterns can be added as a CLI option later if needed
+        )
+
+        # 2. Instantiate CrossLinksValidator
+        validator = CrossLinksValidator(settings=settings)
+
+        # 3. Run async validation
+        # ExistingFilePath ensures input_file is a file.
+        # base_dir is the parent directory of the input file.
+        _printer.print_info(f"Scanning {self.input_file} for links...")
+        try:
+            asyncio.run(validator.validate_across_files_async(
+                file_paths=[self.input_file], 
+                base_dir=self.input_file.parent.resolve()
+            ))
+        except Exception as e:
+            _printer.print_error(f"An error occurred during link validation: {e}")
+            # Optionally, re-raise or handle more gracefully
             return
 
-        broken_links = 0
-        rows = []
-        for result in results:
-            status = "✓" if result["status"] == "ok" else "𝗫"
-            error = result["error"] if result["error"] else ""
-            rows.append([status, str(result["line"]), result["url"], error])
-            if result["error"]:
-                broken_links += 1
+        _printer.print_info("Validation complete. Generating report...")
 
-        _printer.print_table(
-            "Markdown Link Check Results",
-            ["Status", "Line", "Link", "Error"],
-            rows,
-        )
-        _printer.print_success(
-            f"Summary: {broken_links} broken links out of {len(results)} total links.\n"
-        )
+        # 4. Generate and print report
+        report_dict = validator.generate_report()
+        text_report = validator.generate_text_report(report_dict)
+        
+        # Using print_info for multi-line text. _printer.echo might also work.
+        # RichPrinter might have better ways to display pre-formatted text.
+        # For now, a simple print:
+        print(text_report) # Using direct print to ensure raw text formatting is preserved.
+                           # _printer.print_info might add its own formatting.
+
+        # 5. Save report
+        if self.report_path:
+            try:
+                _printer.print_info(f"Saving report to {self.report_path}...")
+                # Ensure parent directory exists
+                self.report_path.parent.mkdir(parents=True, exist_ok=True)
+                validator.save_report(report_dict, self.report_path, format="text")
+                _printer.print_success(f"Report saved successfully to {self.report_path}")
+            except Exception as e:
+                _printer.print_error(f"Failed to save report to {self.report_path}: {e}")
+        
+        # Summary from report_dict
+        summary = report_dict.get("summary", {})
+        invalid_links_count = summary.get("invalid_links", 0)
+        if invalid_links_count > 0:
+            _printer.print_warning(f"Found {invalid_links_count} invalid links.")
+        else:
+            _printer.print_success("No invalid links found.")
 
 
 class ReferenceLinksCommand(BaseModel):
