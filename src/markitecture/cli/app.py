@@ -18,10 +18,18 @@ def run_cli() -> None:
 
         if settings.config:
             settings.config.cli_cmd()
-        elif settings.check_links:
-            settings.check_links.cli_cmd()
-        elif settings.reference_links:
-            settings.reference_links.cli_cmd()
+        elif settings.links:
+            if settings.links.check:
+                settings.links.check.cli_cmd()
+            elif settings.links.reflinks:
+                settings.links.reflinks.cli_cmd()
+            # Add a check for other link subcommands if any are added later
+            # else:
+            #     _printer.print_error(
+            #         "No 'links' subcommand provided. Use 'check' or 'reflinks'. Use --help for more information."
+            #     )
+            # It might be better to rely on Pydantic's help generation for this,
+            # so the else branch might not be strictly necessary if no subcommand is given.
         elif settings.metrics:
             settings.metrics.cli_cmd()
         elif settings.mkdocs:

@@ -2,6 +2,7 @@
 
 import re
 from pathlib import Path
+from typing import Optional
 
 from pydantic import AliasChoices, BaseModel, Field
 
@@ -85,8 +86,8 @@ class ReferenceLinksCommand(BaseModel):
         description="Path to the markdown file.",
         validation_alias=AliasChoices("i", "input"),
     )
-    output_file: Path | str = Field(
-        default=Path("reflinks_output.md"),
+    output_file: Optional[Path | str] = Field(
+        default=None,
         description="Path to save updated document.",
         validation_alias=AliasChoices("o", "output"),
     )
@@ -104,7 +105,7 @@ class ReferenceLinksCommand(BaseModel):
             "Settings",
             {
                 "Input File": str(self.input_file),
-                "Output File": str(self.output_file),
+                "Output File": str(self.output_file) if self.output_file else f"{self.input_file} (in-place)",
                 "Placement": self.placement.value,
             },
         )
@@ -122,12 +123,13 @@ class ReferenceLinksCommand(BaseModel):
             _printer.print_debug("Starting conversion process...")
             converter.process_file(
                 self.input_file,
-                self.output_file or self.input_file,
+                self.output_file,
                 self.placement,
             )
 
             # Get final metrics
-            result = Path(self.output_file).read_text()
+            actual_output_path = self.output_file if self.output_file else self.input_file
+            result = Path(actual_output_path).read_text()
             final_refs = len(re.findall(r"^\[[^\]]+\]:", result, re.MULTILINE))
 
             # Summary
@@ -137,7 +139,7 @@ class ReferenceLinksCommand(BaseModel):
                 {
                     "Links Processed": str(initial_links),
                     "References Created": str(final_refs),
-                    "Output Location": str(self.output_file),
+                    "Output Location": str(actual_output_path),
                 },
             )
 

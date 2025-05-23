@@ -10,6 +10,26 @@ from markitecture.cli.commands.mkdocs import MkDocsCommand
 from markitecture.cli.commands.split import SplitCommand
 
 
+class LinksGroupCommand(BaseSettings):
+    """Commands for link management."""
+
+    check: CheckLinksCommand | None = Field(
+        default=None,
+        description="Validate links in a markdown file.",
+        validation_alias=AliasChoices("ck", "check"),
+    )
+    reflinks: ReferenceLinksCommand | None = Field(
+        default=None,
+        description="Convert inline links to reference-style links.",
+        validation_alias=AliasChoices("rf", "reflinks"),
+    )
+    # Add model_config if necessary, similar to MarkitectureApp,
+    # to ensure subcommands are parsed correctly.
+    # E.g., model_config = SettingsConfigDict(cli_parse_args=True, extra="allow")
+    # However, often Pydantic handles nested parsing automatically.
+    # Let's try without it first.
+
+
 class MarkitectureApp(BaseSettings):
     """
     Main CLI interface for markitecture.
@@ -20,15 +40,10 @@ class MarkitectureApp(BaseSettings):
         description="Manage configuration settings",
         validation_alias=AliasChoices("c", "config"),
     )
-    check_links: CheckLinksCommand | None = Field(
+    links: LinksGroupCommand | None = Field(
         default=None,
-        description="Validate links in a markdown file",
-        validation_alias=AliasChoices("cl", "check-links"),
-    )
-    reference_links: ReferenceLinksCommand | None = Field(
-        default=None,
-        description="Convert links to reference style",
-        validation_alias=AliasChoices("rl", "reflinks"),
+        description="Manage and convert document links.",
+        validation_alias=AliasChoices("ln", "links"),
     )
     split: SplitCommand | None = Field(
         default=None,
