@@ -28,6 +28,8 @@ def run_cli() -> None:
             settings.mkdocs.cli_cmd()
         elif settings.split:
             settings.split.cli_cmd()
+        elif settings.analyze_graph:
+            settings.analyze_graph.cli_cmd()
         else:
             _printer.print_error(
                 "No command provided. Use `--help` for more information."

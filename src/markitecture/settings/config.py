@@ -8,6 +8,7 @@ from markitecture.cli.commands.links import CheckLinksCommand, ReferenceLinksCom
 from markitecture.cli.commands.metrics import MetricsCommand
 from markitecture.cli.commands.mkdocs import MkDocsCommand
 from markitecture.cli.commands.split import SplitCommand
+from markitecture.cli.commands.analyze_graph import AnalyzeGraphCommand
 
 
 class MarkitectureApp(BaseSettings):
@@ -44,6 +45,11 @@ class MarkitectureApp(BaseSettings):
         default=None,
         description="Generate MkDocs configuration from a Markdown file",
         validation_alias=AliasChoices("mk", "mkdocs"),
+    )
+    analyze_graph: AnalyzeGraphCommand | None = Field(
+        default=None,
+        description="Analyze documentation structure and relationships",
+        validation_alias=AliasChoices("ag", "analyze-graph"),
     )
     version: bool = Field(
         default=False,
