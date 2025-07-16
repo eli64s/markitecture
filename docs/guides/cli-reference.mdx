@@ -11,20 +11,8 @@ Markitecture provides a comprehensive command-line interface with several main c
   <Card title="split" icon="scissors">
     Split markdown files into sections based on headings
   </Card>
-  <Card title="check-links" icon="link-check">
-    Validate links in markdown documents
-  </Card>
-  <Card title="reflinks" icon="arrows-repeat">
-    Convert inline links to reference style
-  </Card>
-  <Card title="mkdocs" icon="book">
-    Generate MkDocs configuration
-  </Card>
-  <Card title="config" icon="gear">
-    Manage Markitecture configuration
-  </Card>
-  <Card title="metrics" icon="chart-line">
-    Generate document metrics
+  <Card title="links" icon="link-check">
+    Validate links in markdown documents and convert inline links to reference style
   </Card>
 </CardGroup>
 
@@ -32,11 +20,11 @@ Markitecture provides a comprehensive command-line interface with several main c
 
 <CodeGroup>
   <CodeBlock title="Help" language="bash">
-    markitect --help
+    markitecture --help
   </CodeBlock>
 
   <CodeBlock title="Version" language="bash">
-    markitect --version
+    markitecture --version
   </CodeBlock>
 </CodeGroup>
 
@@ -46,159 +34,57 @@ Markitecture provides a comprehensive command-line interface with several main c
 
 Split markdown files into sections based on headings.
 
-<ResponseField name="--split.i, --split.input" type="Path" required>
+<ResponseField name="input_path" type="Path" required>
   Path to the input markdown file
 </ResponseField>
 
-<ResponseField name="--split.o, --split.output" type="Path" default=".markitecture/docs">
+<ResponseField name="output_dir" type="Path" required>
   Directory to save split files
 </ResponseField>
 
-<ResponseField name="--split.hl, --split.heading-level" type="string" default="##">
-  Heading level to split on (e.g., '#', '##')
-</ResponseField>
-
-<ResponseField name="--split.cs, --split.case-sensitive" type="boolean" default="false">
-  Enable case-sensitive heading matching
+<ResponseField name="--level" type="integer" default="2">
+  The markdown heading level to split by.
 </ResponseField>
 
 <CodeGroup>
   <CodeBlock title="Basic Split" language="bash">
-    markitect --split.i README.md --split.o docs/
+    markitecture split README.md docs/
   </CodeBlock>
 
   <CodeBlock title="Custom Heading" language="bash">
-    markitect --split.i README.md --split.hl "###" --split.cs
+    markitecture split README.md docs/ --level 3
   </CodeBlock>
 </CodeGroup>
 
-### Check Links Command
+### Links Command
+
+Commands for checking and converting markdown links.
+
+#### `check`
 
 Validate links in markdown documents.
 
-<ResponseField name="--check-links.i, --check-links.input" type="Path" required>
-  Path to the markdown file
-</ResponseField>
-
-<ResponseField name="--check-links.rp, --check-links.report-path" type="Path" default=".markitecture/link_health.txt">
-  Path to save the report
-</ResponseField>
-
-<ResponseField name="--check-links.mw, --check-links.max-workers" type="integer" default="5">
-  Number of concurrent link checks
-</ResponseField>
-
-<ResponseField name="--check-links.t, --check-links.timeout" type="integer" default="10">
-  Timeout for link validation in seconds
+<ResponseField name="path" type="Path" required>
+  Path to the markdown file or directory to check.
 </ResponseField>
 
 <CodeGroup>
   <CodeBlock title="Basic Check" language="bash">
-    markitect --check-links.i docs/index.md
-  </CodeBlock>
-
-  <CodeBlock title="Custom Settings" language="bash">
-    markitect --check-links.i docs/*.md --check-links.mw 10 --check-links.t 20
+    markitecture links check docs/index.md
   </CodeBlock>
 </CodeGroup>
 
-### Reference Links Command
+#### `reflinks`
 
 Convert inline links to reference style.
 
-<ResponseField name="--reflinks.i, --reflinks.input" type="Path" required>
-  Path to the markdown file
-</ResponseField>
-
-<ResponseField name="--reflinks.o, --reflinks.output" type="Path" default="reflinks_output.md">
-  Path to save updated document
+<ResponseField name="path" type="Path" required>
+  Path to the markdown file or directory to convert.
 </ResponseField>
 
 <CodeGroup>
   <CodeBlock title="Basic Conversion" language="bash">
-    markitect --reflinks.i docs/guide.md
-  </CodeBlock>
-
-  <CodeBlock title="Custom Output" language="bash">
-    markitect --reflinks.i input.md --reflinks.o converted.md
-  </CodeBlock>
-</CodeGroup>
-
-### MkDocs Command
-
-Generate MkDocs configuration.
-
-<ResponseField name="--mkdocs.d, --mkdocs.dir" type="Path" default=".markitecture/docs">
-  Path to the documentation directory
-</ResponseField>
-
-<ResponseField name="--mkdocs.name, --mkdocs.site-name" type="string" default="MkDocs Static Site Documentation">
-  Name of the MkDocs site
-</ResponseField>
-
-<CodeGroup>
-  <CodeBlock title="Basic Setup" language="bash">
-    markitect --mkdocs.d docs/
-  </CodeBlock>
-
-  <CodeBlock title="Custom Site" language="bash">
-    markitect --mkdocs.d docs/ --mkdocs.name "My Project Docs"
-  </CodeBlock>
-</CodeGroup>
-
-### Config Command
-
-Manage Markitecture configuration.
-
-<ResponseField name="--config.p, --config.path" type="Path" default="markitect.yml">
-  Path to the configuration file
-</ResponseField>
-
-<ResponseField name="--config.g, --config.generate" type="boolean" default="false">
-  Generate a default configuration file
-</ResponseField>
-
-<ResponseField name="--config.s, --config.show" type="boolean" default="false">
-  Display the current configuration settings
-</ResponseField>
-
-<CodeGroup>
-  <CodeBlock title="Generate Config" language="bash">
-    markitect --config.generate
-  </CodeBlock>
-
-  <CodeBlock title="Show Config" language="bash">
-    markitect --config.show
-  </CodeBlock>
-</CodeGroup>
-
-### Metrics Command
-
-Generate document readability metrics.
-
-<ResponseField name="--metrics.i, --metrics.input" type="Path" required>
-  Path to the markdown file
-</ResponseField>
-
-<ResponseField name="--metrics.o, --metrics.output" type="Path">
-  Path to save the SVG badge
-</ResponseField>
-
-<ResponseField name="--metrics.style" type="enum" default="MODERN">
-  Badge style options: MODERN, COMPACT, DETAILED, MINIMAL, RETRO, SHIELDS
-</ResponseField>
-
-<ResponseField name="--metrics.p, --metrics.position" type="string" default="top">
-  Position to insert badge (top/bottom)
-</ResponseField>
-
-<CodeGroup>
-  <CodeBlock title="Basic Metrics" language="bash">
-    markitect --metrics.i docs/guide.md
-  </CodeBlock>
-
-  <CodeBlock title="Custom Style" language="bash">
-    markitect --metrics.i input.md --metrics.style DETAILED --metrics.p bottom
+    markitecture links reflinks docs/guide.md
   </CodeBlock>
 </CodeGroup>
 
@@ -206,20 +92,8 @@ Generate document readability metrics.
 
 All command-line options can be set using environment variables with the `MARKITECTURE_` prefix:
 
-<ResponseField name="MARKITECTURE_HEADING_LEVEL" type="string">
-  Default heading level for splitting
-</ResponseField>
-
-<ResponseField name="MARKITECTURE_OUTPUT_DIR" type="string">
-  Default output directory
-</ResponseField>
-
-<ResponseField name="MARKITECTURE_PRESERVE_REFS" type="boolean">
-  Whether to preserve reference links
-</ResponseField>
-
-<ResponseField name="MARKITECTURE_ADD_HR" type="boolean">
-  Whether to add horizontal rules between sections
+<ResponseField name="MARKITECTURE_OPENAI_API_KEY" type="string">
+  Your OpenAI API key.
 </ResponseField>
 
 ## Exit Codes
@@ -230,12 +104,6 @@ All command-line options can be set using environment variables with the `MARKIT
   </Card>
   <Card title="1">
     Error - General error occurred
-  </Card>
-  <Card title="2">
-    Config Error - Configuration error
-  </Card>
-  <Card title="3">
-    File Error - File operation failed
   </Card>
 </CardGroup>
 

@@ -1,143 +1,105 @@
-"""Commands for checking and converting markdown links."""
-
+import asyncio
 import re
 from pathlib import Path
 
-from pydantic import AliasChoices, BaseModel, Field
-
-from markitecture.processing.link_validator import LinkValidator
+from markitecture.processing.link_validator import CrossLinksValidator
 from markitecture.processing.reflink_converter import (
     ReferenceLinkConverter,
     ReferencePlacement,
 )
-from markitecture.settings.validators import ExistingFilePath
+from markitecture.settings.config import LinksConfig
+from markitecture.settings.validators import ValidatorSettings
 from markitecture.utils.printer import RichPrinter
 
 _printer = RichPrinter()
 
 
-class CheckLinksCommand(BaseModel):
-    """
-    Validate all links in a markdown file.
-    """
+class LinksCommand:
+    def __init__(self, args):
+        self.args = args
+        self.config = LinksConfig()
 
-    input_file: ExistingFilePath = Field(
-        ...,
-        description="Path to the markdown file.",
-        validation_alias=AliasChoices("i", "input"),
-    )
-    report_path: Path = Field(
-        default=Path(".markitecture/link_health.txt"),
-        description="Path to save the report.",
-        validation_alias=AliasChoices("rp", "report-path"),
-    )
-    max_workers: int = Field(
-        default=5,
-        ge=1,
-        le=10,
-        description="Number of concurrent link checks.",
-        validation_alias=AliasChoices("mw", "max-workers"),
-    )
-    timeout: int = Field(
-        default=10,
-        ge=1,
-        le=180,
-        description="Timeout for link validation in seconds.",
-        validation_alias=AliasChoices("t", "timeout"),
-    )
+    def run(self):
+        if self.args.links_command == "check":
+            self.check_links()
+        elif self.args.links_command == "reflinks":
+            self.convert_reflinks()
 
-    def cli_cmd(self) -> None:
+    def check_links(self):
         """Execute the check links command."""
-        _printer.print_info(
-            f"Scanning markdown file {self.input_file} for broken links..."
+        _printer.print_info(f"Starting link validation for {self.args.path}...")
+
+        settings = ValidatorSettings(
+            timeout=self.config.request_timeout,
+            max_workers=5,
+            allow_external_validation=True,
+            ignore_patterns=self.config.ignore_domains,
         )
 
-        checker = LinkValidator(timeout=self.timeout, max_workers=self.max_workers)
-        results = checker.check_markdown_file(str(self.input_file))
-        if not results:
-            _printer.print_info("No links found.")
+        validator = CrossLinksValidator(settings=settings)
+
+        try:
+            asyncio.run(
+                validator.validate_across_files_async(
+                    file_paths=[Path(self.args.path)],
+                    base_dir=Path(self.args.path).parent.resolve(),
+                )
+            )
+        except Exception as e:
+            _printer.print_error(f"An error occurred during link validation: {e}")
             return
 
-        broken_links = 0
-        rows = []
-        for result in results:
-            status = "✓" if result["status"] == "ok" else "𝗫"
-            error = result["error"] if result["error"] else ""
-            rows.append([status, str(result["line"]), result["url"], error])
-            if result["error"]:
-                broken_links += 1
+        _printer.print_info("Validation complete. Generating report...")
 
-        _printer.print_table(
-            "Markdown Link Check Results",
-            ["Status", "Line", "Link", "Error"],
-            rows,
-        )
-        _printer.print_success(
-            f"Summary: {broken_links} broken links out of {len(results)} total links.\n"
-        )
+        report_dict = validator.generate_report()
+        text_report = validator.generate_text_report(report_dict)
 
+        print(text_report)
 
-class ReferenceLinksCommand(BaseModel):
-    """Convert inline markdown links to reference-style links."""
+        summary = report_dict.get("summary", {})
+        invalid_links_count = summary.get("invalid_links", 0)
+        if invalid_links_count > 0:
+            _printer.print_warning(f"Found {invalid_links_count} invalid links.")
+        else:
+            _printer.print_success("No invalid links found.")
 
-    input_file: ExistingFilePath = Field(
-        ...,
-        description="Path to the markdown file.",
-        validation_alias=AliasChoices("i", "input"),
-    )
-    output_file: Path | str = Field(
-        default=Path("reflinks_output.md"),
-        description="Path to save updated document.",
-        validation_alias=AliasChoices("o", "output"),
-    )
-    placement: ReferencePlacement = Field(
-        default=ReferencePlacement.END,
-        description="Where to place reference links (end/section).",
-        validation_alias=AliasChoices("p", "placement"),
-    )
-
-    def cli_cmd(self) -> None:
+    def convert_reflinks(self):
         """Execute the reference link conversion."""
         _printer.print_title("Reference Link Conversion")
         _printer.print_info("Configuration:")
         _printer.print_key_value_table(
             "Settings",
             {
-                "Input File": str(self.input_file),
-                "Output File": str(self.output_file),
-                "Placement": self.placement.value,
+                "Input File": str(self.args.path),
+                "Output File": f"{self.args.path} (in-place)",
+                "Placement": "end",
             },
         )
 
         try:
-            # Initialize converter
             converter = ReferenceLinkConverter()
-            content = Path(self.input_file).read_text()
+            content = Path(self.args.path).read_text()
 
-            # Extract initial metrics
             initial_links = len(re.findall(r"\[([^\]]+)\]\(([^\)]+)\)", content))
             _printer.print_info(f"Found {initial_links} inline links to convert")
 
-            # Process file
             _printer.print_debug("Starting conversion process...")
             converter.process_file(
-                self.input_file,
-                self.output_file or self.input_file,
-                self.placement,
+                self.args.path,
+                None,
+                ReferencePlacement.END,
             )
 
-            # Get final metrics
-            result = Path(self.output_file).read_text()
+            result = Path(self.args.path).read_text()
             final_refs = len(re.findall(r"^\[[^\]]+\]:", result, re.MULTILINE))
 
-            # Summary
             _printer.print_success("\nConversion Summary:")
             _printer.print_key_value_table(
                 "Results",
                 {
                     "Links Processed": str(initial_links),
                     "References Created": str(final_refs),
-                    "Output Location": str(self.output_file),
+                    "Output Location": str(self.args.path),
                 },
             )
 

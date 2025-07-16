@@ -1,61 +1,24 @@
-"""CLI settings implementated using Pydantic Settings Management."""
+from pathlib import Path
+from typing import Optional
 
-from pydantic import AliasChoices, Field
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from markitecture.cli.commands.config import ConfigCommand
-from markitecture.cli.commands.links import CheckLinksCommand, ReferenceLinksCommand
-from markitecture.cli.commands.metrics import MetricsCommand
-from markitecture.cli.commands.mkdocs import MkDocsCommand
-from markitecture.cli.commands.split import SplitCommand
+
+class SplitConfig(BaseSettings):
+    """Configuration for the split command."""
+
+    output_dir: Path = Field(..., help="Output directory for split files.")
+    level: str = Field(default="##", help='Heading level to split on (e.g., "##", "###").')
+    openai_api_key: Optional[str] = Field(default=None, env="OPENAI_API_KEY")
+
+    model_config = SettingsConfigDict(cli_parse_args=False)
 
 
-class MarkitectureApp(BaseSettings):
-    """
-    Main CLI interface for markitecture.
-    """
+class LinksConfig(BaseSettings):
+    """Configuration for the links command."""
 
-    config: ConfigCommand | None = Field(
-        default=None,
-        description="Manage configuration settings",
-        validation_alias=AliasChoices("c", "config"),
-    )
-    check_links: CheckLinksCommand | None = Field(
-        default=None,
-        description="Validate links in a markdown file",
-        validation_alias=AliasChoices("cl", "check-links"),
-    )
-    reference_links: ReferenceLinksCommand | None = Field(
-        default=None,
-        description="Convert links to reference style",
-        validation_alias=AliasChoices("rl", "reflinks"),
-    )
-    split: SplitCommand | None = Field(
-        default=None,
-        description="Split a markdown file into sections",
-        validation_alias=AliasChoices("s", "split"),
-    )
-    metrics: MetricsCommand | None = Field(
-        default=None,
-        description="Generate document readability metrics",
-        validation_alias=AliasChoices("m", "metrics"),
-    )
-    mkdocs: MkDocsCommand | None = Field(
-        default=None,
-        description="Generate MkDocs configuration from a Markdown file",
-        validation_alias=AliasChoices("mk", "mkdocs"),
-    )
-    version: bool = Field(
-        default=False,
-        description="Display the version number",
-        validation_alias=AliasChoices("v", "version"),
-    )
+    request_timeout: int = Field(default=10, description="Timeout in seconds for HTTP requests.")
+    ignore_domains: list[str] = Field(default_factory=list, description="List of domains to ignore.")
 
-    model_config = SettingsConfigDict(
-        case_sensitive=False,
-        cli_enforce_required=False,
-        cli_implicit_flags=True,
-        cli_parse_args=True,
-        env_prefix="MARKITECTURE_",
-        extra="allow",
-    )
+    model_config = SettingsConfigDict(cli_parse_args=False)

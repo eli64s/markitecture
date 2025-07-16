@@ -70,6 +70,7 @@ test = [
     "coverage[toml]",
     "pytest",
     "pytest-asyncio",
+    "pytest-httpx", # Added this line
     "pytest-cov",
     "pytest-mock",
     "pytest-pretty",
