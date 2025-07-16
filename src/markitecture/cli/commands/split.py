@@ -1,48 +1,23 @@
-from pathlib import Path
-
-from pydantic import AliasChoices, BaseModel, Field
-
-from markitecture.settings.validators import ExistingFilePath
+from markitecture.processing.text_splitter import MarkdownTextSplitter
+from markitecture.settings.config import SplitConfig
 from markitecture.utils.file_handler import FileHandler
 from markitecture.utils.printer import RichPrinter
 
 _printer = RichPrinter()
 
 
-class SplitCommand(BaseModel):
-    """
-    Split a markdown file into sections based on headings.
-    """
+class SplitCommand:
+    def __init__(self, args):
+        self.args = args
+        self.config = SplitConfig(output_dir=args.output_dir, level=args.level)
 
-    input_file: ExistingFilePath = Field(
-        ...,
-        description="Path to the input markdown file.",
-        validation_alias=AliasChoices("i", "input"),
-    )
-    output_dir: Path = Field(
-        default=Path(".markitecture/docs"),
-        description="Directory to save split files.",
-        validation_alias=AliasChoices("o", "output"),
-    )
-    heading_level: str = Field(
-        default="##",
-        description="Heading level to split on (e.g., '#', '##').",
-        validation_alias=AliasChoices("hl", "heading", "level", "heading-level"),
-    )
-    case_sensitive: bool = Field(
-        default=False,
-        description="Enable case-sensitive heading matching.",
-        validation_alias=AliasChoices("cs", "case-sensitive"),
-    )
-
-    def cli_cmd(self) -> None:
+    def run(self):
         """Execute the split command."""
-        from markitecture.processing.text_splitter import MarkdownTextSplitter
-
-        _printer.print_info(f"Splitting Markdown file: {self.input_file}")
-        _printer.print_info(f"Splitting on heading level: {self.heading_level}")
+        _printer.print_info(f"Splitting Markdown file: {self.args.input_path}")
+        _printer.print_info(f"Splitting on heading level: {self.config.level}")
         splitter = MarkdownTextSplitter()
-        content = FileHandler().read(self.input_file)
-        # splitter.settings = self.model_dump()
-        splitter.process_file(content)
-        _printer.print_info(f"Split completed. Files saved to: {self.output_dir}")
+        content = FileHandler().read(self.args.input_path)
+        splitter.process_file(
+            content, self.config.output_dir, f"#{'#' * int(self.config.level)}"
+        )
+        _printer.print_info(f"Split completed. Files saved to: {self.config.output_dir}")

@@ -1,9 +1,9 @@
 """Pydantic functions and type annotations to validate user input."""
 
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, List, Optional, Pattern
 
-from pydantic import AfterValidator
+from pydantic import AfterValidator, BaseModel, Field
 
 from markitecture.errors import InvalidPathError
 
@@ -24,3 +24,18 @@ def validate_path(v: Path) -> Path:
 
 
 ExistingFilePath = Annotated[Path, AfterValidator(validate_path)]
+
+
+class ValidatorSettings(BaseModel):
+    """Settings for the link validator."""
+    timeout: int = Field(default=10, ge=1, description="Timeout for network requests in seconds.")
+    max_workers: int = Field(default=5, ge=1, description="Maximum number of concurrent validation workers.")
+    allow_external_validation: bool = Field(default=True, description="Whether to validate external HTTP(S) links.")
+    ignore_patterns: Optional[List[Pattern[str]]] = Field(
+        default_factory=list, description="List of regex patterns to ignore URLs."
+    )
+    # base_url could also be a part of settings if needed for resolving relative links universally
+    # For now, assuming base_dir in validate_across_files_async serves this.
+
+    class Config:
+        arbitrary_types_allowed = True # To allow Pattern objects

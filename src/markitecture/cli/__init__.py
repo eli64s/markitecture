@@ -1,3 +1,3 @@
-from markitecture.cli.app import run_cli
+from markitecture.__main__ import main
 
-__all__ = ["run_cli"]
+__all__ = ["main"]
